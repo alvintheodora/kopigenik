@@ -6,9 +6,52 @@
 }
 
 /*body*/
+.container-fluid{
+	padding: 60px 50px;
+}
+.container-after-jumbotron{
+	padding: 10px 50px 60px;
+}
 .navbar-default .navbar-toggle:hover,.navbar-default .navbar-toggle:focus{
 	background-color: transparent;
 }
+
+
+.gallery-image{
+	position: relative;
+}
+.gallery-image img{	
+	width: 100%;
+}
+.gallery-info{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	opacity: 0;
+	transition: all 0.5s;
+}
+.gallery-info:hover{
+	opacity: 0.75;
+}
+.gallery-info-inner{
+	position: relative;
+	top: 20%;
+	padding: 20px;
+	
+}
+/*.img-swipe:after{
+	content: "";
+	display: block;
+	position: absolute;
+	background-color: red;
+	opacity: 0.75;
+	width: 350px;
+	max-width: 100%;
+	height: 230px;
+}*/
 
 /*footer*/
 footer ul{
@@ -32,9 +75,9 @@ footer a:hover{
 
 
 .jumbotron{
-	background-color: #03B3FD;/*scraps color*/
+	background-color: #232323;/*scraps color*/
 	color: #ffffff;
-	padding: 225px 25px;
+	padding: 150px 25px;
 }
 .btn-jumbotron{
 	margin: 10px 50px;
@@ -44,9 +87,7 @@ footer a:hover{
 .bg-grey{
 	background-color: #f4f4f4;/*grey*/
 }
-.container-fluid{
-	padding: 60px 50px;
-}
+
 .logo{
 	font-size: 200px;
 	margin-bottom: 50px;
