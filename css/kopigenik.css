@@ -4,7 +4,19 @@
 .bg-black1{
 	background-color: #232323;
 }
+.imageRound{
+  		border-radius:50%;
+  		
+  	}
+.kopBanner{
+	width:200px;
+	height:200%;
+}
 
+#myNavbar{
+	
+	margin-top:10px;
+}
 /*body*/
 .container-fluid{
 	padding: 60px 50px;
@@ -165,8 +177,8 @@ footer a:hover{
 }
 .navbar{
 	margin-bottom: 0;
-	background-color: black;
-	opacity: 0.75;
+	background-color: white;
+	
 	border: 0;
 	font-size: 12px !important;
 	line-height: 1.42857143 !important;
@@ -174,11 +186,11 @@ footer a:hover{
     border-radius: 0;  
 }
 .navbar li a, .navbar-brand{
-	color: #fff !important;
+	color: brown !important;
 }
 .navbar-nav li a:hover, .navbar-nav li.active a{
-	color: black !important;
-	background-color: #fff !important;
+	color: white !important;
+	background-color: #3E2723 !important;
 }
 .navbar-default .navbar-toggle{
 	border-color: transparent;
