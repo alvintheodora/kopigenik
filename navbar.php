@@ -7,7 +7,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index.php"><img class="kopBanner img-responsive" src="images/kopigenikbanner.png"></a>
+			<a class="navbar-brand" href="index.php"><img class="kopBanner img-responsive" src="asset/kopigenikbanner.png"></a>
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav navbar-right">
