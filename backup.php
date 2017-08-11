@@ -21,7 +21,7 @@
 	<!--top-->
 	<div class="container-fluid text-center">
 		<h1>K O P I G E N I K</h1>
-		<img class="img-rounded" src="images/portfolio-4.jpg" class="img-responsive center-block">
+		<img class="img-rounded" src="asset/portfolio-4.jpg" class="img-responsive center-block">
 		<p>end</p>
 	</div>
 
