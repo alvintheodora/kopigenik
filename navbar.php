@@ -25,7 +25,7 @@
 	$pathnameLocal = (location.pathname).substr(18);//18 karena potong tulisan /kopigenik-master/
 	$pathnameHosting = (location.pathname).substr(1);//1 karena potong /
 	$(".nav li").each(function(){		
-		if($(this).children().attr("href") == $pathnameHosting){
+		if($(this).children().attr("href") == $pathnameLocal){
 			$(this).addClass("active");
 		}
 	});
