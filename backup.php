@@ -14,13 +14,14 @@
   
 </head>
 <body>
-
+	
 	<!--navigation bar-->
 	<div id="includedNavbar"></div>
 
 	<!--top-->
 	<div class="container-fluid text-center">
-		<h1 class="pass">K O P I G E N I K</h1>
+		<h1>K O P I G E N I K</h1>
+		<img class="img-rounded" src="images/portfolio-4.jpg" class="img-responsive center-block">
 		<p>end</p>
 	</div>
 
