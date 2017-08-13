@@ -19,7 +19,7 @@
 	<div id="includedNavbar"></div>
 
 	<!--body-->
-	<div class="container">
+	<div class="container-fluid">
 		<h2 class="text-center">Shopping Cart</h2>
 
 		<form action="payment-confirmation.php" method="POST">
@@ -32,12 +32,24 @@
 						<p class="small">1 Item (0.5 kg) x Rp 15.000</p>
 					</div>
 					<div class="col-sm-2">
-						<p class="strong">Subtotal</p>
-						<p class="small">Rp95.000</p>
+						<div class="row">
+							<div class="col-xs-6 col-sm-12">
+								<p class="strong">Subtotal</p>
+							</div>
+							<div class="col-xs-6 col-sm-12 text-right-xxs">
+								<p class="small">Rp95.000</p>
+							</div>
+						</div>							
 					</div>
 					<div class="col-sm-5">
-						<p class="strong">Remark</p>
-						<p class="small">-</p>
+						<div class="row">
+							<div class="col-xs-6 col-sm-12">
+								<p class="strong">Remark</p>
+							</div>
+							<div class="col-xs-6 col-sm-12 text-right-xxs">
+								<p class="small">-</p>
+							</div>
+						</div>										
 					</div>
 				</div>
 				<div class="row">
@@ -47,15 +59,29 @@
 						<p class="small">2 Item (1.1 kg) x Rp 86.000</p>
 					</div>
 					<div class="col-sm-2">
-						<p class="strong">Subtotal</p>
-						<p class="small">Rp172.000</p>
+						<div class="row">
+							<div class="col-xs-6 col-sm-12">
+								<p class="strong">Subtotal</p>
+							</div>
+							<div class="col-xs-6 col-sm-12 text-right-xxs">
+								<p class="small">Rp172.000</p>
+							</div>
+						</div>						
 					</div>
 					<div class="col-sm-5">
-						<p class="strong">Remark</p>
-						<p class="small">Warna hitam</p>
+						<div class="row">
+							<div class="col-xs-6 col-sm-12">
+								<p class="strong">Remark</p>
+							</div>
+							<div class="col-xs-6 col-sm-12 text-right-xxs">
+								<p class="small">Warna hitam</p>
+							</div>
+						</div>											
 					</div>
 				</div>
+
 				<hr>
+				
 				<div class="row">
 					<div class="col-sm-5">
 						<p class="strong">Shipping destination</p>
@@ -67,16 +93,34 @@
 						<p class="small">Telp: 088493554433</p>
 					</div>				
 					<div class="col-sm-2">
-						<p class="strong">Total Items</p>
-						<p class="small">2 (2.7 kg)</p>
+						<div class="row">
+							<div class="col-xs-6 col-sm-12">
+								<p class="strong">Total Items</p>
+							</div>
+							<div class="col-xs-6 col-sm-12 text-right-xxs">
+								<p class="small">2 (2.7 kg)</p>
+							</div>
+						</div>	
 					</div>			
 					<div class="col-sm-2">
-						<p class="">Shipping Cost</p>
-						<p class="small">Rp18.000</p>
+						<div class="row">
+							<div class="col-xs-6 col-sm-12">
+								<p class="strong">Shipping Cost</p>
+							</div>
+							<div class="col-xs-6 col-sm-12 text-right-xxs">
+								<p class="small">Rp18.000</p>
+							</div>
+						</div>	
 					</div>
 					<div class="col-sm-3">
-						<p class="">Total</p>
-						<p class="small">Rp252.000</p>
+						<div class="row">
+							<div class="col-xs-6 col-sm-12">
+								<p class="strong">Total</p>
+							</div>
+							<div class="col-xs-6 col-sm-12 text-right-xxs">
+								<p class="small">Rp252.000</p>
+							</div>
+						</div>	
 					</div>
 				</div>		
 			</div>

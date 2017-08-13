@@ -28,8 +28,8 @@
 			<p>Mohon segera selesaikan pembayaran sebelum tanggal <span class="strong">31 Desember 2017</span></p>
 			<p>Silahkan transfer ke rekening kami yang tersedia</p>
 		</div>		
-		<div class="row">
-			<div class="col-sm-2 col-sm-offset-4">
+		<div class="row bank text-center-xs">
+			<div class="col-sm-6">
 				<img class="icon-bank" src="asset/icon-bca.jpg" alt="BCA">
 			</div>
 			<div class="col-sm-6">
