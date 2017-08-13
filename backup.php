@@ -19,11 +19,29 @@
 	<div id="includedNavbar"></div>
 
 	<!--top-->
-	<div class="container-fluid text-center">
+	<div class="container-fluid text-center banner-main">		
 		<h1>K O P I G E N I K</h1>
-		<img class="img-rounded img-responsive center-block" src="asset/portfolio-4.jpg">
-		<p>end</p>
+		<!--<img class="img-rounded img-responsive" src="asset/portfolio-4.jpg" width="100%;">-->
+		<p>end</p>		
 	</div>
+
+	<!--video-->
+	<div class="container-fluid">		
+		<div class="row">
+			<div class="col-sm-6">				
+				<div class="embed-responsive embed-responsive-16by9">
+					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/aBLYSO0DSVI"></iframe>
+				</div>				
+			</div>
+			<div class="col-sm-6">
+				<h3>Enhance your skills about coffee</h3>
+				<p>quis nostrud exercitation. Excepteur occaecat cupidatat non</p>
+				<button class="btn btn-lg">See videos</button>
+			</div>
+		</div>
+	</div>
+	
+	<hr class="line">
 
 	<!--blog-->
 	<div class="container-fluid text-center">
@@ -44,23 +62,7 @@
 				<p>Proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 			</div>
 		</div>
-	</div>
-
-	<!--video-->
-	<div class="container-fluid bg-grey">		
-		<div class="row">
-			<div class="col-sm-6">				
-				<div class="embed-responsive embed-responsive-16by9">
-					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/aBLYSO0DSVI"></iframe>
-				</div>				
-			</div>
-			<div class="col-sm-6">
-				<h3>Enhance your skills about coffee</h3>
-				<p>quis nostrud exercitation. Excepteur occaecat cupidatat non</p>
-				<button class="btn btn-lg">See videos</button>
-			</div>
-		</div>
-	</div>
+	</div>	
 
 	<!--FOOTER-->
 	<footer class="footer-btm container-fluid bg-black1">
@@ -76,7 +78,7 @@
 			<div class="col-sm-4">
 				<h5 style="color: #f7db9c;">ABOUT US</h5>
 				<ul>
-					<li><a href="about-us.php">Our Story</a></li>
+					<li><a href="about-us.php">What is Kopigenik</a></li>
 					<li><a href="faq.php">FAQ</a></li>
 					<li><a href="blog.php">Blog</a></li>
 				</ul>
@@ -98,7 +100,9 @@
 					</li>
 					<li>						
 						<img class="icon-social-media" src="asset/icon-line.jpg">
-						<span>@Kopigenik</span>	
+						<span style="color: #fff;">@Kopigenik</span>							
+					</li>
+					<li style="margin-left: 50px;">
 						<div class="line-it-button" data-lang="en" data-type="friend" data-lineid="@kopigenik" data-count="true" data-home="true" style="display: none; padding-top: 5px;"></div>
 						<script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
 					</li>

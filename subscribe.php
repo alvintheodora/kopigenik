@@ -24,9 +24,9 @@
 	<div class="container-fluid">
 		<h2 class="text-center">Subscribe</h2>
 
-		<form action="subscribe2.php" method="POST">
+		<form action="cart.php" method="POST">
 			<div class="row">
-				<div class="col-sm-8">
+				<div class="col-lg-8">
 					<div class="form-group">
 						<label for="select1" class="subscribeQuestion">Berapa banyak kopi yang anda konsumsi dalam 2 minggu?</label>			
 						<select id="select1" class="inputText">
@@ -65,44 +65,44 @@
 					</div>					
 				</div>
 				
-				<div class="col-sm-4">
-					<div id="orderSummary">
+				<div class="col-lg-4">
+					<div class="summary" id="orderSummary">
 						<h3>Ringkasan Pesanan</h3>
 						<div class="row">
-							<div class="col-xs-6 col-sm-6">
+							<div class="col-xs-6">
 								<p>250 gram (per 2 minggu)</p>
 							</div>
-							<div class="col-xs-6 col-sm-6">
+							<div class="col-xs-6">
 								<p>Rp95.000</p>
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-xs-6 col-sm-6">
+							<div class="col-xs-6">
 								<p>Total (1 bulan)</p>
 							</div>
-							<div class="col-xs-6 col-sm-6">
+							<div class="col-xs-6">
 								<p>Rp190.000</p>
 							</div>
 						</div>
 						<div class="row">
-							<div class="col-xs-6 col-sm-6">
+							<div class="col-xs-6">
 								<p>Ongkos kirim</p>
 							</div>
-							<div class="col-xs-6 col-sm-6">
+							<div class="col-xs-6">
 								<p>Rp9.000</p>
 							</div>
 						</div>
 						<hr>
 						<div class="row">
-							<div class="col-xs-6 col-sm-6">
+							<div class="col-xs-6">
 								<p>Total harga</p>
 							</div>
-							<div class="col-xs-6 col-sm-6">
+							<div class="col-xs-6">
 								<p>Rp294.000</p>
 							</div>
 						</div>	
 
-						<button class="btn btn-lg btn-success btn-block" type="submit">Checkout</button>				
+						<button class="btn btn-lg btn-success btn-block" type="submit">Buy</button>				
 					</div>
 				</div>
 
