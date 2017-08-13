@@ -1,5 +1,5 @@
 .pass{
-	margin-bottom: 450px;
+	margin-bottom: 800px;
 }
 .bg-black1{
 	background-color: #232323;
@@ -20,10 +20,32 @@
 	padding: 60px 50px;
 }
 .container-after-jumbotron{
-	padding: 10px 50px 60px;
+	padding: 40px 50px 60px;
 }
 .container-navbar{
-	padding: 0px 25px 20px;
+	padding: 0px 25px;
+}
+.container-table{
+  padding: 60px 50px;
+  margin-right: auto;
+  margin-left: auto;
+  width: 1080px;
+}
+
+	/*index*/
+.banner-main{
+	margin-top: 60px;
+	padding-left: 0;
+	padding-right: 0;
+	background-image: url("../asset/banner_coffee.jpg");
+	background-position: center;
+	background-size: cover;
+	height: 605px;
+	color: #fff;	
+}
+.line{
+	max-width: 1249px;
+	border-top: 1px solid #eee;
 }
 
 	/*navbar*/
@@ -49,11 +71,24 @@
 	display: inline-block;
 }
 
-	/*subscribe2*/
-#orderSummary{
+	/*shopping cart*/
+.summary{
 	border: 1px solid #3E2723;
 	width: 100%;
 	padding: 20px;
+}
+.strong{
+	font-weight: bold; 
+}
+td{
+	vertical-align: top;
+}
+
+	/*payment confirmation*/
+.icon-bank{
+	width: 180px;
+	height: 100px;
+	margin-bottom: 20px;
 }
 
 
