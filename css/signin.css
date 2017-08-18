@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;  
+
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+h3{
+  font-size: 50px;
+  color: black;
+  padding-bottom: 20px;
+}
+/* ========================================================== */
+
+#landing-page {
+
+  width: 100%;
+
+}
+
+.nav-wrapper{
+  /* background: #ECE9E6;
+  background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);
+  background: linear-gradient(to right, #FFFFFF, #ECE9E6); */
+  background-color: white
+}
+
+ul > li > a:hover{
+  background-color: #3E2723;
+}
+
+

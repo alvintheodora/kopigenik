@@ -4,20 +4,14 @@
 	<title>Kopigenik | Index</title>
 	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
- 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
- 	<link rel="stylesheet" type="text/css" href="css/kopigenik.css">
- 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-  	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
- 	<script src="js/jquery-3.2.1.min.js"></script>
-  	<script src="js/bootstrap.js"></script>
-  	<script src="js/kopigenik.js"></script>
+  	<?php include 'head.php'; ?>
   
 </head>
 <body>
 	
 	<!--navigation bar-->
-	<div id="includedNavbar"></div>
-
+	<!--<div id="includedNavbar"></div> -->
+	<?php include 'navbar.php'; ?>   
 	<!--top-->
 	<div class="container-fluid text-center banner-main">		
 		<h1>K O P I G E N I K</h1>
@@ -28,12 +22,12 @@
 	<!--video-->
 	<div class="container-fluid">		
 		<div class="row">
-			<div class="col-sm-6">				
+			<div class="col-md-6">				
 				<div class="embed-responsive embed-responsive-16by9">
 					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/aBLYSO0DSVI"></iframe>
 				</div>				
 			</div>
-			<div class="col-sm-6">
+			<div class="col-md-6">
 				<h3>Enhance your skills about coffee</h3>
 				<p>quis nostrud exercitation. Excepteur occaecat cupidatat non</p>
 				<button class="btn btn-lg">See videos</button>
@@ -93,7 +87,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="https://instagram.com/kopigenik" target="__blank"">
+						<a href="https://instagram.com/kopigenik" target="__blank">
 							<img class="icon-social-media" src="asset/icon-instagram.svg">
 							<span>Kopigenik</span>
 						</a>
