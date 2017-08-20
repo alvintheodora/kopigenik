@@ -8,10 +8,26 @@
 .bg-grey{
 	background-color: #f4f4f4;/*grey*/
 }
+.black{
+	color: black;
+}
+	/*will be changed later*/
+@media (max-width: 991px) {
+	.img-coffee_bag{
+		width: 180px;
+	}
+}
+@media (max-width: 425px) {
+	.img-coffee_bag{
+		width: 100px;
+	}
+}
+
 
 /*containers*/
 .container-fluid{
 	padding: 60px 50px;
+	transition: all .5s;
 }
 @media (max-width: 425px) {
 	.container-fluid{
@@ -27,13 +43,19 @@
 	}
 }
 .container-navbar{
-	padding: 0px 25px;
+	padding: 10px 25px 0px;
 }
 .container-table{
   padding: 60px 50px;
   margin-right: auto;
   margin-left: auto;
   width: 1080px;
+}
+.container-fixed{
+	width: 1349px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 60px 50px;
 }
 .jumbotron{
 	background-color: #232323;/*scraps color*/
@@ -48,10 +70,6 @@
 
 
 /*navbar*/
-.navbarKop{
-
-	font-size: 20px;
-}
 .navbar{
 	margin-bottom: 0;
 	background-color: white;	
@@ -75,12 +93,9 @@
 .navbar-default .navbar-toggle:hover,.navbar-default .navbar-toggle:focus{
 	background-color: transparent;
 }
-#myNavbar{
-	margin-top:10px;
-}
-@media (max-width: 350px) {
+@media (max-width: 300px) {
 	.navbar-brand{
-		width: 180px;
+		width: 160px;
 	}
 }
 
@@ -88,18 +103,76 @@
 /*index*/
 .banner-main{
 	margin-top: 60px;
-	padding-left: 0;
-	padding-right: 0;
-	background-image: url("../asset/banner_coffee.jpg");
+	background-image: url("../asset/table_background.jpg");
 	background-position: center;
 	background-size: cover;
 	height: 605px;
-	color: #fff;	
+	visibility: visible;
+	transition: opacity 1s, padding .5s;
+}
+@media (max-width: 991px) {
+	.banner-main{
+		visibility: hidden;
+		height: 0;
+		padding: 0;
+		margin: 0;
+		opacity: 0;
+		transform: scale(0);
+		overflow: hidden;
+	}
+}
+.pl-3{
+	padding-left: 3%;
+}
+.banner-main-md{
+	visibility: hidden;
+	height: 0;
+	opacity: 0;
+	overflow: hidden;
+	padding: 0;
+	transform: scale(0);
+	transition: opacity 1s, padding .5s;
+}
+@media (max-width: 991px) {
+	.banner-main-md{
+		visibility: visible;
+		height: auto;
+		opacity: 1;
+		transform: scale(1);
+		padding: 60px 50px;
+	}
+}
+@media (max-width: 425px) {
+	.banner-main-md{
+		padding: 60px 25px;
+	}
+}
+
+@media (max-width: 425px) {
+	.font-header-mobile{
+		font-size: 70%;
+	}
+}
+@media (max-width: 425px) {
+	.font-p-mobile{
+		font-size: 60%;
+	}
+}
+.btn-banner{
+	background-color: transparent;
+	border: 2px solid #3E2723;
+	color: #3E2723;
+	transition: background-color .3s, color .2s;
+}
+.btn-banner:hover{
+	background-color: #3E2723;
+	color: #fff;
 }
 .line{
 	max-width: 1249px;
 	border-top: 1px solid #eee;
 }
+
 
 /*subscribe*/
 .subscribeQuestion{
@@ -168,7 +241,7 @@ td{
 	height: 100%;
 	background-color: black;
 	opacity: 0;
-	transition: all 0.5s;
+	transition: all .5s;
 }
 .gallery-info:hover{
 	opacity: 0.75;

@@ -10,7 +10,7 @@
 <body>
 
 	<!--navigation bar-->
-	<div id="includedNavbar"></div>
+	<?php include 'navbar.php'; ?>
 
 	<!--top-->
 	<div class="jumbotron text-center">
@@ -148,15 +148,8 @@
 	
 
 	<!--FOOTER-->
-	<div id="includedFooter"></div>
+	<?php include 'footer.php'; ?>
 	
 
 </body>
 </html>
-
-<script type="text/javascript">
-	$(window).ready(function(){
-		$("#includedNavbar").load("navbar.php");
-		$("#includedFooter").load("footer.php");
-	});
-</script>

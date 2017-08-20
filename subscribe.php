@@ -4,19 +4,13 @@
 	<title>Kopigenik | Subscribe</title>
 	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
- 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
- 	<link rel="stylesheet" type="text/css" href="css/kopigenik.css">
- 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
-  	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
- 	<script src="js/jquery-3.2.1.min.js"></script>
-  	<script src="js/bootstrap.js"></script>
-  	<script src="js/kopigenik.js"></script>	
+ 	<?php include 'head.php'; ?>
   
 </head>
 <body>
 
 	<!--navigation bar-->
-	<div id="includedNavbar"></div>
+	<?php include 'navbar.php'; ?>
 
 	<!--top-->
 
@@ -24,7 +18,7 @@
 	<div class="container-fluid">
 		<h2 class="text-center">Subscribe</h2>
 
-		<form action="cart.php" method="POST">
+		<form action="payment-confirmation.php" method="POST">
 			<div class="row">
 				<div class="col-lg-8">
 					<div class="form-group">
@@ -111,15 +105,7 @@
 	</div>	
 
 	<!--FOOTER-->
-	<div id="includedFooter"></div>
+	<?php include 'footer.php'; ?>
 
 </body>
 </html>
-
-<script type="text/javascript">
-	$(window).ready(function(){
-		$("#includedNavbar").load("navbar.php");
-		$("#includedFooter").load("footer.php");
-	});	
-</script>
-

@@ -4,13 +4,13 @@
 	<title>Kopigenik | Shopping Cart</title>
 	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
- 	<?php include 'head.php'; ?>	
+ 	<?php include 'head.php'; ?>
   
 </head>
 <body>
 
 	<!--navigation bar-->
-	<div id="includedNavbar"></div>
+	<?php include 'navbar.php'; ?>
 
 	<!--body-->
 	<div class="container-fluid">
@@ -126,16 +126,8 @@
 	</div>	
 
 	<!--FOOTER-->
-	<div id="includedFooter"></div>
+	<?php include 'footer.php'; ?>
 
 
 </body>
 </html>
-
-<script type="text/javascript">
-	$(window).ready(function(){
-		$("#includedNavbar").load("navbar.php");
-		$("#includedFooter").load("footer.php");
-	});	
-</script>
-
