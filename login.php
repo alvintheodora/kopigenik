@@ -39,16 +39,16 @@
 <!DOCTYPE html>
 <html>
   <head>
+  	<title>Kopigenik - Login</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="stylesheet" type="text/css" href="signin.css">
-    <?php include 'head.php'; ?>
-    <title>Kopigenik - Login</title>
-
+    <link rel="stylesheet" type="text/css" href="css/materialize.css">
     <link rel="stylesheet" type="text/css" href="css/signin.css">
-
+    <script src="js/materialize.js"></script>
+    <?php include 'head.php'; ?>
   </head>
+
   <body>
      <?php include 'navbar.php'; ?>  
 
