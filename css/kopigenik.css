@@ -29,18 +29,6 @@
 	transition: all .5s ease;
 }
 
-	/*will be changed later*/
-@media (max-width: 991px) {
-	.img-coffee_bag{
-		width: 180px;
-	}
-}
-@media (max-width: 425px) {
-	.img-coffee_bag{
-		width: 100px;
-	}
-}
-
 
 /*containers*/
 .container-fluid{
@@ -99,7 +87,6 @@
 	background-size: cover;
 }
 
-
 .jumbotron{
 	background-color: #232323;/*scraps color*/
 	color: #ffffff;
@@ -145,10 +132,8 @@
 
 /*index*/
 .banner-main{
-	margin-top: 60px;
-	
-	background-color: rgba(26, 26, 26, 0.3);
-	
+	margin-top: 60px;	
+	background-color: rgba(26, 26, 26, 0.3);	
 	height: 602px;
 	visibility: visible;
 	transition: opacity 1s, padding .5s;
@@ -186,15 +171,14 @@
 	visibility: visible;
 	transition: all .5s ease-out;
 }
-.geser{
+.slide-logo{
 	position: absolute;
 	left: 40%;
-	/*z-index: 3;*/
-	backface-visibility: hidden;
-	will-change: background;
+	z-index: 2;
+	pointer-events: none;/*disable any mouse events,i.e:hover,etc*/
 	transition: all .35s ease-in;
 }
-.layer-tagline:hover .geser{
+.layer-tagline:hover .slide-logo{
 	transition: all .35s ease-out;
 }
 .banner-info{

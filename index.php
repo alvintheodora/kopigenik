@@ -14,19 +14,16 @@
 
 	<!--top-->
 	<div class="container-outer">
-		<div class="container-fluid banner-main">
-				
-			
+		<div class="container-fluid banner-main">						
 			<div class="row layer-tagline">
-				<div class="geser">
-					<!--<h1 style="color: #000;">K O P I G E N I K</h1>-->
+				<div class="slide-logo">				
 					<img src="https://www.jardan.com.au/wp-content/themes/jardan/images/branding/jardan_logo_white.svg" style="transform: translateX(150%);">
 					<p style="transform: translate(45%,340%); color: #fff; font-size: 24px;">KOPIGENIK</p>
 					<p style="transform: translate(67%,500%); color: #fff; font-size: 14px;">SINCE 2017</p>
 				</div>	
 				<div class="tagline">
 					<h2 style="margin-left: -20%; color: white; font-weight: 500;">- Indonesia's Best Coffee Subscription -</h2>
-					<h3 style="margin-left: -8%; color: white;">Delivering coffee to your door</h3>
+					<h3 style="margin-left: -8%; color: white; left: 50%;">Delivering coffee to your door</h3>
 				</div>
 				
 				<div class="col-xs-4 pl-3 layer layer-1">				
@@ -34,18 +31,19 @@
 						<h3 class="black" style="color: #fff;">Watch videos about your coffee</h3>
 						<p class="black" style="color: #fff;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius</p>
 						<a href="videos.php" class="btn btn-banner" style="margin-bottom: 20px; color: #fff;">See videos <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>
-					</div>				
-							
+					</div>										
 					<img class="img-responsive" src="http://mobilemarketingmagazine.com/wp-content/uploads/2016/10/Branded-Moments-Transparent-background_b.png" alt="coffee videos" style="margin-left: -9%;">
-				</div>														
+				</div>		
+
 				<div class="col-xs-4 pl-3 layer layer-2">				
 					<div class="banner-info">
 						<h3 class="black" style="color: #fff;">Enjoy your coffee with subscription</h3>
 						<p class="black" style="color: #fff;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius</p>
 						<a href="videos.php" class="btn btn-banner" style="margin-bottom: 20px; color: #fff;">See videos <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>
 					</div>	
-					<img class="img-responsive" src="asset/coffee_bag3.png" alt="subscribe board">													
+					<img class="img-responsive" src="asset/coffee_bag3.png" alt="subscribe board">				
 				</div>
+
 				<div class="col-xs-4 pl-3 layer layer-3">				
 					<div class="banner-info">
 						<h3 class="black" style="color: #fff;">We deliver first-grade beans</h3>
