@@ -13,70 +13,119 @@
 	<?php include 'navbar.php'; ?>
 
 	<!--top-->
-	<div class="container-fluid banner-main">		
-		<!--<h1>K O P I G E N I K</h1>-->
-		<div class="row">
-			<div class="col-xs-4 pl-3">				
-				<h3 class="black">Watch videos about your coffee</h3>
-				<p class="black">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius</p>
-				<a href="videos.php" class="btn btn-banner" style="margin-bottom: 20px;">See videos</a>		
-				<img class="img-responsive" src="asset/video-banner.png" alt="coffee videos">
-			</div>														
-			<div class="col-xs-4 pl-3">
-				<img class="img-responsive" src="asset/open_board.jpg" alt="subscribe board">					
-				<h3 class="black">Enjoy your coffee with subscription</h3>
-				<p class="black">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius</p>
-				<a href="subscribe.php" class="btn btn-banner" style="margin-bottom: 20px;">See subscription plans</a>													
-			</div>
-			<div class="col-xs-4 pl-3">				
-				<h3 class="black">We deliver first-grade beans</h3>
-				<p class="black">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius</p>
-				<a href="beans.php" class="btn btn-banner" style="margin-bottom: 20px;">See our beans</a>	
-				<img class="img-responsive" src="asset/coffee_beans.jpg" align="coffee beans">		
-			</div>
-		</div>				
+	<div class="container-outer">
+		<div class="container-fluid banner-main">
+				
+			
+			<div class="row layer-tagline">
+				<div class="geser">
+					<!--<h1 style="color: #000;">K O P I G E N I K</h1>-->
+					<img src="https://www.jardan.com.au/wp-content/themes/jardan/images/branding/jardan_logo_white.svg" style="transform: translateX(150%);">
+					<p style="transform: translate(45%,340%); color: #fff; font-size: 24px;">KOPIGENIK</p>
+					<p style="transform: translate(67%,500%); color: #fff; font-size: 14px;">SINCE 2017</p>
+				</div>	
+				<div class="tagline">
+					<h2 style="margin-left: -20%; color: white; font-weight: 500;">- Indonesia's Second Coffee Subscription -</h2>
+					<h3 style="margin-left: -13%; color: white;">Saya Kopi, Dia Genik, Kami Kopigenik</h3>
+				</div>
+				
+				<div class="col-xs-4 pl-3 layer layer-1">				
+					<div class="banner-info">
+						<h3 class="black" style="color: #fff;">Watch videos about your coffee</h3>
+						<p class="black" style="color: #fff;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius</p>
+						<a href="videos.php" class="btn btn-banner" style="margin-bottom: 20px; color: #fff;">See videos <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>
+					</div>				
+							
+					<img class="img-responsive" src="http://mobilemarketingmagazine.com/wp-content/uploads/2016/10/Branded-Moments-Transparent-background_b.png" alt="coffee videos" style="margin-left: -9%;">
+				</div>														
+				<div class="col-xs-4 pl-3 layer layer-2">				
+					<div class="banner-info">
+						<h3 class="black" style="color: #fff;">Enjoy your coffee with subscription</h3>
+						<p class="black" style="color: #fff;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius</p>
+						<a href="videos.php" class="btn btn-banner" style="margin-bottom: 20px; color: #fff;">See videos <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>
+					</div>	
+					<img class="img-responsive" src="asset/coffee_bag3.png" alt="subscribe board">													
+				</div>
+				<div class="col-xs-4 pl-3 layer layer-3">				
+					<div class="banner-info">
+						<h3 class="black" style="color: #fff;">We deliver first-grade beans</h3>
+						<p class="black" style="color: #fff;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius</p>
+						<a href="videos.php" class="btn btn-banner" style="margin-bottom: 20px; color: #fff;">See videos <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>
+					</div>
+					<img class="img-responsive" src="asset/coffee_beans2.png" align="coffee beans">		
+				</div>
+			</div>				
+		</div>
 	</div>
+	
 
 	<!--top2-->
-	<div class="container-fluid banner-main-md">		
+	<div class="container-fluid banner-main-md" style="color: white;">		
 		<!--<h1>K O P I G E N I K</h1>-->
 		<div class="row">
 			<div class="col-xs-6">
 				<h3 class="black font-header-mobile">Watch videos about your coffee</h3>
 				<p class="black font-p-mobile">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius</p>
-				<a href="#" class="btn btn-banner font-header-mobile" style="margin-bottom: 20px;">See videos</a>
+				
 			</div>
 			<div class="col-xs-6">
 				<img class="img-responsive" src="asset/video-banner.png" alt="coffee videos" style="margin-top: 20px;">
 			</div>
+
 		</div>
+		<a href="#" class="btn btn-block btn-banner font-header-mobile" style="margin-top: 10px; margin-bottom: 20px;">See videos <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>
 		<hr>														
 		<div class="row">
 			<div class="col-xs-6">
-				<img class="img-responsive" src="asset/open_board.jpg" alt="subscribe board" style="margin-top: 20px;">
+				<img class="img-responsive" src="asset/coffee_bag3.png" alt="subscribe board" style="margin-top: 20px;">
 			</div>
 			<div class="col-xs-6">
 				<h3 class="black font-header-mobile">Enjoy your coffee with subscription</h3>
 				<p class="black font-p-mobile">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius</p>
-				<a href="subscribe.php" class="btn btn-banner font-header-mobile" style="margin-bottom: 20px;">See subscription plans</a>
+				
 			</div>
-		</div>	
+		</div>
+		<a href="subscribe.php" class="btn btn-block btn-banner font-header-mobile" style="margin-bottom: 20px;">See subscription plans <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>	
 		<hr>											
 		<div class="row">
 			<div class="col-xs-6">
 				<h3 class="black font-header-mobile">We deliver first-grade beans</h3>
 				<p class="black font-p-mobile">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius</p>
-				<a href="beans.php" class="btn btn-banner font-header-mobile" style="margin-bottom: 20px;">See our beans</a>	
+				
 			</div>
 			<div class="col-xs-6">
-				<img class="img-responsive" src="asset/coffee_beans.jpg" alt="coffee beans" style="margin-top: 20px;">
+				<img class="img-responsive" src="asset/coffee_beans2.png" alt="coffee beans" style="margin-top: 20px;">
 			</div>
-		</div>						
+		</div>	
+		<a href="beans.php" class="btn btn-block btn-banner font-header-mobile" style="margin-bottom: 20px;">See our beans <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>	
+		<hr>					
 	</div>
 
 
+	<!--how to kopigenik-->
+	<div class="container-fluid container-inner">
+		<div class="section-block">
+			<h2 class="text-center strong" style="font-family: Montserrat, sans-serif; font-size: 28px;">HOW TO KOPIGENIK</h2>
+			<div class="underline underline-250"></div>	
+		</div>
+		
+		<div class="row">
+			<div class="col-sm-12">				
+				<div class="how-to-kopigenik-banner"></div>				
+			</div>
+			
+		</div>
+	</div>
+	
+	<!--<hr class="line">-->
+
 	<!--video-->
-	<div class="container-fluid">		
+	<div class="container-fluid container-inner bg-grey">
+		<div class="section-block">
+			<h2 class="text-center strong" style="font-family: Montserrat, sans-serif; font-size: 28px;">V I D E O S</h2>
+			<div class="underline underline-100"></div>	
+		</div>
+		
 		<div class="row">
 			<div class="col-sm-6">				
 				<div class="embed-responsive embed-responsive-16by9">
@@ -86,31 +135,42 @@
 			<div class="col-sm-6">
 				<h3>Enhance your skills about coffee</h3>
 				<p>quis nostrud exercitation. Excepteur occaecat cupidatat non</p>
-				<button class="btn btn-lg">See videos</button>
+				<button class="btn btn-lg btn-banner">See videos</button>
 			</div>
 		</div>
 	</div>
 	
-	<hr class="line">
+	<!--<hr class="line">-->
 
 	<!--blog-->
-	<div class="container-fluid text-center">
-		<h2>More on Kopigenik</h2>
+	<div class="container-fluid container-inner text-center">
+		<div class="section-block">
+			<h2 class="text-center strong" style="font-family: Montserrat, sans-serif; font-size: 28px;">MORE ON KOPIGENIK</h2>
+			<div class="underline underline-250"></div>	
+		</div>
 		<div class="row">
-			<div class="col-sm-6">
-				<a href="#">
-					<img class="img-responsive center-block slideanim" src="asset/blog_espresso.jpg" alt="espresso extraction">
-				</a>
-				<h3>Learn how to make your coffee</h3>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
-			</div>
-			<div class="col-sm-6">
-				<a href="#">
-					<img class="img-responsive center-block slideanim" src="asset/blog_drink_coffee.jpg" alt="time to drink coffee">
-				</a>
-				<h3>Best time to drink coffee</h3>
-				<p>Proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-			</div>
+			<a href="blog.php" class="link-text">
+				<div class="col-sm-6">
+					<div class="shadow">
+						<img class="img-responsive center-block slideanim" src="asset/original/rsz_blog_espresso.jpg" alt="espresso extraction">				
+						<div style="padding: 20px;">					
+							<p style="color: grey;">WEEKLY BLOG</p>
+							<p style="font-size: 24px; color: #000;">Learn how to make your coffee</p>
+						</div>
+					</div>		
+				</div>
+			</a>
+			<a href="blog.php" class="link-text">
+				<div class="col-sm-6">	
+					<div class="shadow">
+						<img class="img-responsive center-block slideanim" src="asset/original/rsz_blog_drink_coffee.jpg" alt="time to drink coffee">				
+						<div style="padding: 20px;">					
+							<p style="color: grey;">WEEKLY BLOG</p>
+							<p style="font-size: 24px; color: #000;">Best time to drink your coffee</p>
+						</div>
+					</div>		
+				</div>
+			</a>
 		</div>
 	</div>	
 

@@ -8,9 +8,27 @@
 .bg-grey{
 	background-color: #f4f4f4;/*grey*/
 }
+.bg-grey1{
+	background-color: #f8f8f9;
+}
+.bg-grey2{
+	background-color: #f1f1f1;
+}
+.bg-brown{
+	background-color: #eeba8e;
+}
 .black{
 	color: black;
 }
+.link-text:hover{
+	text-decoration: none;
+}
+.shadow:hover{
+	box-shadow: 2px 8px 20px 0 rgba(31,32,68,.25);
+	transform: scale(1.01);
+	transition: all .5s ease;
+}
+
 	/*will be changed later*/
 @media (max-width: 991px) {
 	.img-coffee_bag{
@@ -57,6 +75,31 @@
 	margin-right: auto;
 	padding: 60px 50px;
 }
+.container-inner{
+	padding: 60px 25px;
+}
+@media (min-width: 425px) {
+	.container-inner{
+		padding: 60px 50px;
+	}
+}
+@media (min-width: 992px) {
+	.container-inner{
+		padding: 60px 100px;
+	}
+}
+@media (min-width: 1200px) {
+	.container-inner{
+		padding: 60px 150px;
+	}
+}
+.container-outer{
+	background-image: url("../asset/table_background2.jpg");
+	background-position: center;
+	background-size: cover;
+}
+
+
 .jumbotron{
 	background-color: #232323;/*scraps color*/
 	color: #ffffff;
@@ -103,10 +146,10 @@
 /*index*/
 .banner-main{
 	margin-top: 60px;
-	background-image: url("../asset/table_background.jpg");
-	background-position: center;
-	background-size: cover;
-	height: 605px;
+	
+	background-color: rgba(26, 26, 26, 0.3);
+	
+	height: 602px;
 	visibility: visible;
 	transition: opacity 1s, padding .5s;
 }
@@ -124,6 +167,44 @@
 .pl-3{
 	padding-left: 3%;
 }
+.tagline{
+	position: absolute;
+	left: 40%;
+	transform: translateY(60%);
+	opacity: 1;
+	transition: opacity 1s ease-out;
+}
+.layer-tagline:hover .tagline{
+	opacity: 0;
+}
+.layer:hover{
+	background-color: rgba(26, 26, 26, 0.3);
+	transition: background-color 0.35s ease-out;
+}
+.layer:hover .banner-info{
+	opacity: 1;
+	visibility: visible;
+	transition: all .5s ease-out;
+}
+.geser{
+	position: absolute;
+	left: 40%;
+	/*z-index: 3;*/
+	backface-visibility: hidden;
+	will-change: background;
+	transition: all .35s ease-in;
+}
+.layer-tagline:hover .geser{
+	transition: all .35s ease-out;
+}
+.banner-info{
+	visibility: hidden;
+	opacity: 0;
+	padding-top: 50px;
+	margin-bottom: 50px;
+	transition: all .5s ease-out;
+}
+
 .banner-main-md{
 	visibility: hidden;
 	height: 0;
@@ -139,7 +220,7 @@
 		height: auto;
 		opacity: 1;
 		transform: scale(1);
-		padding: 60px 50px;
+		padding: 60px 50px 0px;
 	}
 }
 @media (max-width: 425px) {
@@ -167,6 +248,32 @@
 .btn-banner:hover{
 	background-color: #3E2723;
 	color: #fff;
+}
+.how-to-kopigenik-banner{
+	background-image: url('../asset/bg-how-to-kopigenik.png'); 
+	background-size: cover; background-position: center; 
+	height: 400px;
+}
+
+.section-block:hover .underline{
+	max-width: 0;
+	transition: max-width .5s;
+}
+.underline{
+	background-color: #3E2723; 
+	padding-top: 4px; 
+	max-width: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 35px;
+	margin-top: -20px;
+	transition: max-width .5s;
+}
+.underline-100{
+	max-width: 100px;
+}
+.underline-250{ 
+	max-width: 250px;
 }
 .line{
 	max-width: 1249px;
@@ -311,14 +418,14 @@ footer a:hover{
 body{
 	font: 400 15px Lato, sans-serif;
 	line-height: 1.8;
-	color: #818181;
+	/*color: #818181;*/
 }
 .jumbotron, .navbar {
     font-family: Montserrat, sans-serif;
 }
 h2 {
     font-size: 24px;    
-    color: #303030;
+    /*color: #303030;*/
     font-weight: 600;
     margin-bottom: 30px;
 }
@@ -326,7 +433,7 @@ h2 {
 h4 {
     font-size: 19px;
     line-height: 1.375em;
-    color: #303030;
+    /*color: #303030;*/
     font-weight: 400;
     margin-bottom: 30px;
 }
