@@ -25,8 +25,8 @@
 					<p style="transform: translate(67%,500%); color: #fff; font-size: 14px;">SINCE 2017</p>
 				</div>	
 				<div class="tagline">
-					<h2 style="margin-left: -20%; color: white; font-weight: 500;">- Indonesia's Second Coffee Subscription -</h2>
-					<h3 style="margin-left: -13%; color: white;">Saya Kopi, Dia Genik, Kami Kopigenik</h3>
+					<h2 style="margin-left: -20%; color: white; font-weight: 500;">- Indonesia's Best Coffee Subscription -</h2>
+					<h3 style="margin-left: -8%; color: white;">Delivering coffee to your door</h3>
 				</div>
 				
 				<div class="col-xs-4 pl-3 layer layer-1">				
