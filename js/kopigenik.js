@@ -12,16 +12,16 @@ $(document).ready(function(){
 
 	//sliding banner	
 	$(".layer-1").hover(function(){		
-		$(".geser").css("left","9%");
+		$(".slide-logo").css("left","9%");
 	});
 	$(".layer-2").hover(function(){				
-		$(".geser").css("left","40%");		
+		$(".slide-logo").css("left","40%");		
 	});
 	$(".layer-3").hover(function(){		
-		$(".geser").css("left","73%");		
+		$(".slide-logo").css("left","73%");		
 	});	
 	$(".layer-tagline").mouseleave(function(){
-		$(".geser").css("left","40%");
+		$(".slide-logo").css("left","40%");
 	});
 
 });
