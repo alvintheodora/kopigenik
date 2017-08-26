@@ -157,36 +157,35 @@
 	left: 40%;
 	transform: translateY(60%);
 	opacity: 1;
-	transition: opacity 1s ease-out;
+	transition: opacity .35s ease-out;
 }
 .layer-tagline:hover .tagline{
 	opacity: 0;
 }
 .layer:hover{
 	background-color: rgba(26, 26, 26, 0.3);
-	transition: background-color 0.35s ease-out;
+	transition: all .25s ease-out;
 }
 .layer:hover .banner-info{
 	opacity: 1;
 	visibility: visible;
-	transition: all .5s ease-out;
 }
 .slide-logo{
 	position: absolute;
 	left: 40%;
 	z-index: 2;
 	pointer-events: none;/*disable any mouse events,i.e:hover,etc*/
-	transition: all .35s ease-in;
+	/*transition: all .35s ease-in;*/
 }
-.layer-tagline:hover .slide-logo{
+/*.layer-tagline:hover .slide-logo{
 	transition: all .35s ease-out;
-}
+}*/
 .banner-info{
 	visibility: hidden;
 	opacity: 0;
 	padding-top: 50px;
 	margin-bottom: 50px;
-	transition: all .5s ease-out;
+	transition: all .35s ease-out;
 }
 
 .banner-main-md{

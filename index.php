@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
  	<?php include 'head.php'; ?>
+ 	<script type="text/javascript" src="js/velocity.js"></script>
   
 </head>
 <body>
@@ -17,13 +18,13 @@
 		<div class="container-fluid banner-main">						
 			<div class="row layer-tagline">
 				<div class="slide-logo">				
-					<img src="https://www.jardan.com.au/wp-content/themes/jardan/images/branding/jardan_logo_white.svg" style="transform: translateX(150%);">
-					<p style="transform: translate(45%,340%); color: #fff; font-size: 24px;">KOPIGENIK</p>
-					<p style="transform: translate(67%,500%); color: #fff; font-size: 14px;">SINCE 2017</p>
+					<img src="https://www.jardan.com.au/wp-content/themes/jardan/images/branding/jardan_logo_white.svg" style="transform: translateX(150%);" width="60" height="60">
+					<p style="transform: translate(45%,340%); font-size: 24px; color: #fff;">KOPIGENIK</p>
+					<p style="transform: translate(67%,500%); font-size: 14px; color: #fff;">SINCE 2017</p>
 				</div>	
 				<div class="tagline">
-					<h2 style="margin-left: -20%; color: white; font-weight: 500;">- Indonesia's Best Coffee Subscription -</h2>
-					<h3 style="margin-left: -8%; color: white; left: 50%;">Delivering coffee to your door</h3>
+					<h2 style="margin-left: -20%; color: #fff; font-weight: 500;">- Indonesia's Best Coffee Subscription -</h2>
+					<h3 style="margin-left: -8%; color: #fff; left: 50%;">Delivering coffee to your door</h3>
 				</div>
 				
 				<div class="col-xs-4 pl-3 layer layer-1">				
