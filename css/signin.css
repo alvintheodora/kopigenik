@@ -39,3 +39,12 @@ ul > li > a:hover{
 }
 
 
+.z-depth-1, nav, .card-panel, .card, .toast, .btn, .btn-large, .btn-floating, .dropdown-content, .collapsible, .side-nav {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.navbarKu{
+  font-size: 12px;
+  background-color: white;
+}

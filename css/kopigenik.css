@@ -123,6 +123,11 @@
 .navbar-default .navbar-toggle:hover,.navbar-default .navbar-toggle:focus{
 	background-color: transparent;
 }
+
+.navBurger{
+	float: none;
+}
+
 @media (max-width: 300px) {
 	.navbar-brand{
 		width: 160px;
