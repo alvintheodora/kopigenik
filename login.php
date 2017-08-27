@@ -1,9 +1,7 @@
 <?php 
   date_default_timezone_set('Asia/Jakarta');
   session_start();
- ?>
 
- <?php
   //include '../../../kg-ctrs/ctdb-l.php'; //PDO Connector
   include 'controlDB.php'; //PDO Connector
   
@@ -43,10 +41,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <?php include 'head.php'; ?>
     <link rel="stylesheet" type="text/css" href="css/materialize.css">
     <link rel="stylesheet" type="text/css" href="css/signin.css">
     <script src="js/materialize.js"></script>
-    <?php include 'head.php'; ?>
+    
   </head>
 
   <body>
@@ -111,7 +110,7 @@
             </div>
           </form>
           <div class="col s12 center">
-            <p>Don't have an account? Sign up <a href="../signup/">here.</a></p>
+            <p>Don't have an account? Sign up <a href="signup.php">here.</a></p>
           </div>
           <!-- <div class="col s12 center">
             <p><a href="#">Forgot Password?</a></p>
