@@ -24,7 +24,7 @@
       try {
         //include '../../../kg-ctrs/ctdb-l.php'; //PDO Connector
         include 'controlDB.php'; //PDO Connector
-        $stmt5 = $pdo->prepare("SELECT * FROM mscustomer WHERE email = ?");
+        $stmt5 = $pdo5->prepare("SELECT * FROM mscustomer WHERE email = ?");
         $stmt5->execute([$email]);
         $row = $stmt5->fetch();
         if ($row != null) {
@@ -59,6 +59,7 @@
   $txtCustomerId = $txtName = $txtEmail = $txtPassword = $txtPhone = $dpDoB = $txtGender = $txtAddressId = $errName = $errEmail = $errPassword = $errPhone = $errDoB = $signUpStatus = "";
 
   $txtAddress = $txtProvince = $txtCity = $txtDistrict = $txtSubDistrict = $txtZipCode = "TBU";
+  $signUpStatus = $debugStatus = "Nothing";
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
       
@@ -92,41 +93,50 @@
     }
     elseif (strlen($txtPhone) > 12 || strlen($txtPhone) < 10) {
       $errPhone = "Phone must be consisted of at least 10 and up to 12 numerical digits";
+
     }
     elseif (!is_numeric($txtPhone)) {
       $errPhone = "Phone number must be consisted of numerical digits";
     }
     else {
-
+      $signUpStatus = "Here";
       try {
-
+        $debugStatus = "ENTERED TRY";
         //include '../../../kg-ctrs/ctdb-l.php'; //PDO Connector
         include 'controlDB.php'; //PDO Connector
 
         //generate address Id -> varchar(16)
         $txtAddressId = "AD"; //prefix
-        $stmt = $pdo->query("SELECT COUNT(address_id) FROM msaddress")->fetchColumn(); //retrieve suffix of last id
-        for ($i=14; $i > strlen($stmt) ; $i--) $txtAddressId.="0"; //fill 0 into new id
+        $stmt = $pdo->query("SELECT COUNT(address_id) FROM msaddress")->fetchColumn();
+
+         //retrieve suffix of last id
+        for ($i=14; $i > strlen($stmt) ; $i--){$txtAddressId.="0";} //fill 0 into new id
         $txtAddressId.=$stmt+1; //new customer id generated
-
+        $debugStatus = "ENTERED SELECT ADDRESS";
         //insert new address data        
-        $addr = "INSERT INTO msaddress VALUES (?,?,?,?,?,?,?)";
+        $addr = "INSERT INTO msaddress (address_id,address,province,city,district,subdistrict,zipcode)VALUES (?,?,?,?,?,?,?)";
         $pdo2->prepare($addr)->execute([$txtAddressId,$txtAddress,$txtProvince,$txtCity,$txtDistrict,$txtSubDistrict,$txtZipCode]);
-
         //generate customer Id -> varchar(16)
         $txtCustomerId = "CS"; //prefix
         $stmt3 = $pdo3->query("SELECT COUNT(customer_id) FROM mscustomer")->fetchColumn(); //retrieve suffix of last id
         for ($i=14; $i > strlen($stmt3) ; $i--) $txtCustomerId.="0"; //fill 0 into new id
         $txtCustomerId.=$stmt3+1; //new customer id generated
-
+        $debugStatus = "ENTERED SELECT MSCUSTOMER";
         //insert new customer data
-        $cust = "INSERT INTO mscustomer VALUES (?,?,?,?,?,?,?,?)";
-        $pdo4->prepare($cust)->execute([$txtCustomerId,$txtName,$txtEmail,$txtPassword,$txtPhone,dateParser($dpDoB),$txtGender,$txtAddressId]);
+        $cust = "INSERT INTO mscustomer VALUES (?,?,?,?,?,?,?)";
+        $pdo4->prepare($cust)->execute([$txtCustomerId,$txtName,$txtEmail,$txtPassword,$txtPhone,dateParser($dpDoB),$txtGender]);
+        $debugStatus = "ENTERED INSERT MSCUSTOMER";
+
+        $addr2 = "INSERT INTO mscustomeraddress (address_id,customer_id,description)VALUES (?,?,?)";
+        $pdo6->prepare($addr2)->execute([$txtAddressId,$txtCustomerId,"Home"]);
+        $debugStatus = "ENTERED INSERT ADDRESS";
 
         $signUpStatus = "Successfully registered!";
         
       } catch (PDOException $e) {
-         echo $e->getMessage();
+          $signUpStatus = "ENTERED ERROR ".$e->getMessage()." ".$stmt." txtAddressId = ".$txtAddressId;
+          echo 'Caught exception: ',  $e->getMessage(), "\n";
+
       }
       
     }
@@ -218,8 +228,10 @@
               </div>
 
             </div>
+            <p class="teal-text"><?php echo $debugStatus; ?></p>
+            <p class="teal-text"><?php echo $signUpStatus; ?></p>
           </form>
-          <p class="teal-text"><?php echo $signUpStatus; ?></p>
+          
         </div>
       </div>
     </div>
@@ -231,10 +243,11 @@
   <script type="text/javascript">
     $(document).ready(function(){
        $('select').material_select();
-       $('.datepicker').pickadate({
+       /*$('.datepicker').pickadate({
           selectMonths: true, // Creates a dropdown to control month
           selectYears: 200 // Creates a dropdown of n years to control year
         });
+        */
        $('textarea#txtAddress, input#txtPhone, input#txtZipCode').characterCounter();
     });
   </script>

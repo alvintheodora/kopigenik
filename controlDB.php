@@ -16,6 +16,11 @@
             PDO::ATTR_EMULATE_PREPARES=>false
         ];   
         $pdo = new PDO($dsn,$user,$pass,$opt);
+        $pdo2 = new PDO($dsn,$user,$pass,$opt);
+        $pdo3 = new PDO($dsn,$user,$pass,$opt);
+        $pdo4 = new PDO($dsn,$user,$pass,$opt);
+        $pdo5 = new PDO($dsn,$user,$pass,$opt);
+        $pdo6 = new PDO($dsn,$user,$pass,$opt);
     } catch (Exception $e) {
         echo $e->getMessage();
     }
