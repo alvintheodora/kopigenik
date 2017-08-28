@@ -57,12 +57,6 @@
   margin-left: auto;
   width: 1080px;
 }
-.container-fixed{
-	width: 1349px;
-	margin-left: auto;
-	margin-right: auto;
-	padding: 60px 50px;
-}
 .container-inner{
 	padding: 60px 25px;
 }
@@ -85,6 +79,20 @@
 	background-image: url("../asset/table_background2.jpg");
 	background-position: center;
 	background-size: cover;
+}
+.container-full{
+	padding: 0;
+	position: relative;/*needed for general fullscreen?*/
+}
+.container-fixed{
+	max-width: 984px;
+	margin: 0 auto;
+	padding: 0;
+}
+@media (min-width: 768px) {
+	.container-fixed{
+		padding: 0 20px;
+	}
 }
 
 .jumbotron{
@@ -123,21 +131,20 @@
 .navbar-default .navbar-toggle:hover,.navbar-default .navbar-toggle:focus{
 	background-color: transparent;
 }
-
-.navBurger{
-	float: none;
-}
-
 @media (max-width: 300px) {
 	.navbar-brand{
 		width: 160px;
 	}
 }
+.navBurger{
+	float: none;
+}
 
 
 /*index*/
 .banner-main{
-	margin-top: 60px;	
+	margin-top: 60px;
+	padding: 0px 50px;	
 	background-color: rgba(26, 26, 26, 0.3);	
 	height: 602px;
 	visibility: visible;
@@ -160,7 +167,7 @@
 .tagline{
 	position: absolute;
 	left: 40%;
-	transform: translateY(60%);
+	transform: translateY(90%);
 	opacity: 1;
 	transition: opacity .35s ease-out;
 }
@@ -188,7 +195,7 @@
 .banner-info{
 	visibility: hidden;
 	opacity: 0;
-	padding-top: 50px;
+	padding-top: 100px;
 	margin-bottom: 50px;
 	transition: all .35s ease-out;
 }
@@ -227,6 +234,23 @@
 		font-size: 60%;
 	}
 }
+.font-header{
+	font-size: 40px;
+}
+@media (max-width: 425px) {
+	.font-header{
+		font-size: 28px;
+	}
+}
+.font-info{
+	font-size: 18px;
+	color: grey;
+}
+@media (max-width: 425px) {
+	.font-info{
+		font-size: 16px;
+	}
+}
 .btn-banner{
 	background-color: transparent;
 	border: 2px solid #3E2723;
@@ -241,6 +265,58 @@
 	background-image: url('../asset/bg-how-to-kopigenik.png'); 
 	background-size: cover; background-position: center; 
 	height: 400px;
+}
+.video-overflow{
+	position: relative;
+	padding: 0;
+	overflow: hidden;
+	height: 225px;
+}
+@media (min-width: 768px) {
+	.video-overflow{	    
+	    position: absolute;
+	    top: 0;	
+	    bottom: 0;
+	    left: 0; 
+	    height: auto; 	 
+	    width: 50%; 
+	}
+}
+.video-info{
+	padding: 60px 50px;
+	transition: padding .5s;
+}
+@media (min-width: 768px) {
+	.video-info{
+		padding: 80px 1.2% 180px 0px;		
+	}
+}
+@media (max-width: 425px) {
+	.video-info{
+		padding: 60px 25px;		
+	}
+}
+.video{
+	height: auto;
+	display: none;
+}
+@media (min-width: 768px) {
+	.video{
+		height: 100%;
+		display: block;
+	}
+}
+.video-banner{
+	display: block;
+	background-image: url("https://2nlsnb2fe1ed2nm0us28io0z-wpengine.netdna-ssl.com/wp-content/uploads/2016/06/Let%E2%80%99s-test-home-appliances-coffee-machines-4-640x360.jpg");
+	background-size: cover;
+	background-position: left center;
+	height: 100%;
+}
+@media (min-width: 768px) {
+	.video-banner{
+		display: none;
+	}
 }
 
 .section-block:hover .underline{
@@ -257,15 +333,13 @@
 	margin-top: -20px;
 	transition: max-width .5s;
 }
-.underline-100{
-	max-width: 100px;
-}
-.underline-250{ 
-	max-width: 250px;
+.underline-200{ 
+	max-width: 200px;
 }
 .line{
 	max-width: 1249px;
 	border-top: 1px solid #eee;
+	margin: 50px auto;
 }
 
 
@@ -414,10 +488,12 @@ body{
 h2 {
     font-size: 24px;    
     /*color: #303030;*/
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 30px;
 }
-
+h3 {
+	font-weight: 400;
+}
 h4 {
     font-size: 19px;
     line-height: 1.375em;
