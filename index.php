@@ -18,13 +18,13 @@
 		<div class="container-fluid banner-main">						
 			<div class="row layer-tagline">
 				<div class="slide-logo">				
-					<img src="https://www.jardan.com.au/wp-content/themes/jardan/images/branding/jardan_logo_white.svg" style="transform: translateX(150%);" width="60" height="60">
-					<p style="transform: translate(45%,340%); font-size: 24px; color: #fff;">KOPIGENIK</p>
-					<p style="transform: translate(67%,500%); font-size: 14px; color: #fff;">SINCE 2017</p>
+					<img src="../kopigenik-master/asset/kopigenik-icon.png" style="transform: translateX(80%); padding-top: 30px;" width="90" height="110">
+					<p style="transform: translate(45%,380%); font-size: 24px; color: #fff;">KOPIGENIK</p>
+					<p style="transform: translate(67%,600%); font-size: 14px; color: #fff;">SINCE 2017</p>
 				</div>	
 				<div class="tagline">
-					<h2 style="margin-left: -20%; color: #fff; font-weight: 500;">- Indonesia's Best Coffee Subscription -</h2>
-					<h3 style="margin-left: -8%; color: #fff; left: 50%;">Delivering coffee to your door</h3>
+					<h2 style="margin-left: -27%; color: #fff; font-weight: 500; font-size: 36px;">- Indonesia's Best Coffee Subscription -</h2>
+					<h3 style="margin-left: -10%; color: #fff; left: 50%; font-size: 28px;">Delivering coffee to your door</h3>
 				</div>
 				
 				<div class="col-xs-4 pl-3 layer layer-1">				
@@ -104,8 +104,8 @@
 	<!--how to kopigenik-->
 	<div class="container-fluid container-inner">
 		<div class="section-block">
-			<h2 class="text-center strong" style="font-family: Montserrat, sans-serif; font-size: 28px;">HOW TO KOPIGENIK</h2>
-			<div class="underline underline-250"></div>	
+			<h2 class="text-center font-header">How To Kopigenik</h2>
+			<div class="underline underline-200"></div>	
 		</div>
 		
 		<div class="row">
@@ -119,33 +119,30 @@
 	<!--<hr class="line">-->
 
 	<!--video-->
-	<div class="container-fluid container-inner bg-grey">
-		<div class="section-block">
-			<h2 class="text-center strong" style="font-family: Montserrat, sans-serif; font-size: 28px;">V I D E O S</h2>
-			<div class="underline underline-100"></div>	
+	<div class="container-fluid container-full bg-grey">
+		<div class="row container-fixed">
+			<div class="col-sm-5 col-sm-offset-7 video-info">
+				<h2 class="font-header">Watch Kopigenik's Top-Choice Video</h2>
+				<p class="font-info">Enhance your skills about coffee from high-end baristas around the world.</p>
+				<button class="btn btn-lg btn-banner">See videos</button>			
+			</div>									
 		</div>
-		
-		<div class="row">
-			<div class="col-sm-6">				
-				<div class="embed-responsive embed-responsive-16by9">
-					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/aBLYSO0DSVI" frameborder="0" allowfullscreen></iframe>
-				</div>				
-			</div>
-			<div class="col-sm-6">
-				<h3>Enhance your skills about coffee</h3>
-				<p>quis nostrud exercitation. Excepteur occaecat cupidatat non</p>
-				<button class="btn btn-lg btn-banner">See videos</button>
-			</div>
+		<div class="video-overflow">
+			<div class="video-banner"></div>
+			<video autoplay loop preload="auto" class="video">
+				<source src="https://media.pactcoffee.com/video/coffee_hero.mp4" type="video/mp4">
+				Your browser does not support the video tag.
+			</video>	
 		</div>
 	</div>
-	
+
 	<!--<hr class="line">-->
 
 	<!--blog-->
 	<div class="container-fluid container-inner text-center">
 		<div class="section-block">
-			<h2 class="text-center strong" style="font-family: Montserrat, sans-serif; font-size: 28px;">MORE ON KOPIGENIK</h2>
-			<div class="underline underline-250"></div>	
+			<h2 class="text-center font-header">Blog for Coffee Enthusiast</h2>		
+			<div class="underline underline-200"></div>	
 		</div>
 		<div class="row">
 			<a href="blog.php" class="link-text">
@@ -174,7 +171,7 @@
 	</div>	
 
 	<!--FOOTER-->
-	<footer class="footer-btm container-fluid bg-black1">
+	<footer class="footer-btm container-fluid container-inner bg-black1">
 		<div class="row">
 			<div class="col-sm-4">
 				<h5 style="color: #f7db9c;">QUICK LINKS</h5>
