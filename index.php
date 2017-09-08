@@ -23,22 +23,22 @@
 					<p style="transform: translate(67%,600%); font-size: 14px; color: #fff;">SINCE 2017</p>
 				</div>	
 				<div class="tagline">
-					<h2 style="margin-left: -27%; color: #fff; font-weight: 500; font-size: 36px;">- Indonesia's Best Coffee Subscription -</h2>
-					<h3 style="margin-left: -10%; color: #fff; left: 50%; font-size: 28px;">Delivering coffee to your door</h3>
+					<h2 style="margin-left: -27%; color: #fff; font-weight: 500; font-size: 36px;">- Layanan Berlangganan Kopi Terbaik di Indonesia -</h2>
+					<h3 style="margin-left: -10%; color: #fff; left: 50%; font-size: 28px;">Mengantarkan kopi ke depan pintu Anda</h3>
 				</div>
 				
 				<div class="col-xs-4 pl-3 layer layer-1">				
 					<div class="banner-info">
-						<h3 class="black" style="color: #fff;">Watch videos about your coffee</h3>
-						<p class="black" style="color: #fff;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius</p>
-						<a href="videos.php" class="btn btn-banner" style="margin-bottom: 20px; color: #fff;">See videos <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>
+						<h3 class="black" style="color: #fff;">Lihat video tentang kopi</h3>
+						<p class="black" style="color: #fff;">Kami menyediakan video-video seputar kopi mulai dari fakta tentang kopi hingga tutorial brewing</p>
+						<a href="videos.php" class="btn btn-banner" style="margin-bottom: 20px; color: #fff;">Lihat video <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>
 					</div>										
 					<img class="img-responsive" src="http://mobilemarketingmagazine.com/wp-content/uploads/2016/10/Branded-Moments-Transparent-background_b.png" alt="coffee videos" style="margin-left: -9%;">
 				</div>		
 
 				<div class="col-xs-4 pl-3 layer layer-2">				
 					<div class="banner-info">
-						<h3 class="black" style="color: #fff;">Enjoy your coffee with subscription</h3>
+						<h3 class="black" style="color: #fff;">Berlangganan biji kopi spesialti terbaik pilihan kurator kami</h3>
 						<p class="black" style="color: #fff;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius</p>
 						<a href="videos.php" class="btn btn-banner" style="margin-bottom: 20px; color: #fff;">See videos <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>
 					</div>	
@@ -122,7 +122,7 @@
 	<div class="container-fluid container-full bg-grey">
 		<div class="row container-fixed">
 			<div class="col-sm-5 col-sm-offset-7 video-info">
-				<h2 class="font-header">Watch Kopigenik's Top-Choice Video</h2>
+				<h2 class="font-header">Lihat video-video menarik seputar kopi</h2>
 				<p class="font-info">Enhance your skills about coffee from high-end baristas around the world.</p>
 				<button class="btn btn-lg btn-banner">See videos</button>			
 			</div>									
@@ -141,7 +141,7 @@
 	<!--blog-->
 	<div class="container-fluid container-inner text-center">
 		<div class="section-block">
-			<h2 class="text-center font-header">Blog for Coffee Enthusiast</h2>		
+			<h2 class="text-center font-header">Blog untuk pecinta kopi</h2>		
 			<div class="underline underline-200"></div>	
 		</div>
 		<div class="row">
@@ -151,7 +151,7 @@
 						<img class="img-responsive center-block slideanim" src="asset/original/rsz_blog_espresso.jpg" alt="espresso extraction">				
 						<div style="padding: 20px;">					
 							<p style="color: grey;">WEEKLY BLOG</p>
-							<p style="font-size: 24px; color: #000;">Learn how to make your coffee</p>
+							<p style="font-size: 24px; color: #000;">Belajar cara membuat minuman kopi</p>
 						</div>
 					</div>		
 				</div>
@@ -162,7 +162,7 @@
 						<img class="img-responsive center-block slideanim" src="asset/original/rsz_blog_drink_coffee.jpg" alt="time to drink coffee">				
 						<div style="padding: 20px;">					
 							<p style="color: grey;">WEEKLY BLOG</p>
-							<p style="font-size: 24px; color: #000;">Best time to drink your coffee</p>
+							<p style="font-size: 24px; color: #000;">Waktu terbaik untuk menikmati kopi</p>
 						</div>
 					</div>		
 				</div>
@@ -174,17 +174,17 @@
 	<footer class="footer-btm container-fluid container-inner bg-black1">
 		<div class="row">
 			<div class="col-sm-4">
-				<h5 style="color: #f7db9c;">QUICK LINKS</h5>
+				<h5 style="color: #f7db9c;">LINKS</h5>
 				<ul>
-					<li><a href="subscribe.php">Subscribe</a></li>
-					<li><a href="beans.php">Beans</a></li>
+					<li><a href="subscribe.php">Berlangganan</a></li>
+					<li><a href="beans.php">Biji Kopi</a></li>
 					<li><a href="login.php">Login</a></li>
 				</ul>
 			</div>
 			<div class="col-sm-4">
-				<h5 style="color: #f7db9c;">ABOUT US</h5>
+				<h5 style="color: #f7db9c;">TENTANG KAMI</h5>
 				<ul>
-					<li><a href="about-us.php">What is Kopigenik</a></li>
+					<li><a href="about-us.php">Apa itu Kopigenik</a></li>
 					<li><a href="faq.php">FAQ</a></li>
 					<li><a href="blog.php">Blog</a></li>
 				</ul>
@@ -195,18 +195,18 @@
 					<li>
 						<a href="https://facebook.com/kopigenik" target="__blank">
 							<img class="icon-social-media" src="asset/icon-facebook.svg">
-							<span>Kopigenik_id</span>
+							<span>Kopigenik</span>
 						</a>
 					</li>
 					<li>
 						<a href="https://instagram.com/kopigenik" target="__blank"">
 							<img class="icon-social-media" src="asset/icon-instagram.svg">
-							<span>Kopigenik</span>
+							<span>@kopigenik</span>
 						</a>
 					</li>
 					<li>						
 						<img class="icon-social-media" src="asset/icon-line.jpg">
-						<span style="color: #fff;">@Kopigenik</span>							
+						<span style="color: #fff;">@kopigenik</span>							
 					</li>
 					<li style="margin-left: 50px;">
 						<div class="line-it-button" data-lang="en" data-type="friend" data-lineid="@kopigenik" data-count="true" data-home="true" style="display: none; padding-top: 5px;"></div>
