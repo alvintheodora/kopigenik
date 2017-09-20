@@ -16,7 +16,7 @@
 
 	<!--body-->
 	<div class="container-fluid">
-		<h2 class="text-center">Subscribe 3</h2>
+		<h2 class="text-center">Subscribe 5</h2>
 
 		<form action="payment-confirmation.php" method="POST">
 			<div class="row">
