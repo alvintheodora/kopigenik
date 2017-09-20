@@ -16,16 +16,13 @@
 
 	<!--body-->
 	<div class="container-fluid">
-		<h2 class="text-center">Subscribe 5</h2>
-		test
-		gh1
-		gh3
+		<h2 class="text-center">Subscribe</h2>
 
 		<form action="payment-confirmation.php" method="POST">
 			<div class="row">
 				<div class="col-lg-8">
 					<div class="form-group">
-						<label for="select1" class="subscribeQuestion">ag1g3Berapa banyak kopi yang anda konsumsi dalam 2 minggu?</label>			
+						<label for="select1" class="subscribeQuestion">Berapa banyak kopi yang anda konsumsi dalam 2 minggu?</label>			
 						<select id="select1" class="inputText">
 							<option value="0"></option>
 							<option value="a">6-7 gelas</option>
