@@ -23,7 +23,7 @@
 			<div class="row">
 				<div class="col-lg-8">
 					<div class="form-group">
-						<label for="select1" class="subscribeQuestion">Berapa banyak kopi yang anda konsumsi dalam 2 minggu?</label>			
+						<label for="select1" class="subscribeQuestion">aBerapa banyak kopi yang anda konsumsi dalam 2 minggu?</label>			
 						<select id="select1" class="inputText">
 							<option value="0"></option>
 							<option value="a">6-7 gelas</option>
