@@ -19,6 +19,7 @@
 		<h2 class="text-center">Subscribe 5</h2>
 		test
 		gh1
+		gh3
 
 		<form action="payment-confirmation.php" method="POST">
 			<div class="row">
