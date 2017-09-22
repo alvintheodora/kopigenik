@@ -35,13 +35,21 @@
                 </div>
                 <div class="collapse navbar-collapse navbarKu" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="navBurger"><a class="navbarKu" href="subscribe.php">SUBSCRIBE</a></li>
-                        <li class="navBurger"><a class="navbarKu" href="beans.php">BEANS</a></li>
-                        <li class="navBurger"><a class="navbarKu" href="videos.php">VIDEOS</a></li>
-                        <li class="navBurger"><a class="navbarKu" href="about-us.php">OUR STORY</a></li>
-                        <li class="navBurger"><a class="navbarKu" href="faq.php">FAQ</a></li>
-                        <li class="navBurger"><a class="navbarKu" href="blog.php">BLOG</a></li>
-                        <li class="navBurger"><a class="navbarKu" href="{{ route('login') }}">LOGIN</a></li>
+                        <li class="navBurger"><a class="navbarKu" href="\subscribe">SUBSCRIBE</a></li>
+                        <li class="navBurger"><a class="navbarKu" href="\beans">BEANS</a></li>
+                        <li class="navBurger"><a class="navbarKu" href="\videos">VIDEOS</a></li>
+                        <li class="navBurger"><a class="navbarKu" href="\about-us">OUR STORY</a></li>
+                        <li class="navBurger"><a class="navbarKu" href="\faq">FAQ</a></li>
+                        <li class="navBurger"><a class="navbarKu" href="\blog">BLOG</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">GUEST <span class="caret"></span></a>
+                            
+                            <ul class="dropdown-menu">
+                                <li class="navBurger"><a class="navbarKu" href="{{ route('login') }}">LOGIN</a></li>
+                                <li class="navBurger"><a class="navbarKu" href="{{ route('register') }}">REGISTER</a></li>
+                            </ul>
+                        </li>
+                        
                     </ul>
                 </div>
             </div>
@@ -58,17 +66,17 @@
                 <div class="col-sm-4">
                     <h5 style="color: #f7db9c;">QUICK LINKS</h5>
                     <ul>
-                        <li><a href="subscribe.php">Subscribe</a></li>
-                        <li><a href="beans.php">Beans</a></li>
-                        <li><a href="login.php">Login</a></li>
+                        <li><a href="\subscribe">Subscribe</a></li>
+                        <li><a href="\beans">Beans</a></li>
+                        <li><a href="\login">Login</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-4">
                     <h5 style="color: #f7db9c;">ABOUT US</h5>
                     <ul>
-                        <li><a href="about-us.php">What is Kopigenik</a></li>
-                        <li><a href="faq.php">FAQ</a></li>
-                        <li><a href="blog.php">Blog</a></li>
+                        <li><a href="\about-us">What is Kopigenik</a></li>
+                        <li><a href="\faq">FAQ</a></li>
+                        <li><a href="\blog">Blog</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-4">
@@ -116,6 +124,6 @@
                 }
             });
     </script>
-    
+
 </body>
 </html>

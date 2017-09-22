@@ -21,7 +21,7 @@
 					<div class="banner-info">
 						<h3 class="black" style="color: #fff;">Watch videos about your coffee</h3>
 						<p class="black" style="color: #fff;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius</p>
-						<a href="videos.php" class="btn btn-banner" style="margin-bottom: 20px; color: #fff;">See videos <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>
+						<a href="\videos" class="btn btn-banner" style="margin-bottom: 20px; color: #fff;">See videos <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>
 					</div>										
 					<img class="img-responsive" src="http://mobilemarketingmagazine.com/wp-content/uploads/2016/10/Branded-Moments-Transparent-background_b.png" alt="coffee videos" style="margin-left: -9%;">
 				</div>		
@@ -30,7 +30,7 @@
 					<div class="banner-info">
 						<h3 class="black" style="color: #fff;">Enjoy your coffee with subscription</h3>
 						<p class="black" style="color: #fff;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius</p>
-						<a href="videos.php" class="btn btn-banner" style="margin-bottom: 20px; color: #fff;">See videos <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>
+						<a href="\subscribe" class="btn btn-banner" style="margin-bottom: 20px; color: #fff;">Check Subscription Plan <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>
 					</div>	
 					<img class="img-responsive" src="asset/coffee_bag3.png" alt="subscribe board">				
 				</div>
@@ -39,7 +39,7 @@
 					<div class="banner-info">
 						<h3 class="black" style="color: #fff;">We deliver first-grade beans</h3>
 						<p class="black" style="color: #fff;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius</p>
-						<a href="videos.php" class="btn btn-banner" style="margin-bottom: 20px; color: #fff;">See videos <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>
+						<a href="\beans" class="btn btn-banner" style="margin-bottom: 20px; color: #fff;">See Our Beans <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>
 					</div>
 					<img class="img-responsive" src="asset/coffee_beans2.png" align="coffee beans">		
 				</div>
@@ -62,7 +62,7 @@
 			</div>
 
 		</div>
-		<a href="#" class="btn btn-block btn-banner font-header-mobile" style="margin-top: 10px; margin-bottom: 20px;">See videos <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>
+		<a href="\videos" class="btn btn-block btn-banner font-header-mobile" style="margin-top: 10px; margin-bottom: 20px;">See videos <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>
 		<hr>														
 		<div class="row">
 			<div class="col-xs-6">
@@ -74,7 +74,7 @@
 				
 			</div>
 		</div>
-		<a href="subscribe.php" class="btn btn-block btn-banner font-header-mobile" style="margin-bottom: 20px;">See subscription plans <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>	
+		<a href="\subscribe" class="btn btn-block btn-banner font-header-mobile" style="margin-bottom: 20px;">Check subscription plans <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>	
 		<hr>											
 		<div class="row">
 			<div class="col-xs-6">
@@ -86,7 +86,7 @@
 				<img class="img-responsive" src="asset/coffee_beans2.png" alt="coffee beans" style="margin-top: 20px;">
 			</div>
 		</div>	
-		<a href="beans.php" class="btn btn-block btn-banner font-header-mobile" style="margin-bottom: 20px;">See our beans <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>	
+		<a href="\beans" class="btn btn-block btn-banner font-header-mobile" style="margin-bottom: 20px;">See our beans <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>	
 		<hr>					
 	</div>
 
@@ -114,7 +114,7 @@
 			<div class="col-sm-5 col-sm-offset-7 video-info">
 				<h2 class="font-header">Watch Kopigenik's Top-Choice Video</h2>
 				<p class="font-info">Enhance your skills about coffee from high-end baristas around the world.</p>
-				<button class="btn btn-lg btn-banner">See videos</button>			
+				<a href="/videos" class="btn btn-lg btn-banner" role="button">See videos</a>			
 			</div>									
 		</div>
 		<div class="video-overflow">
@@ -135,7 +135,7 @@
 			<div class="underline underline-200"></div>	
 		</div>
 		<div class="row">
-			<a href="blog.php" class="link-text">
+			<a href="\blog" class="link-text">
 				<div class="col-sm-6">
 					<div class="shadow">
 						<img class="img-responsive center-block slideanim" src="asset/original/rsz_blog_espresso.jpg" alt="espresso extraction">				
@@ -146,7 +146,7 @@
 					</div>		
 				</div>
 			</a>
-			<a href="blog.php" class="link-text">
+			<a href="\blog" class="link-text">
 				<div class="col-sm-6">	
 					<div class="shadow">
 						<img class="img-responsive center-block slideanim" src="asset/original/rsz_blog_drink_coffee.jpg" alt="time to drink coffee">				
