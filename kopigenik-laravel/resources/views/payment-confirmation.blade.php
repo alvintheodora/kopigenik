@@ -26,8 +26,9 @@
 
 		<br>
 
-		<form action="\" method="GET">
-			<button class="btn btn-lg btn-success btn-block">Confirm payment</button>
+		<form action="\payment-confirmation" method="POST">
+			{{csrf_field()}}
+			<button class="btn btn-lg btn-success btn-block">Confirm payment</button>			
 		</form>	
 	</div>
 @endsection

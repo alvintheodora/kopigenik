@@ -36,4 +36,19 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    //added, overwrite the ones in AuthenticatesUsers
+    public function showLoginForm()
+    {
+        if(! session()->has('from')){
+            session()->flash('from', url()->previous());
+        }
+
+        return view('auth.login');
+        //BUG: should be redirect, instead of view. view will make flash persists for 2 requests.
+    }
+    public function authenticated($request, $user)
+    {
+        return redirect(session('from',$this->redirectTo));
+    }
 }

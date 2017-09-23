@@ -13,16 +13,17 @@
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home_ori');
 
 //temporary view
-Route::get('/subscribe', function () {
-    return view('subscribe');
-});
+Route::get('/subscribe', 'TransactionController@index');
+Route::get('/payment-confirmation', 'TransactionController@show');
+Route::post('/payment-confirmation', 'TransactionController@store');
+
 Route::get('/beans', function () {
     return view('beans');
 });
@@ -37,7 +38,4 @@ Route::get('/faq', function () {
 });
 Route::get('/blog', function () {
     return view('blog');
-});
-Route::get('/payment-confirmation', function () {
-    return view('payment-confirmation');
 });

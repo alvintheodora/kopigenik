@@ -11,8 +11,8 @@
     <title>{{ config('app.name', 'Laravel') }} | @yield('title')</title>
 
     <!-- Styles --> 
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-	<link rel="stylesheet" type="text/css" href="css/kopigenik.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/kopigenik.css')}}">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
 
@@ -42,12 +42,30 @@
                         <li class="navBurger"><a class="navbarKu" href="\faq">FAQ</a></li>
                         <li class="navBurger"><a class="navbarKu" href="\blog">BLOG</a></li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">GUEST <span class="caret"></span></a>
-                            
-                            <ul class="dropdown-menu">
-                                <li class="navBurger"><a class="navbarKu" href="{{ route('login') }}">LOGIN</a></li>
-                                <li class="navBurger"><a class="navbarKu" href="{{ route('register') }}">REGISTER</a></li>
-                            </ul>
+                            @guest
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">GUEST <span class="caret"></span></a>
+                                
+                                <ul class="dropdown-menu">
+                                    <li class="navBurger"><a class="navbarKu" href="{{ route('login') }}">LOGIN</a></li>
+                                    <li class="navBurger"><a class="navbarKu" href="{{ route('register') }}">REGISTER</a></li>
+                                </ul>
+                            @else
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">{{auth()->user()->name}} <span class="caret"></span></a>
+                                
+                                <ul class="dropdown-menu">
+                                    <li class="navBurger">
+                                        <a class="navbarKu" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                                            LOGOUT
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                </ul>
+                            @endguest
                         </li>
                         
                     </ul>
@@ -84,18 +102,18 @@
                     <ul>
                         <li>
                             <a href="https://facebook.com/kopigenik" target="__blank">
-                                <img class="icon-social-media" src="asset/icon-facebook.svg">
+                                <img class="icon-social-media" src="{{asset('asset/icon-facebook.svg')}}">
                                 <span>Kopigenik_id</span>
                             </a>
                         </li>
                         <li>
                             <a href="https://instagram.com/kopigenik" target="__blank"">
-                                <img class="icon-social-media" src="asset/icon-instagram.svg">
+                                <img class="icon-social-media" src="{{asset('asset/icon-instagram.svg')}}">
                                 <span>Kopigenik</span>
                             </a>
                         </li>
                         <li>                        
-                            <img class="icon-social-media" src="asset/icon-line.jpg">
+                            <img class="icon-social-media" src="{{asset('asset/icon-line.jpg')}}">
                             <span style="color: #fff;">@Kopigenik</span>                            
                         </li>
                         <li style="margin-left: 50px;">
@@ -110,10 +128,10 @@
     </div>
 
     <!-- Scripts -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-	<script src="js/bootstrap.js"></script>
-	<script src="js/kopigenik.js"></script>
-	<script type="text/javascript" src="js/velocity.js"></script>
+    <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+	<script src="{{asset('js/bootstrap.js')}}"></script>
+	<script src="{{asset('js/kopigenik.js')}}"></script>
+	<script src="{{asset('js/velocity.js')}}"></script>
     <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
     <script type="text/javascript">
             $pathnameLocal = (location.pathname).substr(18);//18 karena potong tulisan /kopigenik-master/
