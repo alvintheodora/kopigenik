@@ -6,7 +6,8 @@
 	<div class="container-fluid">
 		<h2 class="text-center">Subscribe</h2>
 
-		<form action="\payment-confirmation" method="GET">
+		<form action="\subscribe" method="POST">
+			{{csrf_field()}}
 			<div class="row">
 				<div class="col-lg-8">
 					<div class="form-group">

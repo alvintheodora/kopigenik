@@ -21,8 +21,11 @@ Route::get('/home', 'HomeController@index')->name('home_ori');
 
 //temporary view
 Route::get('/subscribe', 'TransactionController@index');
-Route::get('/payment-confirmation', 'TransactionController@show');
-Route::post('/payment-confirmation', 'TransactionController@store');
+Route::post('/subscribe', 'TransactionController@store');
+Route::get('/payment-confirmation', 'TransactionController@indexConfirm');
+Route::get('/payment-confirmation/{transaction}', 'TransactionController@showConfirm');
+Route::post('/payment-confirmation/{transaction}', 'TransactionController@storeConfirm');
+
 
 Route::get('/beans', function () {
     return view('beans');

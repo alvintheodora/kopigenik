@@ -30,7 +30,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}"><img class="img-responsive" src="asset/kopigenikbanner.png"></a>
+                    <a class="navbar-brand" href="{{ url('/') }}"><img class="img-responsive" src="{{asset('asset/kopigenikbanner.png')}}"></a>
 
                 </div>
                 <div class="collapse navbar-collapse navbarKu" id="myNavbar">
@@ -53,6 +53,8 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">{{auth()->user()->name}} <span class="caret"></span></a>
                                 
                                 <ul class="dropdown-menu">
+                                    <li class="navBurger"><a class="navbarKu" href="\payment-confirmation">PAYMENT CONFIRMATION</a></li>
+
                                     <li class="navBurger">
                                         <a class="navbarKu" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();

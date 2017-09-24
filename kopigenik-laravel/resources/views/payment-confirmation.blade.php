@@ -15,7 +15,7 @@
 		</div>		
 		<div class="row bank text-center-xs">
 			<div class="col-sm-6">
-				<img class="icon-bank" src="asset/icon-bca.jpg" alt="BCA">
+				<img class="icon-bank" src="{{asset('asset/icon-bca.jpg')}}" alt="BCA">
 			</div>
 			<div class="col-sm-6">
 				<p class="small">BCA</p>
@@ -26,7 +26,7 @@
 
 		<br>
 
-		<form action="\payment-confirmation" method="POST">
+		<form action="\payment-confirmation\{{$transaction->id}}" method="POST">
 			{{csrf_field()}}
 			<button class="btn btn-lg btn-success btn-block">Confirm payment</button>			
 		</form>	
