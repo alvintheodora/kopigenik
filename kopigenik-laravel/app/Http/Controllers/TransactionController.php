@@ -10,15 +10,18 @@ use Carbon\Carbon;
 class TransactionController extends Controller
 {
 	public function __construct(){
-		$this->middleware('auth')->except('index');
+		$this->middleware('auth')->except(['index', 'ajaxPlan']);
 	}
 
+    //show subsribe page
     public function index(){
+        //pass plans id for option tag
         $plans = Coffee::pluck('id');
 
     	return view('subscribe',compact('plans'));
     }
 
+    //perform ajax everytime option value changes
     public function ajaxPlan(){
         if($plan_price = (Coffee::find(request('plan')))->price){
             return $plan_price;
@@ -27,6 +30,7 @@ class TransactionController extends Controller
         return '';
     }
 
+    //perform transaction
     public function store(){
         $plans_id = Coffee::pluck('id');
 
@@ -57,6 +61,7 @@ class TransactionController extends Controller
        
     }
 
+    //show user's payment confirmation list
     public function indexConfirm(){
 
         //list user's transaction and the status
@@ -64,6 +69,7 @@ class TransactionController extends Controller
     	return view('payment-confirmation-index',compact('transactions'));
     }
 
+    //show payment confirmation page
     public function showConfirm(Transaction $transaction){
 
     	//check if it's incorrect user or confirmed transaction, if yes, then fail
@@ -78,6 +84,7 @@ class TransactionController extends Controller
     	return view('payment-confirmation',compact('transaction','time_confirmed_max'));
     }
 
+    //perform payment confirmation process
     public function storeConfirm(Transaction $transaction){
 
         //check if it's incorrect user or confirmed transaction, if yes, then fail
