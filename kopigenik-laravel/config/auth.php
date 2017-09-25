@@ -1,4 +1,4 @@
-<?php
+f<?php
 
 return [
 
@@ -68,6 +68,7 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+            'table' => 'users',
         ],
 
         // 'users' => [
