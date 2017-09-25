@@ -16,6 +16,9 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
 
+    <!--jquery script-->
+    <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+
 </head>
 <body>
     <div id="app">
@@ -80,6 +83,8 @@
         <!-- Content -->
         @yield('content')
 
+        @include('layouts.errors')
+
         <!--Footer-->
         <footer class="footer-btm container-fluid container-inner bg-black1">
             <div class="row">
@@ -130,7 +135,6 @@
     </div>
 
     <!-- Scripts -->
-    <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
 	<script src="{{asset('js/bootstrap.js')}}"></script>
 	<script src="{{asset('js/kopigenik.js')}}"></script>
 	<script src="{{asset('js/velocity.js')}}"></script>

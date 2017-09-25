@@ -21,7 +21,9 @@ Route::get('/home', 'HomeController@index')->name('home_ori');
 
 //temporary view
 Route::get('/subscribe', 'TransactionController@index');
+Route::get('/ajaxPlan', 'TransactionController@ajaxPlan');
 Route::post('/subscribe', 'TransactionController@store');
+
 Route::get('/payment-confirmation', 'TransactionController@indexConfirm');
 Route::get('/payment-confirmation/{transaction}', 'TransactionController@showConfirm');
 Route::post('/payment-confirmation/{transaction}', 'TransactionController@storeConfirm');

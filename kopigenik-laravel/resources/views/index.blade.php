@@ -159,6 +159,4 @@
 			</a>
 		</div>
 	</div>
-
-	@include('layouts.errors')
 @endsection

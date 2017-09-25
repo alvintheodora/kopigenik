@@ -7,10 +7,10 @@
 	<div class="container-fluid">
 		<div class="text-center">
 			<h2>Payment Confirmation</h2>
-			<h3>Order ID: TR001</h3>
-			<h4>Amount you must pay:</h4>
-			<h4>Rp252.000</h4>
-			<p>Mohon segera selesaikan pembayaran sebelum tanggal <span class="strong">31 Desember 2017</span></p>
+			<h3>Order ID: {{$transaction->id}}</h3>
+			<h4>Jumlah uang yang harus anda bayar:</h4>
+			<h4>Rp{{$transaction->price}}</h4>
+			<p>Mohon segera selesaikan pembayaran sebelum tanggal <span class="strong">{{$time_confirmed_max}}</span></p>
 			<p>Silahkan transfer ke rekening kami yang tersedia</p>
 		</div>		
 		<div class="row bank text-center-xs">

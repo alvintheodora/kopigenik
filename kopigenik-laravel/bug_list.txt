@@ -1,1 +1,1 @@
-LoginController line 48, flash session with return view
+kopigenik-laravel/app/Http/Controllers/Auth/LoginController.php line 48, flash session with return view

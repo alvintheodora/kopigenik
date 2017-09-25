@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Transaction;
+use App\Coffee;
 use Carbon\Carbon;
+
 class TransactionController extends Controller
 {
 	public function __construct(){
@@ -12,42 +14,82 @@ class TransactionController extends Controller
 	}
 
     public function index(){
-    	return view('subscribe');
+        $plans = Coffee::pluck('id');
+
+    	return view('subscribe',compact('plans'));
+    }
+
+    public function ajaxPlan(){
+        if($plan_price = (Coffee::find(request('plan')))->price){
+            return $plan_price;
+        }
+
+        return '';
     }
 
     public function store(){
+        $plans_id = Coffee::pluck('id');
 
-    	//insert transaction
-    	$current_transaction = Transaction::create([
-    		'user_id' => auth()->id(),
-    		'coffee_id' => '101',
-    		'price' => '101000',
-    		'status' => 'to be confirmed',
-    		'time_bought' => Carbon::now()
-    	]);
+        //check option value exists in Plan id's
+        if($plans_id->contains(request('select1'))){
+             $plan_selected = Coffee::find(request('select1'));
 
-    	//redirect to its confirmation
-    	return redirect('/payment-confirmation/' . $current_transaction->id);
+            //insert transaction
+            $current_transaction = Transaction::create([
+                'user_id' => auth()->id(),
+                'coffee_id' => $plan_selected->id,
+                'price' => $plan_selected->price + 9000,
+                'status' => 'to be confirmed',
+                'time_bought' => Carbon::now()
+            ]);
+
+            //fill pivot table
+            $current_transaction->coffees()->attach(request('select1'));
+
+            //redirect to its confirmation
+            return redirect('/payment-confirmation/' . $current_transaction->id);
+        }
+
+        //option value has error
+        return back()
+            ->withErrors(['message' => 'The plan you are choosing is not available']);
+
+       
     }
 
     public function indexConfirm(){
+
+        //list user's transaction and the status
     	$transactions = Transaction::where('user_id',auth()->id())->get();
     	return view('payment-confirmation-index',compact('transactions'));
     }
 
     public function showConfirm(Transaction $transaction){
-    	//check if it's the correct user and unconfirmed transaction
+
+    	//check if it's incorrect user or confirmed transaction, if yes, then fail
     	if($transaction->user_id != auth()->id() || $transaction->status != 'to be confirmed'){
     		return redirect('/')
     			->withErrors(['message' => 'Sorry, you cannot access that page']);
     	}
-    	return view('payment-confirmation',compact('transaction'));
+
+        //set 1 day confirmation time
+        $time_confirmed_max = Carbon::parse($transaction->time_bought)->addDay(2)->format('j M Y, H:i:s');
+
+    	return view('payment-confirmation',compact('transaction','time_confirmed_max'));
     }
 
     public function storeConfirm(Transaction $transaction){
-    	$transaction->status = 'to be approved';
-    	$transaction->time_confirmed = Carbon::now();
-    	$transaction->save();
-    	return redirect()->home();
+
+        //check if it's incorrect user or confirmed transaction, if yes, then fail
+        if($transaction->user_id != auth()->id() || $transaction->status != 'to be confirmed'){
+            return redirect('/')
+                ->withErrors(['message' => 'Sorry, you cannot access that page']);
+        }
+
+        //confirm the transaction by user
+        $transaction->status = 'to be approved';
+        $transaction->time_confirmed = Carbon::now();
+        $transaction->save();
+        return redirect()->home();
     }
 }
