@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Transaction;
-use App\Coffee;
+use App\Plan;
 use Carbon\Carbon;
 
 class TransactionController extends Controller
@@ -16,14 +16,14 @@ class TransactionController extends Controller
     //show subsribe page
     public function index(){
         //pass plans id for option tag
-        $plans = Coffee::pluck('id');
+        $plans = Plan::pluck('id');
 
     	return view('subscribe',compact('plans'));
     }
 
     //perform ajax everytime option value changes
     public function ajaxPlan(){
-        if($plan_price = (Coffee::find(request('plan')))->price){
+        if($plan_price = (Plan::find(request('plan')))->price){
             return $plan_price;
         }
 
@@ -32,23 +32,23 @@ class TransactionController extends Controller
 
     //perform transaction
     public function store(){
-        $plans_id = Coffee::pluck('id');
+        $plans_id = Plan::pluck('id');
 
         //check option value exists in Plan id's
         if($plans_id->contains(request('select1'))){
-             $plan_selected = Coffee::find(request('select1'));
+             $plan_selected = Plan::find(request('select1'));
 
             //insert transaction
             $current_transaction = Transaction::create([
                 'user_id' => auth()->id(),
-                'coffee_id' => $plan_selected->id,
+                'plan_id' => $plan_selected->id,
                 'price' => $plan_selected->price + 9000,
                 'status' => 'to be confirmed',
                 'time_bought' => Carbon::now()
             ]);
 
             //fill pivot table
-            $current_transaction->coffees()->attach(request('select1'));
+            $current_transaction->Plans()->attach(request('select1'));
 
             //redirect to its confirmation
             return redirect('/payment-confirmation/' . $current_transaction->id);
