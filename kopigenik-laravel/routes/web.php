@@ -28,6 +28,13 @@ Route::get('/payment-confirmation', 'TransactionController@indexConfirm');
 Route::get('/payment-confirmation/{transaction}', 'TransactionController@showConfirm');
 Route::post('/payment-confirmation/{transaction}', 'TransactionController@storeConfirm');
 
+Route::group(['middleware' => 'role:admin'], function(){
+	Route::get('/transactions', 'TransactionController@indexTransaction');
+	Route::get('/transactions/{transaction}', 'TransactionController@showTransaction');
+	Route::post('/transactions/{transaction}', 'TransactionController@approveTransaction');
+});
+
+
 
 Route::get('/beans', function () {
     return view('beans');

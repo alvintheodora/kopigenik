@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Coffee extends Model
+class Plan extends Model
 {
     public function transactions(){
-    	return $this->belongsToMany(Transaction::class);
+    	return $this->hasMany(Transaction::class);
     }
 }

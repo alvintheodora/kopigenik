@@ -56,7 +56,12 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">{{auth()->user()->name}} <span class="caret"></span></a>
                                 
                                 <ul class="dropdown-menu">
-                                    <li class="navBurger"><a class="navbarKu" href="\payment-confirmation">PAYMENT CONFIRMATION</a></li>
+
+                                    @role('admin')
+                                        <li class="navBurger"><a class="navbarKu" href="\transactions">TRANSACTIONS</a></li>
+                                    @else
+                                        <li class="navBurger"><a class="navbarKu" href="\payment-confirmation">PAYMENT CONFIRMATION</a></li>
+                                    @endrole
 
                                     <li class="navBurger">
                                         <a class="navbarKu" href="{{ route('logout') }}"

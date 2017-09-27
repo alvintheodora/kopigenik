@@ -99,4 +99,32 @@ class TransactionController extends Controller
         $transaction->save();
         return redirect()->home();
     }
+
+    //Admin Section
+
+    public function indexTransaction(){
+
+        //pass transactions according to their status
+        $transactions_tbc = Transaction::where('status','to be confirmed')->get();
+        $transactions_tba = Transaction::where('status','to be approved')->get();
+        $transactions_approved = Transaction::where('status','approved')->get();
+
+        return view('transaction-index',compact(['transactions_tbc','transactions_tba','transactions_approved']));
+    }
+
+    public function showTransaction(Transaction $transaction){
+        return view('transaction-show',compact('transaction'));
+    }
+
+    public function approveTransaction(Transaction $transaction){
+        if($transaction->status == 'to be approved'){
+            $transaction->status = 'approved';
+            $transaction->time_approved = Carbon::now();
+            $transaction->save();
+
+           return redirect('\transactions');
+        }
+
+        return back()->withErrors(['message' => 'Please choose valid transaction']);
+    }
 }

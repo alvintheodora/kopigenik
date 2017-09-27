@@ -8,7 +8,10 @@ class Transaction extends Model
 {
     protected $guarded = [];
 
-    public function coffees(){
-    	return $this->belongsToMany(Coffee::class);
+    public function user(){
+    	return $this->belongsTo(User::class);
+    }
+    public function plan(){
+    	return $this->belongsTo(Plan::class);
     }
 }

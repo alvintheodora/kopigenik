@@ -5,3 +5,8 @@ bootstrap changelog:
 - .jumbotron margin-bottom removed
 - .hr margin-top,margin-bottom removed
 - .btn border-radius removed
+
+
+
+Laravel changelog:
+-  in .env, CACHE_DRIVER=array (default: file)
