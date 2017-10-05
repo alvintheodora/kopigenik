@@ -28,13 +28,22 @@ Route::get('/payment-confirmation', 'TransactionController@indexConfirm');
 Route::get('/payment-confirmation/{transaction}', 'TransactionController@showConfirm');
 Route::post('/payment-confirmation/{transaction}', 'TransactionController@storeConfirm');
 
+Route::get('/check-shipments', 'ShipmentController@index');
+Route::get('/check-shipments/{shipment}', 'ShipmentController@show');
+
 Route::group(['middleware' => 'role:admin'], function(){
 	Route::get('/transactions', 'TransactionController@indexTransaction');
 	Route::get('/transactions/{transaction}', 'TransactionController@showTransaction');
 	Route::post('/transactions/{transaction}', 'TransactionController@approveTransaction');
+
+	Route::get('/shipments', 'ShipmentController@indexByAdmin');
+	Route::get('/shipments/{shipment}', 'ShipmentController@showByAdmin');
+	Route::post('/shipments/{shipment}', 'ShipmentController@approve');
 });
 
-
+Route::get('/profile', 'UserController@index');
+Route::post('/profile', 'UserController@edit');
+Route::post('/profile/address', 'AddressController@store');
 
 Route::get('/beans', function () {
     return view('beans');

@@ -26,9 +26,18 @@
 
 		<br>
 
-		<form action="\payment-confirmation\{{$transaction->id}}" method="POST">
-			{{csrf_field()}}
-			<button class="btn btn-lg btn-success btn-block">Confirm payment</button>			
-		</form>	
+		<div class="text-center" style="font-weight: bold;">
+			@if($transaction->status == 'to be confirmed')
+				<form action="\payment-confirmation\{{$transaction->id}}" method="POST">
+					{{csrf_field()}}
+					<button class="btn btn-lg btn-success btn-block">Confirm payment</button>
+				</form>
+			@elseif($transaction->status == 'to be approved')
+				<p>Waiting to be approved by Kopigenik</p>
+			@elseif($transaction->status == 'approved')
+				<p>Payment has been approved by Kopigenik, <a href="/check-shipments/">Check Shipment</a></p>
+			@endif	
+		</div>
+
 	</div>
 @endsection

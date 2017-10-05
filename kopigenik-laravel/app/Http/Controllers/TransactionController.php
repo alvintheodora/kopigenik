@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Transaction;
 use App\Plan;
+use App\Shipment;
 use Carbon\Carbon;
 
 class TransactionController extends Controller
@@ -18,7 +19,13 @@ class TransactionController extends Controller
         //pass plans id for option tag
         $plans = Plan::pluck('id');
 
-    	return view('subscribe',compact('plans'));
+        //pass address if logged in
+        if(isset(auth()->user()->address)){
+            $address = auth()->user()->address;
+    	   return view('subscribe',compact(['plans','address']));
+        }
+
+        return view('subscribe',compact('plans'));
     }
 
     //perform ajax everytime option value changes
@@ -31,10 +38,25 @@ class TransactionController extends Controller
     }
 
     //perform transaction
-    public function store(){
+    public function store(Request $request){
+
+        //validate request
+        $request->validate([
+            'select1' => 'required',
+            'subscribe_duration' => 'required|integer|between:1,3',
+
+            'name' => 'required',
+            'address' => 'required',
+            'province' => 'required',
+            'city' => 'required',
+            'district' => 'required',
+            'zipcode' => 'required',
+            'phone' => 'required'
+        ]);
+      
+        //check option value exists in Plan id's
         $plans_id = Plan::pluck('id');
 
-        //check option value exists in Plan id's
         if($plans_id->contains(request('select1'))){
              $plan_selected = Plan::find(request('select1'));
 
@@ -42,22 +64,62 @@ class TransactionController extends Controller
             $current_transaction = Transaction::create([
                 'user_id' => auth()->id(),
                 'plan_id' => $plan_selected->id,
+                'subscribe_duration' => request('subscribe_duration'),
                 'price' => $plan_selected->price + 9000,
                 'status' => 'to be confirmed',
                 'time_bought' => Carbon::now()
             ]);
 
             //fill pivot table
-            $current_transaction->Plans()->attach(request('select1'));
+            //$current_transaction->plan()->attach(request('select1'));
+
+            //Shipment
+            if(request('subscribe_duration') == 1){
+                Shipment::create([
+                    'transaction_id' => $current_transaction->id,
+                    'address' => request('address'),
+                    'province' => request('province'),
+                    'city' => request('city'),
+                    'district' => request('district'),
+                    'zipcode' => request('zipcode'),
+                    'phone' => request('phone'),
+                    'total_shipment_left' => 2,                    
+                    'additional_note' => request('additional_note')
+                ]);
+            }else if(request('subscribe_duration') == 2){
+                Shipment::create([
+                    'transaction_id' => $current_transaction->id,
+                    'address' => request('address'),
+                    'province' => request('province'),
+                    'city' => request('city'),
+                    'district' => request('district'),
+                    'zipcode' => request('zipcode'),
+                    'phone' => request('phone'),
+                    'total_shipment_left' => 4,                    
+                    'additional_note' => request('additional_note')
+                ]);
+            }else if(request('subscribe_duration') == 3){
+                Shipment::create([
+                    'transaction_id' => $current_transaction->id,
+                    'address' => request('address'),
+                    'province' => request('province'),
+                    'city' => request('city'),
+                    'district' => request('district'),
+                    'zipcode' => request('zipcode'),
+                    'phone' => request('phone'),
+                    'total_shipment_left' => 6,                    
+                    'additional_note' => request('additional_note')
+                ]);
+            }
 
             //redirect to its confirmation
             return redirect('/payment-confirmation/' . $current_transaction->id);
         }
 
-        //option value has error
+
+        //option plan value has error
         return back()
             ->withErrors(['message' => 'The plan you are choosing is not available']);
-
        
     }
 
@@ -72,8 +134,8 @@ class TransactionController extends Controller
     //show payment confirmation page
     public function showConfirm(Transaction $transaction){
 
-    	//check if it's incorrect user or confirmed transaction, if yes, then fail
-    	if($transaction->user_id != auth()->id() || $transaction->status != 'to be confirmed'){
+    	//check if it's incorrect user , if yes, then fail
+    	if($transaction->user_id != auth()->id()){
     		return redirect('/')
     			->withErrors(['message' => 'Sorry, you cannot access that page']);
     	}
@@ -119,10 +181,10 @@ class TransactionController extends Controller
     public function approveTransaction(Transaction $transaction){
         if($transaction->status == 'to be approved'){
             $transaction->status = 'approved';
-            $transaction->time_approved = Carbon::now();
-            $transaction->save();
+            $transaction->time_approved = Carbon::now();           
 
-           return redirect('\transactions');
+            $transaction->save();
+            return redirect('/transactions');
         }
 
         return back()->withErrors(['message' => 'Please choose valid transaction']);

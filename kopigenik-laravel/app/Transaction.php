@@ -14,4 +14,7 @@ class Transaction extends Model
     public function plan(){
     	return $this->belongsTo(Plan::class);
     }
+    public function shipment(){
+    	return $this->hasOne(Shipment::class);
+    }
 }
