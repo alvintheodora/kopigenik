@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('title','Payment Confirmation')
@@ -34,6 +35,7 @@
 				</form>
 			@elseif($transaction->status == 'to be approved')
 				<p>Waiting to be approved by Kopigenik</p>
+				<p>Maximum approval is 2 days from confirmation</p>				
 			@elseif($transaction->status == 'approved')
 				<p>Payment has been approved by Kopigenik, <a href="/check-shipments/">Check Shipment</a></p>
 			@endif	

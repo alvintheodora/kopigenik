@@ -127,7 +127,7 @@ class TransactionController extends Controller
     public function indexConfirm(){
 
         //list user's transaction and the status
-    	$transactions = Transaction::where('user_id',auth()->id())->get();
+    	$transactions = Transaction::where('user_id',auth()->id())->orderBy('id','desc')->get();
     	return view('payment-confirmation-index',compact('transactions'));
     }
 
@@ -140,7 +140,7 @@ class TransactionController extends Controller
     			->withErrors(['message' => 'Sorry, you cannot access that page']);
     	}
 
-        //set 1 day confirmation time
+        //set 2 day confirmation time
         $time_confirmed_max = Carbon::parse($transaction->time_bought)->addDay(2)->format('j M Y, H:i:s');
 
     	return view('payment-confirmation',compact('transaction','time_confirmed_max'));
@@ -159,7 +159,7 @@ class TransactionController extends Controller
         $transaction->status = 'to be approved';
         $transaction->time_confirmed = Carbon::now();
         $transaction->save();
-        return redirect()->home();
+        return redirect('/payment-confirmation');
     }
 
     //Admin Section

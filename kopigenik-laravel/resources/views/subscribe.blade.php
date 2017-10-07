@@ -130,7 +130,7 @@
 
 					<div class="form-group">
 						<label for="note" class="">Additional Note</label>
-						<textarea class="form-control" name="note"></textarea>
+						<textarea class="form-control" name="additional_note"></textarea>
 					</div>
 
 				</div>

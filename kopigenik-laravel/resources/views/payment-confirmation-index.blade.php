@@ -9,7 +9,7 @@
 		<ul>
 			@if(! is_null($transactions))
 				@foreach($transactions as $transaction)
-					<li><a href="\payment-confirmation\{{$transaction->id}}">ID: {{$transaction->id}}</a>, status: {{$transaction->status}}</li>
+					<li><a href="\payment-confirmation\{{$transaction->id}}">ID: {{$transaction->id}}</a>, {{$transaction->plan->name}} ({{$transaction->subscribe_duration}} months), Time bought: {{$transaction->time_bought}} , status: {{$transaction->status}}</li>
 				@endforeach
 			@endif
 		</ul>

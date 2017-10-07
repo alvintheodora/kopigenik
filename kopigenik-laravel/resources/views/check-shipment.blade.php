@@ -5,30 +5,23 @@
 @section('content')
 	<!--body-->
 	<div class="container-fluid">
-		<h1 class="text-center">Check Shipment</h1>
-		
-		<h2>To be Approved</h2>
-			@foreach($transactions_tba as $transaction)				
+		<h1 class="text-center">My Subscriptions</h1>
+		<h2>On Progress</h2>
+			@foreach($shipments_user as $shipment)				
 				<ul>
-					<li><a href="\transactions\{{$transaction->id}}">ID: {{$transaction->id}}</a>, status: {{$transaction->status}}
+					<li><a href="\check-shipments\{{$shipment->id}}">ID: {{$shipment->transaction->id}}</a>, Plan: {{$shipment->transaction->plan->name}}, Total shipment left: {{$shipment->total_shipment_left}}
 					</li>
 				</ul>
 			@endforeach
 
-		<h2>To be Confirmed</h2>
-			@foreach($transactions_tbc as $transaction)				
+		<h2>Finished Orders</h2>
+		@foreach($shipments_user_finished as $shipment)				
 				<ul>
-					<li><a href="\transactions\{{$transaction->id}}">ID: {{$transaction->id}}</a>, status: {{$transaction->status}}
+					<li><a href="\check-shipments\{{$shipment->id}}">TR ID: {{$shipment->transaction->id}}</a>, Plan: {{$shipment->transaction->plan->name}}, Total shipment left: {{$shipment->total_shipment_left}}
 					</li>
 				</ul>
 			@endforeach
 
-		<h2>Approved</h2>
-			@foreach($transactions_approved as $transaction)				
-				<ul>
-					<li><a href="\transactions\{{$transaction->id}}">ID: {{$transaction->id}}</a>, status: {{$transaction->status}}
-					</li>
-				</ul>
-			@endforeach			
+
 	</div>
 @endsection

@@ -31,6 +31,9 @@ Route::post('/payment-confirmation/{transaction}', 'TransactionController@storeC
 Route::get('/check-shipments', 'ShipmentController@index');
 Route::get('/check-shipments/{shipment}', 'ShipmentController@show');
 
+/*
+ * Admin
+ */
 Route::group(['middleware' => 'role:admin'], function(){
 	Route::get('/transactions', 'TransactionController@indexTransaction');
 	Route::get('/transactions/{transaction}', 'TransactionController@showTransaction');

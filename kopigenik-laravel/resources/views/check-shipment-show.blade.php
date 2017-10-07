@@ -5,20 +5,14 @@
 @section('content')
 	<!--body-->
 	<div class="container-fluid">
-		<h2>Shipment ID: {{$transaction->id}}</h2>
-		<p><span>Customer's name: {{$transaction->user->name}}</span></p>
-		<p><span>Plan: {{$transaction->plan->name}}</span></p>
-		<p><span>Price: {{$transaction->price}}</span></p>
-		<p><span>Time bought: {{$transaction->time_bought}}</span></p>
-		<p><span>Time confirmed: {{$transaction->time_confirmed}}</span></p>
-		<p><span>Time approved: {{$transaction->time_approved}}</span></p>
-		<p><span>Status: {{$transaction->status}}</span></p>
-
-		@if($transaction->status == 'to be approved')
-			<form action="\transactions\{{$transaction->id}}" method="POST">
-				{{csrf_field()}}
-					<button class="btn btn-lg btn-success btn-block" type="submit">Approve</button>	
-			</form>		
-		@endif
+		<h2>Transaction ID: {{$shipment->transaction->id}}</h2>
+		<p><span>Plan: {{$shipment->transaction->plan->name}}</span></p>
+		<p><span>Price: {{$shipment->transaction->price}}</span></p>
+		<p><span>Subscribe duration: {{$shipment->transaction->subscribe_duration}} months</span></p>
+		<p><span>Time bought: {{$shipment->transaction->time_bought}}</span></p>
+		<p><span>Total shipment left: {{$shipment->total_shipment_left}}</span></p>
+		<p><span>Address: {{$shipment->address . ', ' . $shipment->district . ', ' . $shipment->city . ', ' . $shipment->province . ', ' . $shipment->zipcode}}</span></p>
+		<p><span>Phone number: {{$shipment->phone}}</span></p>
+		<p><span>Additional Note: {{$shipment->additional_note}}</span></p>
 	</div>
 @endsection

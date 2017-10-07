@@ -62,6 +62,7 @@
                                         <li class="navBurger"><a class="navbarKu" href="\shipments">SHIPMENTS</a></li>
                                     @else
                                         <li class="navBurger"><a class="navbarKu" href="\payment-confirmation">PAYMENT CONFIRMATION</a></li>
+                                        <li class="navBurger"><a class="navbarKu" href="\check-shipments">MY SUBSCRIPTIONS</a></li>
                                     @endrole
                                     <li class="navBurger"><a class="navbarKu" href="\profile">EDIT PROFILE</a></li>
 

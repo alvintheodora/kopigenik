@@ -13,7 +13,22 @@ class ShipmentController extends Controller
 	}
 
     public function index(){
-        return view('check-shipment');
+        $shipments = Shipment::all();
+        $shipments_user = new Collection();
+        $shipments_user_finished = new Collection();
+
+        foreach($shipments as $shipment){
+            /*
+             * Check shipment by current user and approved TR
+             */
+            if($shipment->transaction->user->id == auth()->id() && $shipment->transaction->status == 'approved' && $shipment->total_shipment_left > 0){
+                $shipments_user->push($shipment);
+            }elseif($shipment->transaction->user->id == auth()->id() && $shipment->transaction->status == 'approved' && $shipment->total_shipment_left == 0){
+                $shipments_user_finished->push($shipment);
+            }
+        }
+
+        return view('check-shipment',compact(['shipments_user','shipments_user_finished']));
     }
 
     public function show(Shipment $shipment){
