@@ -63,4 +63,4 @@ Route::get('/faq', function () {
 Route::get('/blog', function () {
     return view('blog');
 });
-//test
+//test baru
