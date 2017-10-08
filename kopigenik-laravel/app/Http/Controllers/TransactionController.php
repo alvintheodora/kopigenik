@@ -51,7 +51,11 @@ class TransactionController extends Controller
             'city' => 'required',
             'district' => 'required',
             'zipcode' => 'required',
-            'phone' => 'required'
+            'phone' => 'required',
+
+            'bank_account' => 'required',
+            'account_holder' => 'required',
+            'account_number' => 'required'
         ]);
       
         //check option value exists in Plan id's
@@ -67,7 +71,10 @@ class TransactionController extends Controller
                 'subscribe_duration' => request('subscribe_duration'),
                 'price' => $plan_selected->price + 9000,
                 'status' => 'to be confirmed',
-                'time_bought' => Carbon::now()
+                'time_bought' => Carbon::now(),
+                'bank_account' => request('bank_account'),
+                'account_holder' => request('account_holder'),
+                'account_number' => request('account_number')
             ]);
 
             //fill pivot table
@@ -167,9 +174,9 @@ class TransactionController extends Controller
     public function indexTransaction(){
 
         //pass transactions according to their status
-        $transactions_tbc = Transaction::where('status','to be confirmed')->get();
-        $transactions_tba = Transaction::where('status','to be approved')->get();
-        $transactions_approved = Transaction::where('status','approved')->get();
+        $transactions_tbc = Transaction::where('status','to be confirmed')->orderBy('id','desc')->get();
+        $transactions_tba = Transaction::where('status','to be approved')->orderBy('id','desc')->get();
+        $transactions_approved = Transaction::where('status','approved')->orderBy('id','desc')->get();
 
         return view('transaction-index',compact(['transactions_tbc','transactions_tba','transactions_approved']));
     }

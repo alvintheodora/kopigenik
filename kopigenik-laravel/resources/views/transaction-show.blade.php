@@ -6,9 +6,13 @@
 	<!--body-->
 	<div class="container-fluid">
 		<h2>Transaction ID: {{$transaction->id}}</h2>
-		<p><span>Customer's name: {{$transaction->user->name}}</span></p>
+		<p><span>Name: {{$transaction->user->name}}</span></p>
 		<p><span>Plan: {{$transaction->plan->name}}</span></p>
 		<p><span>Price: {{$transaction->price}}</span></p>
+		<p><span>Bank: {{$transaction->bank_account}}</span></p>
+		<p><span>Account Holder: {{$transaction->account_holder}}</span></p>
+		<p><span>Account Number: {{$transaction->account_number}}</span></p>
+
 		<p><span>Time bought: {{$transaction->time_bought}}</span></p>
 		<p><span>Time confirmed: {{$transaction->time_confirmed}}</span></p>
 		<p><span>Time approved: {{$transaction->time_approved}}</span></p>
