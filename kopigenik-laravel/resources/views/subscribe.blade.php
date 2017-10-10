@@ -136,76 +136,46 @@
 				</div>
 
 				<div class="col-sm-4 col-sm-offset-2">
-						<div class="summary" id="orderSummary">
-							<h3>Ringkasan Pesanan</h3>
-							<div class="row">
-								<div class="col-xs-6">
-									<p>250 gram (125 gram per 2 minggu)</p>
-								</div>
-								<div class="col-xs-6">
-									<p id="plan_selected">-</p>
-								</div>
+					<div class="summary" id="orderSummary">
+						<h3>Ringkasan Pesanan</h3>
+						<div class="row">
+							<div class="col-xs-6">
+								<p>250 gram (125 gram per 2 minggu)</p>
 							</div>
-							<!--<div class="row">
-								<div class="col-xs-6">
-									<p>Total (1 bulan)</p>
-								</div>
-								<div class="col-xs-6">
-									<p id="plan_selected_month">-</p>
-								</div>
-							</div>-->
-							<div class="row">
-								<div class="col-xs-6">
-									<p>Ongkos kirim</p>
-								</div>
-								<div class="col-xs-6">
-									<p>Rp9.000</p>
-								</div>
+							<div class="col-xs-6">
+								<p id="plan_selected">-</p>
 							</div>
-							<hr>
-							<div class="row">
-								<div class="col-xs-6">
-									<p>Total harga</p>
-								</div>
-								<div class="col-xs-6">
-									<p id="total_price">-</p>
-								</div>
-							</div>	
-
-							<button type="button" class="btn btn-lg btn-success btn-block" data-toggle="modal" data-target="#myModal">Buy</button>			
 						</div>
-					</div>
-			</div>	
+						<!--<div class="row">
+							<div class="col-xs-6">
+								<p>Total (1 bulan)</p>
+							</div>
+							<div class="col-xs-6">
+								<p id="plan_selected_month">-</p>
+							</div>
+						</div>-->
+						<div class="row">
+							<div class="col-xs-6">
+								<p>Ongkos kirim</p>
+							</div>
+							<div class="col-xs-6">
+								<p>Rp9.000</p>
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-xs-6">
+								<p>Total harga</p>
+							</div>
+							<div class="col-xs-6">
+								<p id="total_price">-</p>
+							</div>
+						</div>	
 
-			<!-- Modal -->
-			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			  <div class="modal-dialog" role="document">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title" id="myModalLabel">Payment Information</h4>
-			      </div>
-			      <div class="modal-body">
-			      	<div class="form-group">
-						<label for="bank_account">Bank</label>
-						<input class="form-control" type="text" name="bank_account">
+						<button type="submit" class="btn btn-lg btn-success btn-block">Buy</button>			
 					</div>
-			        <div class="form-group">
-						<label for="account_holder">Account Holder</label>
-						<input class="form-control" type="text" name="account_holder">
-					</div>
-					<div class="form-group">
-						<label for="account_number">Account Number</label>
-						<input class="form-control" type="text" name="account_number">
-					</div>
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			        <button type="submit" class="btn btn-primary">Checkout <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></button>
-			      </div>
-			    </div>
-			  </div>
-			</div>
+				</div>
+			</div>		
 
 		</form>
 	</div>

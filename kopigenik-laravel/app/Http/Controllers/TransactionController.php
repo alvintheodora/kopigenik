@@ -51,11 +51,7 @@ class TransactionController extends Controller
             'city' => 'required',
             'district' => 'required',
             'zipcode' => 'required',
-            'phone' => 'required',
-
-            'bank_account' => 'required',
-            'account_holder' => 'required',
-            'account_number' => 'required'
+            'phone' => 'required|numeric',
         ]);
       
         //check option value exists in Plan id's
@@ -71,10 +67,7 @@ class TransactionController extends Controller
                 'subscribe_duration' => request('subscribe_duration'),
                 'price' => $plan_selected->price + 9000,
                 'status' => 'to be confirmed',
-                'time_bought' => Carbon::now(),
-                'bank_account' => request('bank_account'),
-                'account_holder' => request('account_holder'),
-                'account_number' => request('account_number')
+                'time_bought' => Carbon::now()                
             ]);
 
             //fill pivot table
@@ -167,19 +160,31 @@ class TransactionController extends Controller
     }
 
     //perform payment confirmation process
-    public function storeConfirm(Transaction $transaction){
+    public function storeConfirm(Transaction $transaction, Request $request){
 
         //check if it's incorrect user or confirmed transaction, if yes, then fail
         if($transaction->user_id != auth()->id() || $transaction->status != 'to be confirmed'){
-            return redirect('/')
-                ->withErrors(['message' => 'Sorry, you cannot access that page']);
+            return back()
+                ->withErrors(['message' => 'Sorry, you cannot confirm this transaction, please contact admin']);
         }
+
+        $request->validate([
+            'bank_account' => 'required',
+            'account_holder' => 'required',
+            'account_number' => 'required|numeric'
+        ]);
+
+        //fill payment data
+        $transaction->bank_account = request('bank_account');
+        $transaction->account_holder = request('account_holder');
+        $transaction->account_number = request('account_number');            
 
         //confirm the transaction by user
         $transaction->status = 'to be approved';
         $transaction->time_confirmed = Carbon::now();
+
         $transaction->save();
-        return redirect('/check-shipments');
+        return back();
     }
 
     //Admin Section
