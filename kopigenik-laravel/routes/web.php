@@ -23,13 +23,17 @@ Route::get('/home', 'HomeController@index')->name('home_ori');
 Route::get('/subscribe', 'TransactionController@index');
 Route::get('/ajaxPlan', 'TransactionController@ajaxPlan');
 Route::post('/subscribe', 'TransactionController@store');
+Route::post('/remove-transaction/{transaction}', 'TransactionController@removeTransaction');
 
-Route::get('/payment-confirmation', 'TransactionController@indexConfirm');
+
+//Route::get('/payment-confirmation', 'TransactionController@indexConfirm');
 Route::get('/payment-confirmation/{transaction}', 'TransactionController@showConfirm');
 Route::post('/payment-confirmation/{transaction}', 'TransactionController@storeConfirm');
 
 Route::get('/check-shipments', 'ShipmentController@index');
 Route::get('/check-shipments/{shipment}', 'ShipmentController@show');
+Route::post('/edit-shipment/{shipment}', 'ShipmentController@editDeliveryData');
+
 
 /*
  * Admin

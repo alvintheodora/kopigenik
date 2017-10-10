@@ -130,6 +130,18 @@ class TransactionController extends Controller
        
     }
 
+    public function removeTransaction(Transaction $transaction){
+        if($transaction->user->id == auth()->id() && $transaction->status == 'to be confirmed'){
+            $transaction->delete();
+            return redirect('/check-shipments');
+        }
+        return back()
+            ->withErrors(['message' => 'This transaction cannot be removed, please contact admin']);
+    }
+
+
+
+    /*
     //show user's payment confirmation list
     public function indexConfirm(){
 
@@ -137,6 +149,7 @@ class TransactionController extends Controller
     	$transactions = Transaction::where('user_id',auth()->id())->orderBy('id','desc')->get();
     	return view('payment-confirmation-index',compact('transactions'));
     }
+    */
 
     //show payment confirmation page
     public function showConfirm(Transaction $transaction){
@@ -166,7 +179,7 @@ class TransactionController extends Controller
         $transaction->status = 'to be approved';
         $transaction->time_confirmed = Carbon::now();
         $transaction->save();
-        return redirect('/payment-confirmation');
+        return redirect('/check-shipments');
     }
 
     //Admin Section

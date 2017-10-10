@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Shipment;
 use Illuminate\Database\Eloquent\Collection;
+use Carbon\Carbon;
 
 class ShipmentController extends Controller
 {
@@ -13,26 +14,38 @@ class ShipmentController extends Controller
 	}
 
     public function index(){
-        $shipments = Shipment::all();
+        $shipments = Shipment::orderBy('id','desc')->get();
         $shipments_user = new Collection();
+        $shipments_user_tb = new Collection();
         $shipments_user_finished = new Collection();
 
         foreach($shipments as $shipment){
             /*
-             * Check shipment by current user and approved TR
+             * Check shipment by current user and status
              */
             if($shipment->transaction->user->id == auth()->id() && $shipment->transaction->status == 'approved' && $shipment->total_shipment_left > 0){
                 $shipments_user->push($shipment);
+            }elseif($shipment->transaction->user->id == auth()->id() && $shipment->transaction->status != 'approved' && $shipment->total_shipment_left > 0){
+                $shipments_user_tb->push($shipment);
             }elseif($shipment->transaction->user->id == auth()->id() && $shipment->transaction->status == 'approved' && $shipment->total_shipment_left == 0){
                 $shipments_user_finished->push($shipment);
             }
         }
 
-        return view('check-shipment',compact(['shipments_user','shipments_user_finished']));
+        return view('check-shipment',compact(['shipments_user','shipments_user_tb','shipments_user_finished']));
     }
 
     public function show(Shipment $shipment){
         return view('check-shipment-show',compact('shipment'));
+    }
+
+    public function editDeliveryData(Shipment $shipment){
+        if($shipment->transaction->user->id == auth()->id()){
+            
+            return redirect('/check-shipments/' . $shipment->id);
+        }
+        return back()
+            ->withErrors(['message' => 'This shipment cannot be edited by you, please contact admin']);
     }
 
     //ADMIN
@@ -62,6 +75,7 @@ class ShipmentController extends Controller
     public function approve(Shipment $shipment){
     	if($shipment->transaction->status == 'approved' && $shipment->total_shipment_left > 0){
     		$shipment->total_shipment_left -= 1;
+            $shipment->last_delivery_date = Carbon::now();
 
     		$shipment->save();
     		return redirect('/shipments');

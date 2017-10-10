@@ -129,7 +129,7 @@
 					@endisset
 
 					<div class="form-group">
-						<label for="note" class="">Additional Note</label>
+						<label for="additional_note" class="">Additional Note</label>
 						<textarea class="form-control" name="additional_note"></textarea>
 					</div>
 

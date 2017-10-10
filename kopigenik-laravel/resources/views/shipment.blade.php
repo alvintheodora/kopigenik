@@ -9,15 +9,15 @@
 		<h2>On progress</h2>
 		<ul>
 			@foreach($shipments_approved as $shipment)										
-				<li><a href="\shipments\{{$shipment->id}}">TR ID: {{$shipment->transaction->id}}</a>, Total Shipment Left: {{$shipment->total_shipment_left}}
+				<li><a href="\shipments\{{$shipment->id}}">TR ID: {{$shipment->transaction->id}}</a>, Total Shipment Left: {{$shipment->total_shipment_left}}, Last Delivery Date: {{$shipment->last_delivery_date}}
 				</li>
 			@endforeach
 		</ul>
 			
-		<h2>To be confirmed / to be approved</h2>
+		<h2>On Hold</h2>
 		<ul>
 			@foreach($shipments_tba as $shipment)										
-				<li><a href="\shipments\{{$shipment->id}}">TR ID: {{$shipment->transaction->id}}</a>, Total Shipment Left: {{$shipment->total_shipment_left}}
+				<li><a href="\shipments\{{$shipment->id}}">TR ID: {{$shipment->transaction->id}}</a>, Status: {{$shipment->transaction->status}}
 				</li>
 			@endforeach
 		</ul>

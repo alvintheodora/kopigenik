@@ -6,27 +6,30 @@
 	<!--body-->
 	<div class="container-fluid">
 		<h2>To be Approved</h2>
+		<ul>
 			@foreach($transactions_tba as $transaction)				
-				<ul>
+				
 					<li><a href="\transactions\{{$transaction->id}}">ID: {{$transaction->id}}</a>, Time bought: {{$transaction->time_bought}}
-					</li>
-				</ul>
+					</li>				
 			@endforeach
+		</ul>
 
 		<h2>To be Confirmed</h2>
+		<ul>
 			@foreach($transactions_tbc as $transaction)				
-				<ul>
+				
 					<li><a href="\transactions\{{$transaction->id}}">ID: {{$transaction->id}}</a>, Time bought: {{$transaction->time_bought}}
-					</li>
-				</ul>
+					</li>				
 			@endforeach
+		</ul>
 
 		<h2>Approved</h2>
+		<ul>
 			@foreach($transactions_approved as $transaction)				
-				<ul>
+				
 					<li><a href="\transactions\{{$transaction->id}}">ID: {{$transaction->id}}</a>, Time bought: {{$transaction->time_bought}}
-					</li>
-				</ul>
-			@endforeach			
+					</li>				
+			@endforeach	
+		</ul>		
 	</div>
 @endsection

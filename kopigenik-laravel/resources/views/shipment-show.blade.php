@@ -8,6 +8,7 @@
 		<h2>Shipment ID: {{$shipment->id}}</h2>
 		<p><span>Customer's name: {{$shipment->transaction->user->name}}</span></p>
 		<p><span>Plan: {{$shipment->transaction->plan->name}}</span></p>
+		<p><span>Subscribe duration: {{$shipment->transaction->subscribe_duration}} months</span></p>
 		<p><span>Address: {{$shipment->address}}</span></p>
 		<p><span>Province: {{$shipment->province}}</span></p>
 		<p><span>City: {{$shipment->city}}</span></p>
