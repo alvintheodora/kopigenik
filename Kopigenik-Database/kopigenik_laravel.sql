@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 10, 2017 at 06:39 AM
+-- Generation Time: Oct 11, 2017 at 05:46 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.8
 
@@ -89,7 +89,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (26, '2017_10_08_145826_add_payment_columns_to_transactions', 19),
 (28, '2017_10_09_141020_add_last_delivery_date_to_shipments', 20),
 (29, '2017_10_09_233407_edit_onDelete_foreign_key_on_shipments', 21),
-(30, '2017_10_10_110706_edit_payment_detail_in_transactions', 22);
+(30, '2017_10_10_110706_edit_payment_detail_in_transactions', 22),
+(31, '2017_10_10_194245_add_weight_in_plans', 23),
+(32, '2017_10_11_123327_drop_price_in_transactions', 24),
+(33, '2017_10_11_123837_add_coffee_grind_size_in_transactions', 25);
 
 -- --------------------------------------------------------
 
@@ -146,6 +149,7 @@ CREATE TABLE `plans` (
   `id` int(10) UNSIGNED NOT NULL,
   `roaster_id` int(11) NOT NULL,
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `weight` int(11) NOT NULL,
   `price` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -155,10 +159,10 @@ CREATE TABLE `plans` (
 -- Dumping data for table `plans`
 --
 
-INSERT INTO `plans` (`id`, `roaster_id`, `name`, `price`, `created_at`, `updated_at`) VALUES
-(1, 0, 'Plan A', '11111', '2017-09-24 10:20:53', '2017-09-24 10:20:53'),
-(2, 0, 'Plan B', '22222', '2017-09-24 10:20:53', '2017-09-24 10:20:53'),
-(3, 0, 'Plan C', '33333', '2017-09-25 03:39:43', '2017-09-25 03:39:43');
+INSERT INTO `plans` (`id`, `roaster_id`, `name`, `weight`, `price`, `created_at`, `updated_at`) VALUES
+(1, 0, 'Plan A', 100, '11111', '2017-09-24 10:20:53', '2017-09-24 10:20:53'),
+(2, 0, 'Plan B', 250, '22222', '2017-09-24 10:20:53', '2017-09-24 10:20:53'),
+(3, 0, 'Plan C', 500, '33333', '2017-09-25 03:39:43', '2017-09-25 03:39:43');
 
 -- --------------------------------------------------------
 
@@ -227,23 +231,19 @@ CREATE TABLE `shipments` (
 --
 
 INSERT INTO `shipments` (`id`, `transaction_id`, `address`, `province`, `city`, `district`, `zipcode`, `phone`, `total_shipment_left`, `additional_note`, `last_delivery_date`, `created_at`, `updated_at`) VALUES
-(5, 30, 'baru 2', 'q', 'w', 'e', 'r', '08348984ka', 0, NULL, NULL, '2017-10-03 16:47:05', '2017-10-06 17:26:24'),
-(7, 32, 'garde', 'adsf', 'adsf', 'adsf', '34343', '34344434', 1, NULL, '2017-10-09 20:12:14', '2017-10-06 02:57:42', '2017-10-09 13:12:14'),
-(8, 33, 'garde', 'adsf', 'adsf', 'adsf', '34343', '55454545', 6, NULL, NULL, '2017-10-06 03:00:53', '2017-10-06 03:00:53'),
-(9, 34, 'baru 2', 'q', 'w', 'e', 'r', '08348984ka', 3, NULL, NULL, '2017-10-06 03:19:43', '2017-10-08 10:52:02'),
-(10, 35, 'baru 2', 'q', 'w', 'e', 'r', '08348984ka', 3, 'jangan sobek ya', '2017-10-09 20:15:48', '2017-10-06 03:23:19', '2017-10-09 13:15:48'),
-(11, 36, 'baru 2', 'q', 'w', 'e', 'r', '08348984ka', 6, NULL, NULL, '2017-10-06 17:10:10', '2017-10-06 17:10:10'),
-(12, 37, 'baru 2', 'q', 'w', 'e', 'r', '08348984ka', 4, NULL, NULL, '2017-10-07 17:06:25', '2017-10-07 17:06:25'),
-(14, 39, 'Poris Garden Blok C2 Nomor 6', 'Banten', 'Tangerang', 'Cipondoh', '15149', '081294831113', 4, NULL, NULL, '2017-10-08 07:14:17', '2017-10-08 07:14:17'),
-(15, 40, 'Poris Garden Blok C2 Nomor 6', 'Banten', 'Tangerang', 'Cipondoh', '15149', '081294831113', 4, NULL, NULL, '2017-10-08 07:23:29', '2017-10-08 07:23:29'),
 (16, 41, 'Poris Garden Blok C2 Nomor 6', 'Banten', 'Tangerang', 'Cipondoh', '15149', '081294831113', 4, NULL, NULL, '2017-10-08 08:05:51', '2017-10-08 08:05:51'),
-(17, 42, 'Citra Garden Blok A3 nomor 4', 'DKI Jakarta', 'Jakarta', 'Kalideres', '14045', '08349823434', 4, NULL, NULL, '2017-10-08 10:42:02', '2017-10-08 10:42:02'),
+(17, 42, 'Citra Garden Blok A3 nomor 4', 'DKI Jakarta', 'Jakarta', 'Kalideres', '14045', '08349823434', 3, NULL, '2017-10-11 22:41:17', '2017-10-08 10:42:02', '2017-10-11 15:41:17'),
 (18, 43, 'Citra Garden Blok A3 nomor 4', 'DKI Jakarta', 'Jakarta', 'Kalideres', '14045', '08349823434', 4, NULL, NULL, '2017-10-08 11:23:42', '2017-10-08 11:23:42'),
 (21, 46, 'Poris Garden Blok C2 Nomor 6', 'Banten', 'Tangerang', 'Cipondoh', '15149', '081294831113', 6, NULL, NULL, '2017-10-09 17:25:34', '2017-10-09 17:25:34'),
 (22, 47, 'Poris Garden Blok C2 Nomor 6', 'Banten', 'Tangerang', 'Cipondoh', '15149', '081294831113', 6, NULL, NULL, '2017-10-09 17:26:04', '2017-10-09 17:26:04'),
 (23, 48, 'Poris Garden Blok C2 Nomor 6', 'Banten', 'Tangerang', 'Cipondoh', '15149', '081294831113', 4, NULL, NULL, '2017-10-10 04:10:16', '2017-10-10 04:10:16'),
 (24, 49, 'Poris Garden Blok C2 Nomor 6', 'Banten', 'Tangerang', 'Cipondoh', '15149', '081294831113', 2, NULL, NULL, '2017-10-10 04:26:03', '2017-10-10 04:26:03'),
-(25, 50, 'Poris Garden Blok C2 Nomor 6', 'Banten', 'Tangerang', 'Cipondoh', '15149', '081294831113', 4, NULL, NULL, '2017-10-10 04:27:47', '2017-10-10 04:27:47');
+(25, 50, 'Poris Garden Blok C2 Nomor 6', 'Banten', 'Tangerang', 'Cipondoh', '15149', '081294831113', 4, NULL, NULL, '2017-10-10 04:27:47', '2017-10-10 04:27:47'),
+(26, 51, 'Poris Garden Blok C2 Nomor 6', 'Banten', 'Tangerang', 'Cipondoh', '15149', '081294831113', 4, NULL, NULL, '2017-10-10 06:35:50', '2017-10-10 06:35:50'),
+(27, 52, 'Poris Garden Blok C2 Nomor 6', 'Banten', 'Tangerang', 'Cipondoh', '15149', '081294831113', 6, 'Pagar putih', NULL, '2017-10-10 07:02:09', '2017-10-10 07:02:09'),
+(28, 53, 'Poris Garden Blok C2 Nomor 6', 'Banten', 'Tangerang', 'Cipondoh', '15149', '081294831113', 4, NULL, NULL, '2017-10-11 05:50:24', '2017-10-11 05:50:24'),
+(29, 54, 'Poris Garden Blok C2 Nomor 6', 'Banten', 'Tangerang', 'Cipondoh', '15149', '081294831113', 6, NULL, NULL, '2017-10-11 14:51:22', '2017-10-11 14:51:22'),
+(30, 55, 'Poris Garden Blok C2 Nomor 6', 'Banten', 'Tangerang', 'Cipondoh', '15149', '081294831113', 4, NULL, NULL, '2017-10-11 15:34:41', '2017-10-11 15:34:41');
 
 -- --------------------------------------------------------
 
@@ -256,7 +256,7 @@ CREATE TABLE `transactions` (
   `user_id` int(10) UNSIGNED NOT NULL,
   `plan_id` int(10) UNSIGNED NOT NULL,
   `subscribe_duration` int(11) NOT NULL,
-  `price` int(11) NOT NULL,
+  `coffee_grind_size` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `bank_account` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `account_holder` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -272,24 +272,20 @@ CREATE TABLE `transactions` (
 -- Dumping data for table `transactions`
 --
 
-INSERT INTO `transactions` (`id`, `user_id`, `plan_id`, `subscribe_duration`, `price`, `status`, `bank_account`, `account_holder`, `account_number`, `time_bought`, `time_confirmed`, `time_approved`, `created_at`, `updated_at`) VALUES
-(30, 2, 1, 3, 20111, 'approved', '', '', '', '2017-10-03 23:47:05', '2017-10-04 00:26:23', '2017-10-04 00:27:21', '2017-10-03 16:47:05', '2017-10-03 17:27:21'),
-(32, 3, 3, 2, 42333, 'approved', '', '', '', '2017-10-06 09:57:41', '2017-10-06 09:57:53', '2017-10-06 09:58:31', '2017-10-06 02:57:41', '2017-10-06 02:58:31'),
-(33, 3, 2, 3, 31222, 'to be approved', '', '', '', '2017-10-06 10:00:53', '2017-10-06 10:00:59', NULL, '2017-10-06 03:00:53', '2017-10-06 03:00:59'),
-(34, 2, 1, 2, 20111, 'approved', '', '', '', '2017-10-06 10:19:43', '2017-10-06 10:19:45', '2017-10-06 10:20:31', '2017-10-06 03:19:43', '2017-10-06 03:20:31'),
-(35, 2, 1, 3, 20111, 'approved', '', '', '', '2017-10-06 10:23:19', '2017-10-06 10:23:21', '2017-10-06 10:24:22', '2017-10-06 03:23:19', '2017-10-06 03:24:22'),
-(36, 2, 2, 3, 31222, 'to be approved', '', '', '', '2017-10-07 00:10:10', '2017-10-07 00:11:51', NULL, '2017-10-06 17:10:10', '2017-10-06 17:11:51'),
-(37, 2, 1, 2, 20111, 'to be approved', '', '', '', '2017-10-08 00:06:24', '2017-10-09 21:54:18', NULL, '2017-10-07 17:06:24', '2017-10-09 14:54:18'),
-(39, 2, 2, 2, 31222, 'to be approved', '', '', '', '2017-10-08 14:14:17', '2017-10-09 21:54:12', NULL, '2017-10-08 07:14:17', '2017-10-09 14:54:12'),
-(40, 2, 1, 2, 20111, 'to be approved', '', '', '', '2017-10-08 14:23:29', '2017-10-09 21:23:50', NULL, '2017-10-08 07:23:29', '2017-10-09 14:23:50'),
-(41, 2, 2, 2, 31222, 'to be approved', 'BCA', 'Keny', '604930434', '2017-10-08 15:05:51', '2017-10-08 15:06:09', NULL, '2017-10-08 08:05:51', '2017-10-08 08:06:09'),
-(42, 4, 2, 2, 31222, 'approved', 'BCA', 'Sinaga', '6059034', '2017-10-08 17:42:02', '2017-10-08 17:43:28', '2017-10-08 17:47:03', '2017-10-08 10:42:02', '2017-10-08 10:47:03'),
-(43, 4, 1, 2, 20111, 'to be approved', 'BCA', 'Alvin Theodora', '124556', '2017-10-08 18:23:42', '2017-10-08 18:23:49', NULL, '2017-10-08 11:23:42', '2017-10-08 11:23:49'),
-(46, 2, 2, 3, 31222, 'to be approved', 'MANDIRI', 'SELI', '94833223', '2017-10-10 00:25:34', '2017-10-10 11:18:52', NULL, '2017-10-09 17:25:34', '2017-10-10 04:18:52'),
-(47, 2, 2, 3, 31222, 'to be approved', 'bca', 'kena', '34443433', '2017-10-10 00:26:04', '2017-10-10 10:55:05', NULL, '2017-10-09 17:26:04', '2017-10-10 03:55:05'),
-(48, 2, 2, 2, 31222, 'to be approved', 'BCA', 'KENT', '68940511', '2017-10-10 11:10:16', '2017-10-10 11:17:05', NULL, '2017-10-10 04:10:16', '2017-10-10 04:17:05'),
-(49, 2, 2, 1, 31222, 'to be approved', 'BNI', 'KENTSELI', '93484333', '2017-10-10 11:26:03', '2017-10-10 11:27:26', NULL, '2017-10-10 04:26:03', '2017-10-10 04:27:26'),
-(50, 2, 3, 2, 42333, 'to be approved', 'bca', 'sina', '343443', '2017-10-10 11:27:47', '2017-10-10 11:37:33', NULL, '2017-10-10 04:27:47', '2017-10-10 04:37:33');
+INSERT INTO `transactions` (`id`, `user_id`, `plan_id`, `subscribe_duration`, `coffee_grind_size`, `status`, `bank_account`, `account_holder`, `account_number`, `time_bought`, `time_confirmed`, `time_approved`, `created_at`, `updated_at`) VALUES
+(41, 2, 2, 2, '', 'to be approved', 'BCA', 'Keny', '604930434', '2017-10-08 15:05:51', '2017-10-08 15:06:09', NULL, '2017-10-08 08:05:51', '2017-10-08 08:06:09'),
+(42, 4, 2, 2, '', 'approved', 'BCA', 'Sinaga', '6059034', '2017-10-08 17:42:02', '2017-10-08 17:43:28', '2017-10-08 17:47:03', '2017-10-08 10:42:02', '2017-10-08 10:47:03'),
+(43, 4, 1, 2, '', 'to be approved', 'BCA', 'Alvin Theodora', '124556', '2017-10-08 18:23:42', '2017-10-08 18:23:49', NULL, '2017-10-08 11:23:42', '2017-10-08 11:23:49'),
+(46, 2, 2, 3, '', 'to be approved', 'MANDIRI', 'SELI', '94833223', '2017-10-10 00:25:34', '2017-10-10 11:18:52', NULL, '2017-10-09 17:25:34', '2017-10-10 04:18:52'),
+(47, 2, 2, 3, '', 'to be approved', 'bca', 'kena', '34443433', '2017-10-10 00:26:04', '2017-10-10 10:55:05', NULL, '2017-10-09 17:26:04', '2017-10-10 03:55:05'),
+(48, 2, 2, 2, '', 'to be approved', 'BCA', 'KENT', '68940511', '2017-10-10 11:10:16', '2017-10-10 11:17:05', NULL, '2017-10-10 04:10:16', '2017-10-10 04:17:05'),
+(49, 2, 2, 1, '', 'to be approved', 'BNI', 'KENTSELI', '93484333', '2017-10-10 11:26:03', '2017-10-10 11:27:26', NULL, '2017-10-10 04:26:03', '2017-10-10 04:27:26'),
+(50, 2, 3, 2, '', 'to be approved', 'bca', 'sina', '343443', '2017-10-10 11:27:47', '2017-10-10 11:37:33', NULL, '2017-10-10 04:27:47', '2017-10-10 04:37:33'),
+(51, 2, 2, 2, '', 'to be confirmed', NULL, NULL, NULL, '2017-10-10 13:35:50', NULL, NULL, '2017-10-10 06:35:50', '2017-10-10 06:35:50'),
+(52, 2, 2, 3, '', 'to be approved', '2309488', 'Kent', '30948', '2017-10-10 14:02:09', '2017-10-10 19:37:52', NULL, '2017-10-10 07:02:09', '2017-10-10 12:37:52'),
+(53, 2, 1, 2, 'coarse', 'to be confirmed', NULL, NULL, NULL, '2017-10-11 12:50:24', NULL, NULL, '2017-10-11 05:50:24', '2017-10-11 05:50:24'),
+(54, 2, 2, 3, 'coarse', 'to be confirmed', NULL, NULL, NULL, '2017-10-11 21:51:22', NULL, NULL, '2017-10-11 14:51:22', '2017-10-11 14:51:22'),
+(55, 2, 3, 2, 'fine', 'to be confirmed', NULL, NULL, NULL, '2017-10-11 22:34:40', NULL, NULL, '2017-10-11 15:34:40', '2017-10-11 15:34:40');
 
 -- --------------------------------------------------------
 
@@ -312,8 +308,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'a@a.com', '$2y$10$nDWXjff4.IV/OvciVBNXKenGJnTaCXrRhOjJdOEjbVO4hVeqTfj9y', 'TPV6V4pSG75zByH69acrXTwLyCmHdDf47yWdnW8WPSAYf6xw3kpZYPmATwCl', '2017-09-22 00:59:37', '2017-09-22 00:59:37'),
-(2, 'beta', 'b@b.com', '$2y$10$tN2bB0zaFu9kCNx4WxFLfeThBUxlztSXySugu4C1Qn4S7ztRJa5.m', 'SZCa8rKRHq1WxMR9B7syi9uwAB2CamruozudY2CUTRbePQ7bBLOGDm6dDg1B', '2017-09-22 02:10:06', '2017-09-29 09:24:15'),
+(1, 'admin', 'a@a.com', '$2y$10$nDWXjff4.IV/OvciVBNXKenGJnTaCXrRhOjJdOEjbVO4hVeqTfj9y', '8UCDVkWoEjtjocwjf4FcaRyudwS8RLlkSauCwHU6YKi3uBhjbV3jsMzvM9ez', '2017-09-22 00:59:37', '2017-09-22 00:59:37'),
+(2, 'beta', 'b@b.com', '$2y$10$tN2bB0zaFu9kCNx4WxFLfeThBUxlztSXySugu4C1Qn4S7ztRJa5.m', 'I0VuwDRzx7wq8GZnLKfGXSI0v6ubmSVta896SL6GRxWCJ8WsagQHKwwCwjAX', '2017-09-22 02:10:06', '2017-09-29 09:24:15'),
 (3, 'Charlie', 'c@c.com', '$2y$10$HCGZm28f1daVWEGfqsY6HeLNKnvD9D5CjOSg/p0F7SuZVo7gmT3zC', 'lEhzkwHvluqysDPlRJ7m6VHwMQdR8KCOklP2ttMgCbL8BC9vDwnw0yoKamUa', '2017-09-24 03:09:50', '2017-09-29 10:08:43'),
 (4, 'Delta', 'd@d.com', '$2y$10$fn9/BmNMTXGdUDzAo05qhecr1FdShP.S4TS3ofC3rPWUZwuKcVxRi', '4r7hm6ulrhP3LGK52L5Pzwpb9NBqRnyM0KxDoGpzhtKwFxgr4yW7FOgw90vc', '2017-10-08 10:38:58', '2017-10-08 10:38:58');
 
@@ -409,7 +405,7 @@ ALTER TABLE `addresses`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT for table `permissions`
 --
@@ -429,12 +425,12 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `shipments`
 --
 ALTER TABLE `shipments`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 --
 -- AUTO_INCREMENT for table `users`
 --
