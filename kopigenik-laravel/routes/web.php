@@ -21,7 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home_ori');
 
 //temporary view
 Route::get('/subscribe', 'TransactionController@index');
-Route::get('/ajaxPlan', 'TransactionController@ajaxPlan');
+//Route::get('/ajaxPlan', 'TransactionController@ajaxPlan');
+Route::get('/ajaxSubscribeDuration', 'TransactionController@ajaxSubscribeDuration');
 Route::post('/subscribe', 'TransactionController@store');
 Route::post('/remove-transaction/{transaction}', 'TransactionController@removeTransaction');
 

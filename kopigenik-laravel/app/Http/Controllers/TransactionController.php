@@ -11,7 +11,7 @@ use Carbon\Carbon;
 class TransactionController extends Controller
 {
 	public function __construct(){
-		$this->middleware('auth')->except(['index', 'ajaxPlan']);
+		$this->middleware('auth')->except(['index', 'ajaxPlan','ajaxSubscribeDuration']);
 	}
 
     //show subsribe page
@@ -29,11 +29,32 @@ class TransactionController extends Controller
     }
 
     //perform ajax everytime option value changes
-    public function ajaxPlan(){
+    /*public function ajaxPlan(){
         if($plan_price = (Plan::find(request('plan')))->price){
             return $plan_price;
         }
 
+        return '';
+    }*/
+
+    //fill both subscribe_duration and plan to retrieve ajax
+    public function ajaxSubscribeDuration(){
+        if(Plan::find(request('plan'))){
+            $plan_price = (Plan::find(request('plan')))->price;
+            $plan_weight = (Plan::find(request('plan')))->weight;
+        }
+        $subscribe_duration = request('subscribe_duration');
+
+        if($subscribe_duration == '1'){
+            return json_encode(['shipping_cost' => 9000*1*2, 'plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration]);
+        } 
+        elseif($subscribe_duration == '2'){
+            return json_encode(['shipping_cost' => 9000*2*2, 'plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration]);
+        } 
+        elseif($subscribe_duration == '3'){
+            return json_encode(['shipping_cost' => 9000*3*2, 'plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration]);
+        } 
+       
         return '';
     }
 
@@ -42,8 +63,9 @@ class TransactionController extends Controller
 
         //validate request
         $request->validate([
-            'select1' => 'required',
+            'coffee_consumption' => 'required',
             'subscribe_duration' => 'required|integer|between:1,3',
+            'coffee_grind_size' => 'required|integer|between:1,4',
 
             'name' => 'required',
             'address' => 'required',
@@ -54,24 +76,33 @@ class TransactionController extends Controller
             'phone' => 'required|numeric',
         ]);
       
-        //check option value exists in Plan id's
+        //set coffee_grind_size value
+        if(request('coffee_grind_size') == 1) $coffee_grind_size = 'whole';
+        elseif(request('coffee_grind_size') == 2) $coffee_grind_size = 'coarse';
+        elseif(request('coffee_grind_size') == 3) $coffee_grind_size = 'medium';
+        elseif(request('coffee_grind_size') == 4) $coffee_grind_size = 'fine';
+
+
         $plans_id = Plan::pluck('id');
 
-        if($plans_id->contains(request('select1'))){
-             $plan_selected = Plan::find(request('select1'));
+        //check plan's option id value exists in Plan id's
+        if($plans_id->contains(request('coffee_consumption'))){
+             $plan_selected = Plan::find(request('coffee_consumption'));
 
             //insert transaction
             $current_transaction = Transaction::create([
                 'user_id' => auth()->id(),
                 'plan_id' => $plan_selected->id,
                 'subscribe_duration' => request('subscribe_duration'),
-                'price' => $plan_selected->price + 9000,
+                'coffee_grind_size' => $coffee_grind_size,
                 'status' => 'to be confirmed',
                 'time_bought' => Carbon::now()                
             ]);
 
+            /*
             //fill pivot table
-            //$current_transaction->plan()->attach(request('select1'));
+            $current_transaction->plan()->attach(request('coffee_consumption'));
+            */
 
             //Shipment
             if(request('subscribe_duration') == 1){

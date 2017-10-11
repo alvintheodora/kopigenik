@@ -63,7 +63,7 @@
 		<p><span>Status: {{$shipment->transaction->status}}</span></p>
 		<p><span>Time bought: {{$shipment->transaction->time_bought}}</span></p>		
 		<p><span>Total shipment left: {{$shipment->total_shipment_left}}</span></p>
-		<p><span>Additional note: {{$shipment->additional_note}}</span></p>
+		<p><span>Additional note: {{$shipment->additional_note?$shipment->additional_note:'-'}}</span></p>
 
 		<br>
 
