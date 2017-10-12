@@ -59,15 +59,29 @@
 			</form>
 		</div>-->
 
+		<div class="row">
+			<div class="col-sm-4">
+				<h2>Shipment Detail</h2>
 
-		<p><span>Status: {{$shipment->transaction->status}}</span></p>
-		<p><span>Time bought: {{$shipment->transaction->time_bought}}</span></p>		
-		<p><span>Total shipment left: {{$shipment->total_shipment_left}}</span></p>
-		<p><span>Additional note: {{$shipment->additional_note?$shipment->additional_note:'-'}}</span></p>
+				<p><span>Status: {{$shipment->transaction->status}}</span></p>
+				<p><span>Time bought: {{$shipment->transaction->time_bought}}</span></p>		
+				<p><span>Total shipment left: {{$shipment->total_shipment_left}}</span></p>
+				<p><span>Additional note: {{$shipment->additional_note?$shipment->additional_note:'-'}}</span></p>
+			</div>
+			<div class="col-sm-8">
+				@if($shipment->transaction->status != 'to be confirmed')
+					<h2>Payment Detail</h2>
+					<p><span>Bank: {{$shipment->transaction->bank_account}}</span></p>
+					<p><span>Account holder: {{$shipment->transaction->account_holder}}</span></p>
+					<p><span>Account number: {{$shipment->transaction->account_number}}</span></p>
+				@endif
+			</div>
+		</div>		
+		
 
 		<br>
 
-		<h2>Payment Detail</h2>
+		<h2>Product Detail</h2>
 		<!--table-->
 		<div class="summary">
 			<h2>Transaction ID: {{$shipment->transaction->id}}</h2>
