@@ -12,8 +12,8 @@
 				<div class="col-lg-8">
 					<div class="form-group">
 						<label for="select1" class="subscribeQuestion">Berapa banyak kopi yang anda konsumsi dalam 2 minggu?</label>			
-						<select id="select1" name="select1" class="inputText">
-							<option value="0"></option>
+						<select id="select1" name="coffee_consumption" class="inputText">
+							<option value=""></option>
 							<option value="{{$plans[0]}}">6-7 gelas</option>
 							<option value="{{$plans[1]}}">8-16 gelas</option>
 							<option value="{{$plans[2]}}">>17 gelas</option>
@@ -38,18 +38,18 @@
 					</div>
 					<div class="form-group">
 						<label for="select4" class="subscribeQuestion">Apa tingkat kehalusan kopi yang biasa anda gunakan?</label>
-						<select id="select4" class="inputText">
-							<option value="0"></option>
-							<option value="a">Beans</option>
-							<option value="b">Coarse</option>
-							<option value="c">Medium</option>
-							<option value="d">Fine</option>
+						<select id="select4" name="coffee_grind_size" class="inputText">
+							<option value=""></option>
+							<option value="1">Beans</option>
+							<option value="2">Coarse</option>
+							<option value="3">Medium</option>
+							<option value="4">Fine</option>
 						</select>					
 					</div>
 					<div class="form-group">
 						<label for="select5" class="subscribeQuestion">Berapa lama durasi langganan yang anda inginkan?</label>
 						<select id="select5" name="subscribe_duration" class="inputText" >
-							<option value="0"></option>
+							<option value=""></option>
 							<option value="1">1 Bulan</option>
 							<option value="2">2 Bulan</option>
 							<option value="3">3 Bulan</option>
@@ -135,31 +135,31 @@
 
 				</div>
 
-				<div class="col-sm-4 col-sm-offset-2">
+				<div class="col-sm-5 col-sm-offset-1">
 					<div class="summary" id="orderSummary">
 						<h3>Ringkasan Pesanan</h3>
 						<div class="row">
 							<div class="col-xs-6">
-								<p>250 gram (125 gram per 2 minggu)</p>
+								<p id="plan_selected">Rencana berlangganan: -</p>
 							</div>
 							<div class="col-xs-6">
-								<p id="plan_selected">-</p>
+								<p id="plan_price">-</p>
 							</div>
 						</div>
-						<!--<div class="row">
+						<div class="row">
 							<div class="col-xs-6">
-								<p>Total (1 bulan)</p>
+								<p>Durasi langganan</p>
 							</div>
 							<div class="col-xs-6">
-								<p id="plan_selected_month">-</p>
+								<p id="subscribe_duration">-</p>
 							</div>
-						</div>-->
+						</div>
 						<div class="row">
 							<div class="col-xs-6">
 								<p>Ongkos kirim</p>
 							</div>
 							<div class="col-xs-6">
-								<p>Rp9.000</p>
+								<p id="shipping_cost">-</p>
 							</div>
 						</div>
 						<hr>
@@ -183,18 +183,48 @@
 	<!--ajax script-->
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$('#select1').change(function(){
+			/*$('#select1').change(function(){
 				$plan = $(this).val();
+
 				$.get('/ajaxPlan', {plan: $plan}, function(data){
 					$("#plan_selected").html('Rp' + data);
 					//$("#plan_selected_month").html((parseInt(data) * 2).toString());
-					$("#total_price").html('Rp' + (parseInt(data) + 9000).toString());
+					$("#total_price").html('Rp' + data);
 				})
 				.fail(function(){
 					$("#plan_selected").html('-');
 					//$("#plan_selected_month").html('-');
-					$("#total_price").html('-');
+					//$("#total_price").html('-');
 				});
+
+			});*/
+
+			//fill both subscribe_duration and plan to retrieve ajax
+			$('#select1,#select5').change(function(){
+				$subscribe_duration = $("#select5").val();
+				$plan = $('#select1').val();
+
+				$.ajax({
+				  method: "GET",
+				  url: "/ajaxSubscribeDuration",
+				  data: {plan: $plan, subscribe_duration: $subscribe_duration},
+				  dataType: "json"
+				})
+				.done(function(data){
+					$("#plan_selected").html('Rencana berlangganan: ' + data.plan_weight + 'gr (' + data.plan_weight/2 + ' gr per 2 minggu)');
+					$("#plan_price").html('Rp' + (data.plan_price*data.subscribe_duration) + '<span class="small"> untuk ' + data.subscribe_duration + ' bulan</span>');
+					$("#subscribe_duration").html(data.subscribe_duration + ' bulan');
+					$("#shipping_cost").html('Rp' + data.shipping_cost + '<span class="small"> untuk ' + data.subscribe_duration*2 + ' kali pengiriman</span>');
+					$("#total_price").html('Rp' + (parseInt(data.plan_price) * data.subscribe_duration + parseInt(data.shipping_cost)))
+				})
+				.fail(function(data){
+					$("#plan_selected").html('Rencana berlangganan: -');
+					$("#plan_price").html('-');
+					$("#subscribe_duration").html('-');
+					$("#shipping_cost").html('-');
+					$("#total_price").html('-')
+				});
+
 			});
 		});
 	</script>
