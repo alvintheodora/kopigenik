@@ -28,12 +28,12 @@
 						@if($shipment->transaction->status=="to be confirmed")
 							<a class="btn btn-primary" style="margin-left: 10px;" href="/payment-confirmation/{{$shipment->transaction->id}}">Show payment confirmation detail</a>
 
-							<button class="btn btn-danger" style="margin-left: 10px;" type="button" data-toggle="modal" data-target="#removeModal">Remove</button>
+							<button class="btn btn-danger" style="margin-left: 10px;" type="button" data-toggle="modal" data-target="#removeModal{{$shipment->transaction->id}}">Remove</button>
 
 							<!-- Modal -->
 							<form action="\remove-transaction\{{$shipment->transaction->id}}" method="POST">
 								{{csrf_field()}}
-								<div class="modal fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+								<div class="modal fade" id="removeModal{{$shipment->transaction->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 								  <div class="modal-dialog" role="document">
 								    <div class="modal-content">
 								      <div class="modal-header">
