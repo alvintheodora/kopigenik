@@ -42,6 +42,20 @@
 					        <h4 class="modal-title" id="confirmModalLabel">Payment Information</h4>
 					      </div>
 					      <div class="modal-body">
+					      	@isset($payment)
+					      	<div class="form-group">
+								<label for="bank_account">Bank</label>
+								<input class="form-control text-center" type="text" name="bank_account" value="{{$payment->bank_account}}">
+							</div>
+					        <div class="form-group">
+								<label for="account_holder">Account Holder</label>
+								<input class="form-control text-center" type="text" name="account_holder" value="{{$payment->account_holder}}">
+							</div>
+							<div class="form-group">
+								<label for="account_number">Account Number</label>
+								<input class="form-control text-center" type="text" name="account_number" value="{{$payment->account_number}}">
+							</div>
+					      	@else
 					      	<div class="form-group">
 								<label for="bank_account">Bank</label>
 								<input class="form-control text-center" type="text" name="bank_account">
@@ -54,6 +68,7 @@
 								<label for="account_number">Account Number</label>
 								<input class="form-control text-center" type="text" name="account_number">
 							</div>
+							@endisset
 					      </div>
 					      <div class="modal-footer">
 					        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
