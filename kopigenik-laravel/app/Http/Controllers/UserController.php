@@ -12,12 +12,20 @@ class UserController extends Controller
 
     public function index(){
     	$address = auth()->user()->address;
-
+        $payment = auth()->user()->payment;
     	//if there is address, show data
-    	if($address != null){
-    		return view('profile',compact('address'));
+    	if($address != null && $payment != null){
+    		return view('profile',compact(['address','payment']));
     	}
-    	return view('profile');
+        else if($payment == null){
+            return view('profile',compact('address'));
+        }
+        else if($address == null){
+
+            return view('profile',compact('payment'));
+        }
+
+        return view('profile');
     }
 
     //edit existing user data

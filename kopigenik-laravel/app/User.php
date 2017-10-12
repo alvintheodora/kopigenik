@@ -33,6 +33,11 @@ class User extends Authenticatable
         return $this->hasMany(Transaction::class);
     }
 
+    public function payment(){
+        return $this->hasOne(Payment::class);
+    }
+
+
     public function address(){
         return $this->hasOne(Address::class);
     }

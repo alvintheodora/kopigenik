@@ -35,7 +35,7 @@
 					<button class="btn btn-lg btn-success btn-block">Change my profile data</button>
 				</form>
 			</div>
-			<div class="col-sm-6">
+			<div class="col-sm-3">
 				<h3>Address</h3>
 				@isset($address)
 					<label for="address" class="">Address</label>
@@ -82,6 +82,39 @@
 					</div>
 
 					<button class="btn btn-lg btn-success btn-block">Change my address</button>
+				</form>
+				
+			</div>
+			<div class="col-sm-3">
+				<h3>Akun Bank</h3>
+				@isset($payment)
+					<label for="payment" class="">Bank</label>
+					<p>{{$payment->bank_account}}</p>
+					<label for="province" class="">Nama Pemilik Rekening</label>
+					<p>{{$payment->account_holder}}</p>
+					<label for="city" class="">Nomor Rekening</label>
+					<p>{{$payment->account_number}}</p>
+					
+				@endisset
+
+				<hr>
+
+				<form action="\profile\payment" method="POST">
+					{{csrf_field()}}
+					<div class="form-group">
+						<label for="address" class="">Bank</label>
+						<input class="form-control" type="text" name="bank_account">
+					</div>
+					<div class="form-group">
+						<label for="province" class="">Nama Pemilik Rekening</label>
+						<input class="form-control" type="text" name="account_holder">
+					</div>
+					<div class="form-group">
+						<label for="city" class="">Nomor Rekening</label>
+						<input class="form-control" type="text" name="account_number">
+					</div>
+
+					<button class="btn btn-lg btn-success btn-block">Change my Bank Account</button>
 				</form>
 				
 			</div>

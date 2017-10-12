@@ -52,6 +52,7 @@ Route::group(['middleware' => 'role:admin'], function(){
 Route::get('/profile', 'UserController@index');
 Route::post('/profile', 'UserController@edit');
 Route::post('/profile/address', 'AddressController@store');
+Route::post('/profile/payment', 'PaymentController@store');
 
 Route::get('/beans', function () {
     return view('beans');
