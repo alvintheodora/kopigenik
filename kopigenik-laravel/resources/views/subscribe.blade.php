@@ -14,26 +14,9 @@
 						<label for="select1" class="subscribeQuestion">Berapa banyak kopi yang anda konsumsi dalam 2 minggu?</label>			
 						<select id="select1" name="coffee_consumption" class="inputText">
 							<option value=""></option>
-							<option value="{{$plans[0]}}">6-7 gelas</option>
-							<option value="{{$plans[1]}}">8-16 gelas</option>
-							<option value="{{$plans[2]}}">>17 gelas</option>
-						</select>							
-					</div>
-					<div class="form-group">
-						<label for="select2" class="subscribeQuestion">Apakah anda memiliki grinder?</label>			
-						<select id="select2" class="inputText">
-							<option value="0"></option>
-							<option value="a">Ya</option>
-							<option value="b">Tidak</option>
-						</select>							
-					</div>
-					<div class="form-group">
-						<label for="select3" class="subscribeQuestion">Metode apa yang biasa anda gunakan untuk menyeduh kopi?</label>			
-						<select id="select3" class="inputText">
-							<option value="0"></option>
-							<option value="a">Tubruk / Turkish</option>
-							<option value="b">V60</option>
-							<option value="c">French Press / Aero Press</option>
+							<option value="{{$plans[0]}}">100 gram (6-7 gelas)</option>
+							<option value="{{$plans[1]}}">250 gram (8-16 gelas) </option>
+							<option value="{{$plans[2]}}">500 gram (>17 gelas)</option>
 						</select>							
 					</div>
 					<div class="form-group">
@@ -154,6 +137,15 @@
 								<p id="subscribe_duration">-</p>
 							</div>
 						</div>
+						<hr>
+						<div class="row">
+							<div class="col-xs-6">
+								<p>Sub Total</p>
+							</div>
+							<div class="col-xs-6">
+								<p id="sub_total">-</p>
+							</div>
+						</div>
 						<div class="row">
 							<div class="col-xs-6">
 								<p>Ongkos kirim</p>
@@ -211,9 +203,11 @@
 				  dataType: "json"
 				})
 				.done(function(data){
-					$("#plan_selected").html('Rencana berlangganan: ' + data.plan_weight + 'gr (' + data.plan_weight/2 + ' gr per 2 minggu)');
-					$("#plan_price").html('Rp' + (data.plan_price*data.subscribe_duration) + '<span class="small"> untuk ' + data.subscribe_duration + ' bulan</span>');
+					$("#plan_selected").html('Rencana berlangganan: ' + data.plan_weight + 'gr (' + data.plan_weight + ' gr per 2 minggu)');
+					$("#plan_price").html('Rp' + (data.plan_price) + '<span class="small"> untuk 1 bulan');
 					$("#subscribe_duration").html(data.subscribe_duration + ' bulan');
+					$("#sub_total").html('Rp' + (data.subscribe_duration * data.plan_price));
+
 					$("#shipping_cost").html('Rp' + data.shipping_cost + '<span class="small"> untuk ' + data.subscribe_duration*2 + ' kali pengiriman</span>');
 					$("#total_price").html('Rp' + (parseInt(data.plan_price) * data.subscribe_duration + parseInt(data.shipping_cost)))
 				})
@@ -221,6 +215,7 @@
 					$("#plan_selected").html('Rencana berlangganan: -');
 					$("#plan_price").html('-');
 					$("#subscribe_duration").html('-');
+					$("#sub_total").html('-');
 					$("#shipping_cost").html('-');
 					$("#total_price").html('-')
 				});
