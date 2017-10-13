@@ -183,11 +183,11 @@ class TransactionController extends Controller
     		return redirect('/')
     			->withErrors(['message' => 'Sorry, you cannot access that page']);
     	}
-
+        $payment=auth()->user()->payment;
         //set 2 day confirmation time
         $time_confirmed_max = Carbon::parse($transaction->time_bought)->addDay(2)->format('j M Y, H:i:s');
 
-    	return view('payment-confirmation',compact('transaction','time_confirmed_max'));
+    	return view('payment-confirmation',compact('transaction','time_confirmed_max', 'payment'));
     }
 
     //perform payment confirmation process
