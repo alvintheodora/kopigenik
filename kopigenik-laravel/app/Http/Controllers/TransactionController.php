@@ -10,9 +10,9 @@ use Carbon\Carbon;
 
 class TransactionController extends Controller
 {
-	public function __construct(){
-		$this->middleware('auth')->except(['index', 'ajaxPlan','ajaxSubscribeDuration']);
-	}
+    public function __construct(){
+        $this->middleware('auth')->except(['index', 'ajaxPlan','ajaxSubscribeDuration']);
+    }
 
     //show subsribe page
     public function index(){
@@ -22,7 +22,7 @@ class TransactionController extends Controller
         //pass address if logged in
         if(isset(auth()->user()->address)){
             $address = auth()->user()->address;
-    	   return view('subscribe',compact(['plans','address']));
+           return view('subscribe',compact(['plans','address']));
         }
 
         return view('subscribe',compact('plans'));
@@ -170,24 +170,24 @@ class TransactionController extends Controller
     public function indexConfirm(){
 
         //list user's transaction and the status
-    	$transactions = Transaction::where('user_id',auth()->id())->orderBy('id','desc')->get();
-    	return view('payment-confirmation-index',compact('transactions'));
+        $transactions = Transaction::where('user_id',auth()->id())->orderBy('id','desc')->get();
+        return view('payment-confirmation-index',compact('transactions'));
     }
     */
 
     //show payment confirmation page
     public function showConfirm(Transaction $transaction){
 
-    	//check if it's incorrect user , if yes, then fail
-    	if($transaction->user_id != auth()->id()){
-    		return redirect('/')
-    			->withErrors(['message' => 'Sorry, you cannot access that page']);
-    	}
+        //check if it's incorrect user , if yes, then fail
+        if($transaction->user_id != auth()->id()){
+            return redirect('/')
+                ->withErrors(['message' => 'Sorry, you cannot access that page']);
+        }
         $payment=auth()->user()->payment;
         //set 2 day confirmation time
         $time_confirmed_max = Carbon::parse($transaction->time_bought)->addDay(2)->format('j M Y, H:i:s');
 
-    	return view('payment-confirmation',compact('transaction','time_confirmed_max', 'payment'));
+        return view('payment-confirmation',compact('transaction','time_confirmed_max', 'payment'));
     }
 
     //perform payment confirmation process

@@ -30,7 +30,8 @@ class ShipmentController extends Controller
             }elseif($shipment->transaction->user->id == auth()->id() && $shipment->transaction->status == 'approved' && $shipment->total_shipment_left == 0){
                 $shipments_user_finished->push($shipment);
             }
-        }
+        }     
+
 
         return view('check-shipment',compact(['shipments_user','shipments_user_tb','shipments_user_finished']));
     }
@@ -47,6 +48,44 @@ class ShipmentController extends Controller
         return back()
             ->withErrors(['message' => 'This shipment cannot be edited by you, please contact admin']);
     }
+
+
+    public function ajaxOnProgressDataTable(){
+        $shipments_on_progress = Shipment::with('transaction','transaction.user','transaction.plan')
+        ->whereHas('transaction', function ($query) {
+            $query->where('user_id', auth()->id());
+            $query->where('status','approved');            
+        })
+        ->where('total_shipment_left','>',0)
+        ->get();
+
+        return json_encode($shipments_on_progress);
+    }
+
+    public function ajaxOnHoldDataTable(){
+        $shipments_on_hold = Shipment::with('transaction','transaction.user','transaction.plan')
+        ->whereHas('transaction', function ($query) {
+            $query->where('user_id', auth()->id());
+            $query->where('status','!=','approved');            
+        })->get();
+
+        return json_encode($shipments_on_hold);
+    }
+
+    public function ajaxOnFinishedDataTable(){
+        $shipments_on_finished = Shipment::with('transaction','transaction.user','transaction.plan')
+        ->whereHas('transaction', function ($query) {
+            $query->where('user_id', auth()->id());
+            $query->where('status','approved');            
+        })
+        ->where('total_shipment_left',0)
+        ->get();
+
+        return json_encode($shipments_on_finished);
+    }
+
+    
+
 
     //ADMIN
 

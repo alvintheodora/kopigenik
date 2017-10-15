@@ -23,6 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home_ori');
 Route::get('/subscribe', 'TransactionController@index');
 //Route::get('/ajaxPlan', 'TransactionController@ajaxPlan');
 Route::get('/ajaxSubscribeDuration', 'TransactionController@ajaxSubscribeDuration');
+
 Route::post('/subscribe', 'TransactionController@store');
 Route::post('/remove-transaction/{transaction}', 'TransactionController@removeTransaction');
 
@@ -34,6 +35,11 @@ Route::post('/payment-confirmation/{transaction}', 'TransactionController@storeC
 Route::get('/check-shipments', 'ShipmentController@index');
 Route::get('/check-shipments/{shipment}', 'ShipmentController@show');
 Route::post('/edit-shipment/{shipment}', 'ShipmentController@editDeliveryData');
+
+Route::get('/ajaxOnProgressDataTable', 'ShipmentController@ajaxOnProgressDataTable');
+Route::get('/ajaxOnHoldDataTable', 'ShipmentController@ajaxOnHoldDataTable');
+Route::get('/ajaxOnFinishedDataTable', 'ShipmentController@ajaxOnFinishedDataTable');
+
 
 
 /*
