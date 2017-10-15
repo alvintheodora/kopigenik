@@ -118,7 +118,7 @@
    				{
    					data: null,
    					render: function ( data, type, row, meta ) {
-   						return '<a class="btn btn-primary" href="/check-shipments/' + row.id + '">Show detail</a>';
+   						return '<a class="btn btn-primary" style="margin: 10px;" href="/check-shipments/' + row.id + '">Show detail</a>';
 				    }
    				}	
    			]
@@ -142,10 +142,10 @@
    					data: ['id', 'transaction.id', 'transaction.status'], 
    					render: function ( data, type, row, meta ) {
    						return row.transaction.status=='to be confirmed'?   					
-				      	'<a class="btn btn-primary" href="/check-shipments/' + row.id + '">Show detail</a>' +
-				      	'<a class="btn btn-success" style="margin-left: 10px;" href="/payment-confirmation/' + row.transaction.id + '">Show payment confirmation detail</a>' +
-				      	'<button class="btn btn-danger" style="margin-left: 10px;" type="button" data-toggle="modal" data-target="#removeModal" onClick="appendActionInRemoveForm(' + row.transaction.id + ')">Remove</button>':
-				      	'<a class="btn btn-primary" href="/check-shipments/' + row.id + '">Show detail</a>';
+				      	'<a class="btn btn-primary" style="margin: 10px;" href="/check-shipments/' + row.id + '">Show detail</a>' +
+				      	'<a class="btn btn-success" style="margin: 10px;" href="/payment-confirmation/' + row.transaction.id + '">Show payment confirmation detail</a>' +
+				      	'<button class="btn btn-danger" style="margin: 10px;" type="button" data-toggle="modal" data-target="#removeModal" onClick="appendActionInRemoveForm(' + row.transaction.id + ')">Remove</button>':
+				      	'<a class="btn btn-primary" style="margin: 10px;" href="/check-shipments/' + row.id + '">Show detail</a>';
 				    }
    				}   				
    			]
@@ -166,7 +166,7 @@
    				{
    					data: null,
    					render: function ( data, type, row, meta ) {
-   						return '<a class="btn btn-primary" href="/check-shipments/' + row.id + '">Show detail</a>';
+   						return '<a class="btn btn-primary" style="margin: 10px;" href="/check-shipments/' + row.id + '">Show detail</a>';
 				    }
    				}	
    			]
