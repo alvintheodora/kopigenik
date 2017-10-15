@@ -12,7 +12,7 @@
 			<!--DataTable on progress-->
 			<div style="width: 100%">
 				<div class="table-responsive">
-					<table id="table_on_progress" class="display table-bordered" width="100%">
+					<table id="table_on_progress" class="table-bordered" width="100%">
 					    <thead>
 					        <tr>
 					            <th>ID</th>
@@ -33,7 +33,7 @@
 			<!--DataTable on hold-->
 			<div style="width: 100%">
 				<div class="table-responsive">
-					<table id="table_on_hold" class="display table-bordered" width="100%">
+					<table id="table_on_hold" class="table-bordered" width="100%">
 					    <thead>
 					        <tr>
 					            <th>ID</th>
@@ -54,7 +54,7 @@
 			<!--DataTable on_finished-->
 			<div style="width: 100%">
 				<div class="table-responsive">
-					<table id="table_on_finished" class="display table-bordered" width="100%">
+					<table id="table_on_finished" class="table-bordered" width="100%">
 					    <thead>
 					        <tr>
 					            <th>ID</th>
