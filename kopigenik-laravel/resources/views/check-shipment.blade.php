@@ -3,6 +3,24 @@
 @section('title','Check Shipment')
 
 @section('content')
+
+	<style type="text/css">
+		@media screen and (max-width: 700px) {
+		  table.stack thead {
+		    display: none; }
+		  table.stack tfoot {
+		    display: none; }
+		  table.stack tr,
+		  table.stack th,
+		  table.stack td {
+		    display: block; }
+		  table.stack td {
+		    border-top: 0 !important; } 
+		  table.stack tr {
+		    border-top: 1px solid #ddd; } 
+		}
+	</style>
+
 	<!--body-->
 	<div class="container-fluid">
 		<h1 class="text-center">My Subscriptions</h1>
@@ -12,7 +30,7 @@
 			<!--DataTable on progress-->
 			<div style="width: 100%">
 				<div class="table-responsive">
-					<table id="table_on_progress" class="table-bordered" width="100%">
+					<table id="table_on_progress" class="stack cell-border" width="100%">
 					    <thead>
 					        <tr>
 					            <th>ID</th>
@@ -33,7 +51,7 @@
 			<!--DataTable on hold-->
 			<div style="width: 100%">
 				<div class="table-responsive">
-					<table id="table_on_hold" class="table-bordered" width="100%">
+					<table id="table_on_hold" class="stack cell-border" width="100%">
 					    <thead>
 					        <tr>
 					            <th>ID</th>
@@ -54,7 +72,7 @@
 			<!--DataTable on_finished-->
 			<div style="width: 100%">
 				<div class="table-responsive">
-					<table id="table_on_finished" class="table-bordered" width="100%">
+					<table id="table_on_finished" class="stack cell-border" width="100%">
 					    <thead>
 					        <tr>
 					            <th>ID</th>
@@ -82,7 +100,7 @@
 			      </div>
 			      <div class="modal-footer">
 			        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>								        
-		        	<button type="submit" class="btn btn-danger">Yes</button>
+		        	<button id="removeButton" type="submit" class="btn btn-danger">Yes</button>
 			      </div>
 			    </div>
 			  </div>
@@ -101,6 +119,7 @@
 		//DataTable on_progress
     	$('#table_on_progress').DataTable({    		 
     		processing: true,
+    		order:[[ 0, "desc" ]],
     		ajax: {
 		        url: '/ajaxOnProgressDataTable',
 		        dataSrc: ''
@@ -129,6 +148,7 @@
 		//DataTable on_hold
     	$('#table_on_hold').DataTable({    		 
     		processing: true,
+    		order:[[ 0, "desc" ]],
     		ajax: {
 		        url: '/ajaxOnHoldDataTable',
 		        dataSrc: ''
@@ -155,6 +175,7 @@
     	//DataTable on_finished
     	$('#table_on_finished').DataTable({    		 
     		processing: true,
+    		order:[[ 0, "desc" ]],
     		ajax: {
 		        url: '/ajaxOnFinishedDataTable',
 		        dataSrc: ''
@@ -171,6 +192,11 @@
    				}	
    			]
     	});
+
+    	//disable remove button after submit
+    	$("#removeForm").submit(function(){
+				$("#removeButton").attr('disabled','disabled');
+			});
 
 	});
 

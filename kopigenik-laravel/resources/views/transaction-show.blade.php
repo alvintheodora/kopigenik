@@ -20,10 +20,22 @@
 		<p><span>Status: {{$transaction->status}}</span></p>
 
 		@if($transaction->status == 'to be approved')
-			<form action="\transactions\{{$transaction->id}}" method="POST">
+			<form id="approvePaymentForm" action="\transactions\{{$transaction->id}}" method="POST">
 				{{csrf_field()}}
-					<button class="btn btn-lg btn-success btn-block" type="submit">Approve</button>	
+					<button id="approvePaymentButton" class="btn btn-lg btn-success btn-block" type="submit">Approve</button>	
 			</form>		
 		@endif
 	</div>
+
+
+	<script type="text/javascript">
+		
+		$(document).ready(function(){
+			$("#approvePaymentForm").submit(function(){
+				$("#approvePaymentButton").attr('disabled','disabled');
+			});
+		});		
+
+	</script>
+
 @endsection

@@ -49,6 +49,10 @@ Route::group(['middleware' => 'role:admin'], function(){
 	Route::get('/transactions', 'TransactionController@indexTransaction');
 	Route::get('/transactions/{transaction}', 'TransactionController@showTransaction');
 	Route::post('/transactions/{transaction}', 'TransactionController@approveTransaction');
+	Route::get('/ajaxTbaDataTable', 'TransactionController@ajaxTbaDataTable');
+	Route::get('/ajaxTbcDataTable', 'TransactionController@ajaxTbcDataTable');
+	Route::get('/ajaxApprovedDataTable', 'TransactionController@ajaxApprovedDataTable');
+	
 
 	Route::get('/shipments', 'ShipmentController@indexByAdmin');
 	Route::get('/shipments/{shipment}', 'ShipmentController@showByAdmin');

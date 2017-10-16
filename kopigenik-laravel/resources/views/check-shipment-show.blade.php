@@ -5,79 +5,44 @@
 @section('content')
 	<!--body-->
 	<div class="container-fluid">	
-		<h2 class="text-center">Subscription Detail</h2>	
-		<!--
-		<h2>Transaction ID: {{$shipment->transaction->id}}</h2>
-		<p><span>Plan: {{$shipment->transaction->plan->name}}</span></p>
-		<p><span>Price: {{$shipment->transaction->price}}</span></p>
-		<p><span>Subscribe duration: {{$shipment->transaction->subscribe_duration}} months</span></p>
-		<p><span>Time bought: {{$shipment->transaction->time_bought}}</span></p>
-		<p><span>Total shipment left: {{$shipment->total_shipment_left}}</span></p>
-		<p><span>Address: {{$shipment->address . ', ' . $shipment->district . ', ' . $shipment->city . ', ' . $shipment->province . ', ' . $shipment->zipcode}}</span></p>
-		<p><span>Phone number: {{$shipment->phone}}</span></p>
-		<p><span>Additional Note: {{$shipment->additional_note}}</span></p>
-		<br>
-		<p><span>If you want to change delivery data, please contact admin</span></p>
-		-->
-
-		<!--<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#edit-delivery-data-collapse" aria-expanded="false" aria-controls="edit-delivery-data-collapse">
-		  Edit Delivery Data
-		</button>
-		<div class="collapse" id="edit-delivery-data-collapse">
-		  	<form action="\edit-shipment\{{$shipment->id}}" method="POST">
-				{{csrf_field()}}
-				<div class="form-group">
-					<label for="address" class="">Address</label>
-					<input class="form-control" type="text" name="address">
-				</div>
-				<div class="form-group">
-					<label for="province" class="">Province</label>
-					<input class="form-control" type="text" name="province">
-				</div>
-				<div class="form-group">
-					<label for="city" class="">City</label>
-					<input class="form-control" type="text" name="city">
-				</div>
-				<div class="form-group">
-					<label for="district" class="">District</label>
-					<input class="form-control" type="text" name="district">
-				</div>
-				<div class="form-group">
-					<label for="zipcode" class="">Zipcode</label>
-					<input class="form-control" type="text" name="zipcode">
-				</div>
-				<div class="form-group">
-					<label for="phone" class="">Phone Number</label>
-					<input class="form-control" type="text" name="phone">
-				</div>
-				<div class="form-group">
-					<label for="additional_note" class="">Additional Note</label>
-					<textarea class="form-control" name="additional_note"></textarea>
-				</div>
-
-				<button class="btn btn-lg btn-success btn-block" type="submit">Confirm changes</button>
-			</form>
-		</div>-->
+		<h2 class="text-center">Subscription Detail</h2>			
 
 		<div class="row">
 			<div class="col-sm-4">
 				<h2>Shipment Detail</h2>
-
-				<p><span>Status: {{$shipment->transaction->status}}</span></p>
-				<p><span>Time bought: {{$shipment->transaction->time_bought}}</span></p>		
-				<p><span>Total shipment left: {{$shipment->total_shipment_left}}</span></p>
-				<p><span>Additional note: {{$shipment->additional_note?$shipment->additional_note:'-'}}</span></p>
+				<div class="row">
+					<div class="col-xs-6">
+						<p>Status:</p>
+						<p>Time bought:</p>
+						<p>Total shipment left:</p>
+						<p>Additional note:</p>
+					</div>
+					<div class="col-xs-6">
+						<p>{{$shipment->transaction->status}}</p>
+						<p>{{$shipment->transaction->time_bought}}</p>
+						<p>{{$shipment->total_shipment_left}}</p>
+						<p>{{$shipment->additional_note?$shipment->additional_note:'-'}}</p>
+					</div>
+				</div>								
 			</div>
-			<div class="col-sm-8">
+			<div class="col-sm-4">
 				@if($shipment->transaction->status != 'to be confirmed')
 					<h2>Payment Detail</h2>
-					<p><span>Bank: {{$shipment->transaction->bank_account}}</span></p>
-					<p><span>Account holder: {{$shipment->transaction->account_holder}}</span></p>
-					<p><span>Account number: {{$shipment->transaction->account_number}}</span></p>
+					<div class="row">
+						<div class="col-xs-6">
+							<p>Bank:</p>
+							<p>Account holder:</p>
+							<p>Account number:</p>					
+						</div>
+						<div class="col-xs-6">
+							<p>{{$shipment->transaction->bank_account}}</p>
+							<p>{{$shipment->transaction->account_holder}}</p>
+							<p>{{$shipment->transaction->account_number}}</p>		
+						</div>
+					</div>					
 				@endif
 			</div>
-		</div>		
-		
+		</div>				
 
 		<br>
 

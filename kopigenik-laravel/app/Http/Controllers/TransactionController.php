@@ -7,6 +7,8 @@ use App\Transaction;
 use App\Plan;
 use App\Shipment;
 use Carbon\Carbon;
+use App\Mail\Subscribe;
+use App\Mail\Approve;
 
 class TransactionController extends Controller
 {
@@ -143,6 +145,9 @@ class TransactionController extends Controller
                 ]);
             }
 
+            //send subscribed email
+            \Mail::to(auth()->user())->queue(new Subscribe(auth()->user(), $current_transaction));
+
             //redirect to its confirmation
             return redirect('/payment-confirmation/' . $current_transaction->id);
         }
@@ -240,9 +245,37 @@ class TransactionController extends Controller
             $transaction->time_approved = Carbon::now();           
 
             $transaction->save();
+
+            //send subscribed email
+            \Mail::to(auth()->user())->queue(new Approve($transaction->user, $transaction));
+
             return redirect('/transactions');
         }
 
         return back()->withErrors(['message' => 'Please choose valid transaction']);
     }
+
+
+    public function ajaxTbaDataTable(){
+        $transactions_tba = Transaction::with('user')
+        ->where('status','to be approved')->get();
+
+        return json_encode($transactions_tba);
+    }
+
+    public function ajaxTbcDataTable(){
+        $transactions_tbc = Transaction::with('user')
+        ->where('status','to be confirmed')->get();
+        
+        return json_encode($transactions_tbc);
+    }
+
+    public function ajaxApprovedDataTable(){
+        $transactions_approved = Transaction::with('user')
+        ->where('status','approved')->get();
+        
+        return json_encode($transactions_approved);
+    }
+
+
 }

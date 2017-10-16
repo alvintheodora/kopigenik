@@ -6,7 +6,7 @@
 	<div class="container-fluid">
 		<h2 class="text-center">Subscribe</h2>
 
-		<form action="\subscribe" method="POST">
+		<form id="subscribeForm" action="\subscribe" method="POST">
 			{{csrf_field()}}
 			<div class="row">
 				<div class="col-lg-8">
@@ -164,13 +164,14 @@
 							</div>
 						</div>	
 
-						<button type="submit" class="btn btn-lg btn-success btn-block">Buy</button>			
+						<button id="buyButton" type="submit" class="btn btn-lg btn-success btn-block">Buy</button>			
 					</div>
 				</div>
 			</div>		
 
 		</form>
 	</div>
+
 
 	<!--ajax script-->
 	<script type="text/javascript">
@@ -221,6 +222,12 @@
 				});
 
 			});
+
+			
+			$("#subscribeForm").submit(function(){
+				$("#buyButton").attr('disabled','disabled');
+			});
+
 		});
 	</script>
 @endsection
