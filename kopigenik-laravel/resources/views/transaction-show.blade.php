@@ -27,15 +27,4 @@
 		@endif
 	</div>
 
-
-	<script type="text/javascript">
-		
-		$(document).ready(function(){
-			$("#approvePaymentForm").submit(function(){
-				$("#approvePaymentButton").attr('disabled','disabled');
-			});
-		});		
-
-	</script>
-
 @endsection

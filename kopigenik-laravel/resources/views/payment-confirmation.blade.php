@@ -90,13 +90,4 @@
 
 	</div>
 
-	<script type="text/javascript">
-		
-		$(document).ready(function(){
-			$("#confirmPaymentForm").submit(function(){
-				$("#confirmPaymentButton").attr('disabled','disabled');
-			});
-		});		
-
-	</script>
 @endsection

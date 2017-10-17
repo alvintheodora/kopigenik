@@ -191,12 +191,7 @@
 				    }
    				}	
    			]
-    	});
-
-    	//disable remove button after submit
-    	$("#removeForm").submit(function(){
-				$("#removeButton").attr('disabled','disabled');
-			});
+    	});    	
 
 	});
 

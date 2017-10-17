@@ -221,12 +221,7 @@
 					$("#total_price").html('-')
 				});
 
-			});
-
-			
-			$("#subscribeForm").submit(function(){
-				$("#buyButton").attr('disabled','disabled');
-			});
+			});			
 
 		});
 	</script>
