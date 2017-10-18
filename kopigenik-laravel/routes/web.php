@@ -79,3 +79,8 @@ Route::get('/faq', function () {
 Route::get('/blog', function () {
     return view('blog');
 });
+
+Route::get('/contact-us', function () {
+    return view('contact-us');
+});
+Route::post('/contact-us', 'MessageController@store');
