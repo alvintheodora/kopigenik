@@ -35,7 +35,7 @@
 						</div>
 						<div class="form-group">
 							<label for="subject" class="">Subject</label>
-							<input class="form-control" type="text" name="subject" placeholder="Product / Delivery System / etc">
+							<input class="form-control" type="text" name="subject" placeholder="Product / Delivery System / Partnership / etc">
 						</div>
 						<div class="form-group">
 							<label for="message" class="">Message</label>
