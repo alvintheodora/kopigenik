@@ -4,22 +4,23 @@
 
 @section('content')
 
-	<style type="text/css">
-		@media screen and (max-width: 700px) {
-		  table.stack thead {
-		    display: none; }
-		  table.stack tfoot {
-		    display: none; }
-		  table.stack tr,
-		  table.stack th,
-		  table.stack td {
-		    display: block; }
-		  table.stack td {
-		    border-top: 0 !important; } 
-		  table.stack tr {
-		    border-top: 1px solid #ddd; } 
+<!-- responsive table css-->
+<!--<style type="text/css">
+	@media screen and (max-width: 600px) {
+		table {width:100%;}
+		thead {display: none;}
+		tr:nth-of-type(2n) {background-color: inherit;}
+		tr td:first-child {background: #f0f0f0; font-weight:bold;font-size:1.3em;}
+		tbody td {display: block;  text-align:center;}
+		tbody td:before { 
+		    content: attr(data-th); 
+		    display: block;
+		    text-align:center;  
 		}
-	</style>
+	}
+</style>-->
+
+
 
 	<!--body-->
 	<div class="container-fluid">
@@ -27,10 +28,8 @@
 
 		<h2>On Progress</h2>
 		@if($shipments_user->count()>0)
-			<!--DataTable on progress-->
-			<div style="width: 100%">
-				<div class="table-responsive">
-					<table id="table_on_progress" class="stack cell-border" width="100%">
+			<!--DataTable on progress-->	
+					<table id="table_on_progress" class="table table-striped table-bordered nowrap" width="100%">
 					    <thead>
 					        <tr>
 					            <th>ID</th>
@@ -41,17 +40,15 @@
 					        </tr>
 					    </thead>				 		    
 					</table>
-				</div>
-			</div>				
+>				
 		@endif
 
 
 		<h2>On Hold</h2>
 		@if($shipments_user_tb->count()>0)
 			<!--DataTable on hold-->
-			<div style="width: 100%">
-				<div class="table-responsive">
-					<table id="table_on_hold" class="stack cell-border" width="100%">
+	
+					<table id="table_on_hold" class="table table-striped table-bordered nowrap" width="100%">
 					    <thead>
 					        <tr>
 					            <th>ID</th>
@@ -62,17 +59,15 @@
 					        </tr>
 					    </thead>				 		    
 					</table>
-				</div>
-			</div>
+	
 		@endif
 
 
 		<h2>Finished Orders</h2>
 		@if($shipments_user_finished->count()>0)
 			<!--DataTable on_finished-->
-			<div style="width: 100%">
-				<div class="table-responsive">
-					<table id="table_on_finished" class="stack cell-border" width="100%">
+			
+					<table id="table_on_finished" class="table table-striped table-bordered nowrap" width="100%">
 					    <thead>
 					        <tr>
 					            <th>ID</th>
@@ -82,8 +77,7 @@
 					        </tr>
 					    </thead>				 		    
 					</table>
-				</div>
-			</div>				
+					
 		@endif
 
 		<form id="removeForm" action="/remove-transaction/" method="POST">
@@ -110,14 +104,54 @@
 
 	</div>
 
+<!--responsive table script-->
+<script type="text/javascript">
+	function responsiveTable() {
+		var headertext = [];
+		var headers = document.querySelectorAll("thead");
+		var tablebody = document.querySelectorAll("tbody");
+		
+		for(var i = 0; i < headers.length; i++) { 
+			headertext[i]=[]; 
+			for (var j = 0, headrow; headrow = headers[i].rows[0].cells[j]; j++) {
+			 var current = headrow; headertext[i].push(current.textContent.replace(/\r?\n|\r/,"")); 
+			} 
+		} 
+		if (headers.length > 0) {
+			for (var h = 0, tbody; tbody = tablebody[h]; h++) {
+				for (var i = 0, row; row = tbody.rows[i]; i++) {
+				  for (var j = 0, col; col = row.cells[j]; j++) {	
+				    col.setAttribute("data-th", headertext[h][j]);
+				  } 
+				}
+			}
+		}
+	} 
 
+</script>
 
 
 <script type="text/javascript">
 	$(document).ready( function () {
 
 		//DataTable on_progress
-    	$('#table_on_progress').DataTable({    		 
+    	$('#table_on_progress').DataTable({    
+    		responsive: {
+	            details: {
+	                display: $.fn.dataTable.Responsive.display.modal( {
+	                    header: function ( row ) {
+	                        var data = row.data();
+	                        return 'Details for '+data[0]+' '+data[1];
+	                    }
+	                } ),
+	                renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+	                    tableClass: 'table'
+	                } )
+	            }
+	        },		 
+	        fixedHeader: {
+		        headerOffset: 60
+		    },
     		processing: true,
     		order:[[ 0, "desc" ]],
     		ajax: {
@@ -146,7 +180,23 @@
 
 
 		//DataTable on_hold
-    	$('#table_on_hold').DataTable({    		 
+    	$('#table_on_hold').DataTable({
+    		responsive: {
+	            details: {
+	                display: $.fn.dataTable.Responsive.display.modal( {
+	                    header: function ( row ) {
+	                        var data = row.data();
+	                        return 'Details for '+data[0]+' '+data[1];
+	                    }
+	                } ),
+	                renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+	                    tableClass: 'table'
+	                } )
+	            }
+	        },    
+	        fixedHeader: {
+		        headerOffset: 60
+		    },		 
     		processing: true,
     		order:[[ 0, "desc" ]],
     		ajax: {
@@ -173,7 +223,23 @@
 
 
     	//DataTable on_finished
-    	$('#table_on_finished').DataTable({    		 
+    	$('#table_on_finished').DataTable({  
+    		responsive: {
+	            details: {
+	                display: $.fn.dataTable.Responsive.display.modal( {
+	                    header: function ( row ) {
+	                        var data = row.data();
+	                        return 'Details for '+data[0]+' '+data[1];
+	                    }
+	                } ),
+	                renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+	                    tableClass: 'table'
+	                } )
+	            }
+	        },  		
+	        fixedHeader: {
+		        headerOffset: 60
+		    },
     		processing: true,
     		order:[[ 0, "desc" ]],
     		ajax: {
@@ -192,6 +258,11 @@
    				}	
    			]
     	});    	
+
+    	//fires responsive plugin for table after DataTable completed fetching ajax 
+    	$( document ).ajaxComplete(function() {
+		  //responsiveTable();
+		});
 
 	});
 
