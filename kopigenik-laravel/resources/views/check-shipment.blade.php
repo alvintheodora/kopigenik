@@ -29,7 +29,7 @@
 		<h2>On Progress</h2>
 		@if($shipments_user->count()>0)
 			<!--DataTable on progress-->	
-					<table id="table_on_progress" class="table table-striped table-bordered nowrap" width="100%">
+					<table id="table_on_progress" class="table table-bordered nowrap" width="100%">
 					    <thead>
 					        <tr>
 					            <th>ID</th>
@@ -48,7 +48,7 @@
 		@if($shipments_user_tb->count()>0)
 			<!--DataTable on hold-->
 	
-					<table id="table_on_hold" class="table table-striped table-bordered nowrap" width="100%">
+					<table id="table_on_hold" class="table table-bordered nowrap" width="100%">
 					    <thead>
 					        <tr>
 					            <th>ID</th>
@@ -67,7 +67,7 @@
 		@if($shipments_user_finished->count()>0)
 			<!--DataTable on_finished-->
 			
-					<table id="table_on_finished" class="table table-striped table-bordered nowrap" width="100%">
+					<table id="table_on_finished" class="table table-bordered nowrap" width="100%">
 					    <thead>
 					        <tr>
 					            <th>ID</th>
@@ -141,7 +141,7 @@
 	                display: $.fn.dataTable.Responsive.display.modal( {
 	                    header: function ( row ) {
 	                        var data = row.data();
-	                        return 'Details for '+data[0]+' '+data[1];
+	                        return 'Details for Transaction ID '+ data.transaction.id;
 	                    }
 	                } ),
 	                renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
@@ -186,7 +186,7 @@
 	                display: $.fn.dataTable.Responsive.display.modal( {
 	                    header: function ( row ) {
 	                        var data = row.data();
-	                        return 'Details for '+data[0]+' '+data[1];
+	                        return 'Details for Transaction ID '+ data.transaction.id;
 	                    }
 	                } ),
 	                renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
@@ -229,7 +229,7 @@
 	                display: $.fn.dataTable.Responsive.display.modal( {
 	                    header: function ( row ) {
 	                        var data = row.data();
-	                        return 'Details for '+data[0]+' '+data[1];
+	                        return 'Details for Transaction ID '+ data.transaction.id;
 	                    }
 	                } ),
 	                renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
