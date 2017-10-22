@@ -13,6 +13,7 @@
     <!-- Styles --> 
     <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/kopigenik.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/awesomplete.css')}}">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
@@ -20,6 +21,7 @@
 
     <!--jquery script-->
     <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{asset('js/awesomplete.min.js')}}"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
 </head>
@@ -124,7 +126,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="https://instagram.com/kopigenik" target="__blank"">
+                            <a href="https://instagram.com/kopigenik" target="__blank">
                                 <img class="icon-social-media" src="{{asset('asset/icon-instagram.svg')}}">
                                 <span>Kopigenik</span>
                             </a>

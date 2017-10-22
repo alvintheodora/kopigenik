@@ -7,87 +7,91 @@
 	<div class="container-fluid">
 		<h1 class="text-center">My Subscriptions</h1>
 
-		<h2>On Progress</h2>
-		@if($shipments_user->count()>0)
-			<!--DataTable on progress-->
-			<div style="width: 100%">
-				<div class="table-responsive">
-					<table id="table_on_progress" class="table-bordered" width="100%">
-					    <thead>
-					        <tr>
-					            <th>ID</th>
-					            <th>Plan</th>
-					            <th>Delivery address</th>
-					            <th>Total shipment left</th>
-					            <th>Action</th>
-					        </tr>
-					    </thead>				 		    
-					</table>
+		<vdiv style="width:80%; margin:auto;">
+
+			<h2>On Progress</h2>
+			@if($shipments_user->count()>0)
+				<!--DataTable on progress-->
+				<div style="width: 100%">
+					<div class="table-responsive">
+						<table id="table_on_progress" class="table-bordered" width="100%">
+						    <thead>
+						        <tr>
+						            <th>ID</th>
+						            <th>Plan</th>
+						            <th>Delivery address</th>
+						            <th>Total shipment left</th>
+						            <th>Action</th>
+						        </tr>
+						    </thead>				 		    
+						</table>
+					</div>
+				</div>				
+			@endif
+
+
+			<h2>On Hold</h2>
+			@if($shipments_user_tb->count()>0)
+				<!--DataTable on hold-->
+				<div style="width: 100%">
+					<div class="table-responsive">
+						<table id="table_on_hold" class="table-bordered" width="100%">
+						    <thead>
+						        <tr>
+						            <th>ID</th>
+						            <th>Plan</th>
+						            <th>Time bought</th>
+						            <th>Status</th>
+						            <th>Action</th>
+						        </tr>
+						    </thead>				 		    
+						</table>
+					</div>
 				</div>
-			</div>				
-		@endif
+			@endif
 
 
-		<h2>On Hold</h2>
-		@if($shipments_user_tb->count()>0)
-			<!--DataTable on hold-->
-			<div style="width: 100%">
-				<div class="table-responsive">
-					<table id="table_on_hold" class="table-bordered" width="100%">
-					    <thead>
-					        <tr>
-					            <th>ID</th>
-					            <th>Plan</th>
-					            <th>Time bought</th>
-					            <th>Status</th>
-					            <th>Action</th>
-					        </tr>
-					    </thead>				 		    
-					</table>
+			<h2>Finished Orders</h2>
+			@if($shipments_user_finished->count()>0)
+				<!--DataTable on_finished-->
+				<div style="width: 100%">
+					<div class="table-responsive">
+						<table id="table_on_finished" class="table-bordered" width="100%">
+						    <thead>
+						        <tr>
+						            <th>ID</th>
+						            <th>Plan</th>
+						            <th>Last delivery date</th>
+						            <th>Action</th>
+						        </tr>
+						    </thead>				 		    
+						</table>
+					</div>
+				</div>				
+			@endif
+
+			<form id="removeForm" action="/remove-transaction/" method="POST">
+				{{csrf_field()}}
+				<div class="modal fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+				  <div class="modal-dialog" role="document">
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				        <h4 class="modal-title" id="myModalLabel">Cancel Transaction?</h4>
+				      </div>
+				      <div class="modal-body">
+				      	<p>Are you sure to cancel the transaction?</p>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>								        
+			        	<button type="submit" class="btn btn-danger">Yes</button>
+				      </div>
+				    </div>
+				  </div>
 				</div>
-			</div>
-		@endif
+			</form>
 
-
-		<h2>Finished Orders</h2>
-		@if($shipments_user_finished->count()>0)
-			<!--DataTable on_finished-->
-			<div style="width: 100%">
-				<div class="table-responsive">
-					<table id="table_on_finished" class="table-bordered" width="100%">
-					    <thead>
-					        <tr>
-					            <th>ID</th>
-					            <th>Plan</th>
-					            <th>Last delivery date</th>
-					            <th>Action</th>
-					        </tr>
-					    </thead>				 		    
-					</table>
-				</div>
-			</div>				
-		@endif
-
-		<form id="removeForm" action="/remove-transaction/" method="POST">
-			{{csrf_field()}}
-			<div class="modal fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-			  <div class="modal-dialog" role="document">
-			    <div class="modal-content">
-			      <div class="modal-header">
-			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-			        <h4 class="modal-title" id="myModalLabel">Cancel Transaction?</h4>
-			      </div>
-			      <div class="modal-body">
-			      	<p>Are you sure to cancel the transaction?</p>
-			      </div>
-			      <div class="modal-footer">
-			        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>								        
-		        	<button type="submit" class="btn btn-danger">Yes</button>
-			      </div>
-			    </div>
-			  </div>
-			</div>
-		</form>
+		</div>
 
 
 	</div>

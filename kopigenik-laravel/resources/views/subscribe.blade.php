@@ -6,19 +6,21 @@
 	<div class="container-fluid">
 		<h2 class="text-center">Subscribe</h2>
 
-		<form action="\subscribe" method="POST">
+		<form action="/subscribe" method="POST">
 			{{csrf_field()}}
 			<div class="row">
 				<div class="col-lg-8">
 					<div class="form-group">
+
 						<label for="select1" class="subscribeQuestion">Berapa banyak kopi yang anda konsumsi dalam 2 minggu?</label>			
 						<select id="select1" name="coffee_consumption" class="inputText">
 							<option value=""></option>
 							<option value="{{$plans[0]}}">100 gram (6-7 gelas)</option>
-							<option value="{{$plans[1]}}">250 gram (8-16 gelas) </option>
+							<option value="{{$plans[1]}}">250 gram (8-16 gelas)</option>
 							<option value="{{$plans[2]}}">500 gram (>17 gelas)</option>
 						</select>							
 					</div>
+					
 					<div class="form-group">
 						<label for="select4" class="subscribeQuestion">Apa tingkat kehalusan kopi yang biasa anda gunakan?</label>
 						<select id="select4" name="coffee_grind_size" class="inputText">
@@ -63,12 +65,50 @@
 							<input class="form-control" type="text" name="address" value="{{$address->address}}">
 						</div>
 						<div class="form-group">
+							
 							<label for="province" class="">Province</label>
-							<input class="form-control" type="text" name="province" value="{{$address->province}}">
+							<input class="form-control awesomplete" list="mylist" type="text" name="province" id="province" value="{{$address->province}}">
+							<!-- <input class="awesomplete" list="mylist" /> -->
+							<datalist id="mylist">
+								
+								<?php 
+									 $curl = curl_init();
+
+								        curl_setopt_array($curl, array(
+								          CURLOPT_URL => "https://api.rajaongkir.com/starter/province",
+								          CURLOPT_RETURNTRANSFER => true,
+								          CURLOPT_ENCODING => "",
+								          CURLOPT_MAXREDIRS => 10,
+								          CURLOPT_TIMEOUT => 30,
+								          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+								          CURLOPT_CUSTOMREQUEST => "GET",
+								          CURLOPT_HTTPHEADER => array(
+								            "key: a64321d648c698eb00c2e4306bf23f98"
+								          ),
+								        ));
+
+								        $responseProv = curl_exec($curl);
+								        $err = curl_error($curl);
+
+								        curl_close($curl);
+								        $responseProv = json_decode($responseProv);
+
+								        //$province=$responseProv->rajaongkir->results->province_id;
+								        
+							        foreach ($responseProv->rajaongkir->results as $hasil) {
+							           echo '<option value="'.$hasil->province.'">';
+							        }
+							     ?>
+								
+							</datalist>
 						</div>
 						<div class="form-group">
 							<label for="city" class="">City</label>
-							<input class="form-control" type="text" name="city" value="{{$address->city}}">
+							<input class="form-control awesomplete" list="mycitylist" type="text" name="city" id="city" value="{{$address->city}}">
+							<datalist id="mycitylist">
+								
+							
+							</datalist>
 						</div>
 						<div class="form-group">
 							<label for="district" class="">District</label>
@@ -91,11 +131,11 @@
 						</div>
 						<div class="form-group">
 							<label for="province" class="">Province</label>
-							<input class="form-control" type="text" name="province">
+							<input class="form-control" id="province" type="text" name="province">
 						</div>
 						<div class="form-group">
 							<label for="city" class="">City</label>
-							<input class="form-control" type="text" name="city">
+							<input class="form-control" id="city" type="text" name="city">
 						</div>
 						<div class="form-group">
 							<label for="district" class="">District</label>
@@ -164,16 +204,35 @@
 							</div>
 						</div>	
 
-						<button type="submit" class="btn btn-lg btn-success btn-block">Buy</button>			
+						<button type="submit" class="btn btn-lg btn-success btn-block">Buy</button>	
+						<p id="city_result">-</p>
+						<p id="province_result">-</p>
+						<p id="error_result">-</p>
+
 					</div>
 				</div>
 			</div>		
 
 		</form>
+
+		<!--<form action="/delivery" method="POST">
+			{{csrf_field()}}
+			<input class="form-control" id="city" type="text" name="city2">
+			<button type="submit">enter</button>
+
+		</form>	
+
+		<div class="col-xs-6">
+			@isset($response)
+			{{$response}}
+			@endisset
+		</div>
+		-->
 	</div>
 
 	<!--ajax script-->
 	<script type="text/javascript">
+
 		$(document).ready(function(){
 			/*$('#select1').change(function(){
 				$plan = $(this).val();
@@ -191,15 +250,41 @@
 
 			});*/
 
-			//fill both subscribe_duration and plan to retrieve ajax
-			$('#select1,#select5').change(function(){
-				$subscribe_duration = $("#select5").val();
-				$plan = $('#select1').val();
+			$('#province').change(function(){
+				$province = $('#province').val();
 
 				$.ajax({
 				  method: "GET",
+				  url: "/ajaxGetCity",
+				  data: {province: $province},
+				 
+				})
+				.done(function(data){
+					data = JSON.parse(data);
+					console.log(data.rajaongkir.status.code);
+					alert(data);
+
+					
+				})
+				.fail(function(data){
+
+					alert('Mohon Periksa Kembali Data Pengiriman 2');
+				});
+
+			});
+			//fill both subscribe_duration and plan to retrieve ajax
+
+			$('#select1,#select5').change(function(){
+				$subscribe_duration = $("#select5").val();
+				$plan = $('#select1').val();
+				$city = $('#city').val();
+				$province = $('#province').val();
+				//alert($province);
+				//alert('javascrip' + $subscribe_duration);
+				$.ajax({
+				  method: "GET",
 				  url: "/ajaxSubscribeDuration",
-				  data: {plan: $plan, subscribe_duration: $subscribe_duration},
+				  data: {plan: $plan, subscribe_duration: $subscribe_duration, city: $city, province: $province},
 				  dataType: "json"
 				})
 				.done(function(data){
@@ -207,17 +292,28 @@
 					$("#plan_price").html('Rp' + (data.plan_price) + '<span class="small"> untuk 1 bulan');
 					$("#subscribe_duration").html(data.subscribe_duration + ' bulan');
 					$("#sub_total").html('Rp' + (data.subscribe_duration * data.plan_price));
+					$("#delivery_price").html('Rp' + (data.subscribe_duration * data.plan_price));
 
 					$("#shipping_cost").html('Rp' + data.shipping_cost + '<span class="small"> untuk ' + data.subscribe_duration*2 + ' kali pengiriman</span>');
 					$("#total_price").html('Rp' + (parseInt(data.plan_price) * data.subscribe_duration + parseInt(data.shipping_cost)))
+					$('#city_result').html(data.city_name);
+					$('#province_result').html(data.province_name);
+					$('#error_result').html(data.error_name);
+					//alert(data.shipping_cost + data.plan_price + data.plan_weight + data.subscribe_duration + data.city_name + data.province_name);
+					
 				})
 				.fail(function(data){
-					$("#plan_selected").html('Rencana berlangganan: -');
+					$("#plan_selected").html('Rencana berlangganan: Fail');
 					$("#plan_price").html('-');
 					$("#subscribe_duration").html('-');
 					$("#sub_total").html('-');
 					$("#shipping_cost").html('-');
-					$("#total_price").html('-')
+					$("#total_price").html('-');
+					$('#city_result').html('-');
+					$('#province_result').html('-');
+					$('#error_result').html('Error');
+
+					alert('Mohon Periksa Kembali Data Pengiriman');
 				});
 
 			});

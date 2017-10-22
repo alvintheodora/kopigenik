@@ -23,11 +23,14 @@ Route::get('/home', 'HomeController@index')->name('home_ori');
 Route::get('/subscribe', 'TransactionController@index');
 //Route::get('/ajaxPlan', 'TransactionController@ajaxPlan');
 Route::get('/ajaxSubscribeDuration', 'TransactionController@ajaxSubscribeDuration');
+Route::get('/ajaxGetCity', 'TransactionController@ajaxGetCity');
+
 
 Route::post('/subscribe', 'TransactionController@store');
 Route::post('/remove-transaction/{transaction}', 'TransactionController@removeTransaction');
 
-
+//delivery
+Route::post('/delivery', 'TransactionController@delivercost');
 //Route::get('/payment-confirmation', 'TransactionController@indexConfirm');
 Route::get('/payment-confirmation/{transaction}', 'TransactionController@showConfirm');
 Route::post('/payment-confirmation/{transaction}', 'TransactionController@storeConfirm');
