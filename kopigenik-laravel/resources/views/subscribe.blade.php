@@ -6,7 +6,8 @@
 	<div class="container-fluid">
 		<h2 class="text-center">Subscribe</h2>
 
-		<form action="/subscribe" method="POST">
+
+		<form id="subscribeForm" action="\subscribe" method="POST">
 			{{csrf_field()}}
 			<div class="row">
 				<div class="col-lg-8">
@@ -204,6 +205,7 @@
 							</div>
 						</div>	
 
+
 						<button type="submit" class="btn btn-lg btn-success btn-block">Buy</button>	
 						<p id="city_result">-</p>
 						<p id="province_result">-</p>
@@ -229,6 +231,7 @@
 		</div>
 		-->
 	</div>
+
 
 	<!--ajax script-->
 	<script type="text/javascript">
@@ -316,7 +319,8 @@
 					alert('Mohon Periksa Kembali Data Pengiriman');
 				});
 
-			});
+			});			
+
 		});
 	</script>
 @endsection

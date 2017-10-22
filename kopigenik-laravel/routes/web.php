@@ -52,6 +52,10 @@ Route::group(['middleware' => 'role:admin'], function(){
 	Route::get('/transactions', 'TransactionController@indexTransaction');
 	Route::get('/transactions/{transaction}', 'TransactionController@showTransaction');
 	Route::post('/transactions/{transaction}', 'TransactionController@approveTransaction');
+	Route::get('/ajaxTbaDataTable', 'TransactionController@ajaxTbaDataTable');
+	Route::get('/ajaxTbcDataTable', 'TransactionController@ajaxTbcDataTable');
+	Route::get('/ajaxApprovedDataTable', 'TransactionController@ajaxApprovedDataTable');
+	
 
 	Route::get('/shipments', 'ShipmentController@indexByAdmin');
 	Route::get('/shipments/{shipment}', 'ShipmentController@showByAdmin');
@@ -75,6 +79,11 @@ Route::get('/about-us', function () {
 Route::get('/faq', function () {
     return view('faq');
 });
-Route::get('/blog', function () {
-    return view('blog');
+// Route::get('/blog', function () {
+//     return view('blog');
+// });
+
+Route::get('/contact-us', function () {
+    return view('contact-us');
 });
+Route::post('/contact-us', 'MessageController@store');

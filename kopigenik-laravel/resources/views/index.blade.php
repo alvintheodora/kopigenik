@@ -8,16 +8,16 @@
 		<div class="container-fluid banner-main">						
 			<div class="row layer-tagline">
 				<div class="slide-logo">				
-					<img src="asset/kopigenik-icon.png" style="transform: translateX(80%); padding-top: 30px;" width="90" height="110">
-					<p style="transform: translate(45%,380%); font-size: 24px; color: #fff;">KOPIGENIK</p>
-					<p style="transform: translate(67%,600%); font-size: 14px; color: #fff;">SINCE 2017</p>
+					<img src="asset/kopigenik-icon.png" style="padding-top: 30px;" width="90" height="110">
+					<p style="transform: translate(-6%, 410%); font-size: 24px; color: #fff;">KOPIGENIK</p>
+					<p style="transform: translate(15%, 640%); font-size: 14px; color: #fff;">SINCE 2017</p>
 				</div>	
 				<div class="tagline">
 					<h2 style="margin-left: -27%; color: #fff; font-weight: 500; font-size: 36px;">- Indonesia's Best Coffee Subscription -</h2>
 					<h3 style="margin-left: -10%; color: #fff; left: 50%; font-size: 28px;">Delivering coffee to your door</h3>
 				</div>
 				
-				<div class="col-xs-4 pl-3 layer layer-1">				
+				<div class="col-xs-4 layer layer-1">				
 					<div class="banner-info">
 						<h3 class="black" style="color: #fff;">Watch videos about your coffee</h3>
 						<p class="black" style="color: #fff;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius</p>
@@ -26,7 +26,7 @@
 					<img class="img-responsive" src="http://mobilemarketingmagazine.com/wp-content/uploads/2016/10/Branded-Moments-Transparent-background_b.png" alt="coffee videos" style="margin-left: -9%;">
 				</div>		
 
-				<div class="col-xs-4 pl-3 layer layer-2">				
+				<div class="col-xs-4 layer layer-2">				
 					<div class="banner-info">
 						<h3 class="black" style="color: #fff;">Enjoy your coffee with subscription</h3>
 						<p class="black" style="color: #fff;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius</p>
@@ -35,7 +35,7 @@
 					<img class="img-responsive" src="asset/coffee_bag3.png" alt="subscribe board">				
 				</div>
 
-				<div class="col-xs-4 pl-3 layer layer-3">				
+				<div class="col-xs-4 layer layer-3">				
 					<div class="banner-info">
 						<h3 class="black" style="color: #fff;">We deliver first-grade beans</h3>
 						<p class="black" style="color: #fff;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius</p>

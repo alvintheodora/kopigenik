@@ -16,13 +16,14 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/awesomplete.css')}}">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.16/fh-3.1.3/r-2.2.0/datatables.min.css">
 
 
     <!--jquery script-->
     <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
     <script src="{{asset('js/awesomplete.min.js')}}"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.16/fh-3.1.3/r-2.2.0/datatables.min.js"></script>
+
 
 </head>
 <body>
@@ -114,6 +115,7 @@
                         <li><a href="\about-us">What is Kopigenik</a></li>
                         <li><a href="\faq">FAQ</a></li>
                         <li><a href="\blog">Blog</a></li>
+                        <li><a href="\contact-us">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-4">
@@ -152,6 +154,9 @@
 	<script src="{{asset('js/velocity.js')}}"></script>
     <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
     <script type="text/javascript">
+        $(document).ready(function(){
+
+            //set active class to clicked li
             $pathnameLocal = (location.pathname).substr(18);//18 karena potong tulisan /kopigenik-master/
             $pathnameHosting = (location.pathname).substr(1);//1 karena potong /
             $(".nav li").each(function(){       
@@ -159,6 +164,15 @@
                     $(this).addClass("active");
                 }
             });
+
+
+            //disable button after submit
+            $("form").submit(function(){
+                $(this).find("button[type='submit']").attr('disabled','disabled');
+            });
+
+        });
+            
     </script>
 
 </body>

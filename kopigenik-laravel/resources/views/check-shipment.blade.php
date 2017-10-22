@@ -3,108 +3,158 @@
 @section('title','Check Shipment')
 
 @section('content')
+
+<!-- responsive table css-->
+<!--<style type="text/css">
+	@media screen and (max-width: 600px) {
+		table {width:100%;}
+		thead {display: none;}
+		tr:nth-of-type(2n) {background-color: inherit;}
+		tr td:first-child {background: #f0f0f0; font-weight:bold;font-size:1.3em;}
+		tbody td {display: block;  text-align:center;}
+		tbody td:before { 
+		    content: attr(data-th); 
+		    display: block;
+		    text-align:center;  
+		}
+	}
+</style>-->
+
+
+
 	<!--body-->
 	<div class="container-fluid">
 		<h1 class="text-center">My Subscriptions</h1>
 
-		<vdiv style="width:80%; margin:auto;">
-
-			<h2>On Progress</h2>
-			@if($shipments_user->count()>0)
-				<!--DataTable on progress-->
-				<div style="width: 100%">
-					<div class="table-responsive">
-						<table id="table_on_progress" class="table-bordered" width="100%">
-						    <thead>
-						        <tr>
-						            <th>ID</th>
-						            <th>Plan</th>
-						            <th>Delivery address</th>
-						            <th>Total shipment left</th>
-						            <th>Action</th>
-						        </tr>
-						    </thead>				 		    
-						</table>
-					</div>
-				</div>				
-			@endif
+		<h2>On Progress</h2>
+		@if($shipments_user->count()>0)
+			<!--DataTable on progress-->	
+					<table id="table_on_progress" class="table table-bordered nowrap" width="100%">
+					    <thead>
+					        <tr>
+					            <th>ID</th>
+					            <th>Plan</th>
+					            <th>Delivery address</th>
+					            <th>Total shipment left</th>
+					            <th>Action</th>
+					        </tr>
+					    </thead>				 		    
+					</table>
+>				
+		@endif
 
 
-			<h2>On Hold</h2>
-			@if($shipments_user_tb->count()>0)
-				<!--DataTable on hold-->
-				<div style="width: 100%">
-					<div class="table-responsive">
-						<table id="table_on_hold" class="table-bordered" width="100%">
-						    <thead>
-						        <tr>
-						            <th>ID</th>
-						            <th>Plan</th>
-						            <th>Time bought</th>
-						            <th>Status</th>
-						            <th>Action</th>
-						        </tr>
-						    </thead>				 		    
-						</table>
-					</div>
-				</div>
-			@endif
+		<h2>On Hold</h2>
+		@if($shipments_user_tb->count()>0)
+			<!--DataTable on hold-->
+	
+					<table id="table_on_hold" class="table table-bordered nowrap" width="100%">
+					    <thead>
+					        <tr>
+					            <th>ID</th>
+					            <th>Plan</th>
+					            <th>Time bought</th>
+					            <th>Status</th>
+					            <th>Action</th>
+					        </tr>
+					    </thead>				 		    
+					</table>
+	
+		@endif
 
 
-			<h2>Finished Orders</h2>
-			@if($shipments_user_finished->count()>0)
-				<!--DataTable on_finished-->
-				<div style="width: 100%">
-					<div class="table-responsive">
-						<table id="table_on_finished" class="table-bordered" width="100%">
-						    <thead>
-						        <tr>
-						            <th>ID</th>
-						            <th>Plan</th>
-						            <th>Last delivery date</th>
-						            <th>Action</th>
-						        </tr>
-						    </thead>				 		    
-						</table>
-					</div>
-				</div>				
-			@endif
+		<h2>Finished Orders</h2>
+		@if($shipments_user_finished->count()>0)
+			<!--DataTable on_finished-->
+			
+					<table id="table_on_finished" class="table table-bordered nowrap" width="100%">
+					    <thead>
+					        <tr>
+					            <th>ID</th>
+					            <th>Plan</th>
+					            <th>Last delivery date</th>
+					            <th>Action</th>
+					        </tr>
+					    </thead>				 		    
+					</table>
+					
+		@endif
 
-			<form id="removeForm" action="/remove-transaction/" method="POST">
-				{{csrf_field()}}
-				<div class="modal fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-				  <div class="modal-dialog" role="document">
-				    <div class="modal-content">
-				      <div class="modal-header">
-				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				        <h4 class="modal-title" id="myModalLabel">Cancel Transaction?</h4>
-				      </div>
-				      <div class="modal-body">
-				      	<p>Are you sure to cancel the transaction?</p>
-				      </div>
-				      <div class="modal-footer">
-				        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>								        
-			        	<button type="submit" class="btn btn-danger">Yes</button>
-				      </div>
-				    </div>
-				  </div>
-				</div>
-			</form>
-
-		</div>
+		<form id="removeForm" action="/remove-transaction/" method="POST">
+			{{csrf_field()}}
+			<div class="modal fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">Cancel Transaction?</h4>
+			      </div>
+			      <div class="modal-body">
+			      	<p>Are you sure to cancel the transaction?</p>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>								        
+		        	<button id="removeButton" type="submit" class="btn btn-danger">Yes</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		</form>
+>>>>>>> ebb310aaa57651e866e0dbcf04a6fc4e4b714897
 
 
 	</div>
 
+<!--responsive table script-->
+<script type="text/javascript">
+	function responsiveTable() {
+		var headertext = [];
+		var headers = document.querySelectorAll("thead");
+		var tablebody = document.querySelectorAll("tbody");
+		
+		for(var i = 0; i < headers.length; i++) { 
+			headertext[i]=[]; 
+			for (var j = 0, headrow; headrow = headers[i].rows[0].cells[j]; j++) {
+			 var current = headrow; headertext[i].push(current.textContent.replace(/\r?\n|\r/,"")); 
+			} 
+		} 
+		if (headers.length > 0) {
+			for (var h = 0, tbody; tbody = tablebody[h]; h++) {
+				for (var i = 0, row; row = tbody.rows[i]; i++) {
+				  for (var j = 0, col; col = row.cells[j]; j++) {	
+				    col.setAttribute("data-th", headertext[h][j]);
+				  } 
+				}
+			}
+		}
+	} 
 
+</script>
 
 
 <script type="text/javascript">
 	$(document).ready( function () {
 
 		//DataTable on_progress
-    	$('#table_on_progress').DataTable({    		 
+    	$('#table_on_progress').DataTable({    
+    		responsive: {
+	            details: {
+	                display: $.fn.dataTable.Responsive.display.modal( {
+	                    header: function ( row ) {
+	                        var data = row.data();
+	                        return 'Details for Transaction ID '+ data.transaction.id;
+	                    }
+	                } ),
+	                renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+	                    tableClass: 'table'
+	                } )
+	            }
+	        },		 
+	        fixedHeader: {
+		        headerOffset: 60
+		    },
     		processing: true,
+    		order:[[ 0, "desc" ]],
     		ajax: {
 		        url: '/ajaxOnProgressDataTable',
 		        dataSrc: ''
@@ -131,8 +181,25 @@
 
 
 		//DataTable on_hold
-    	$('#table_on_hold').DataTable({    		 
+    	$('#table_on_hold').DataTable({
+    		responsive: {
+	            details: {
+	                display: $.fn.dataTable.Responsive.display.modal( {
+	                    header: function ( row ) {
+	                        var data = row.data();
+	                        return 'Details for Transaction ID '+ data.transaction.id;
+	                    }
+	                } ),
+	                renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+	                    tableClass: 'table'
+	                } )
+	            }
+	        },    
+	        fixedHeader: {
+		        headerOffset: 60
+		    },		 
     		processing: true,
+    		order:[[ 0, "desc" ]],
     		ajax: {
 		        url: '/ajaxOnHoldDataTable',
 		        dataSrc: ''
@@ -157,8 +224,25 @@
 
 
     	//DataTable on_finished
-    	$('#table_on_finished').DataTable({    		 
+    	$('#table_on_finished').DataTable({  
+    		responsive: {
+	            details: {
+	                display: $.fn.dataTable.Responsive.display.modal( {
+	                    header: function ( row ) {
+	                        var data = row.data();
+	                        return 'Details for Transaction ID '+ data.transaction.id;
+	                    }
+	                } ),
+	                renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+	                    tableClass: 'table'
+	                } )
+	            }
+	        },  		
+	        fixedHeader: {
+		        headerOffset: 60
+		    },
     		processing: true,
+    		order:[[ 0, "desc" ]],
     		ajax: {
 		        url: '/ajaxOnFinishedDataTable',
 		        dataSrc: ''
@@ -174,7 +258,12 @@
 				    }
    				}	
    			]
-    	});
+    	});    	
+
+    	//fires responsive plugin for table after DataTable completed fetching ajax 
+    	$( document ).ajaxComplete(function() {
+		  //responsiveTable();
+		});
 
 	});
 

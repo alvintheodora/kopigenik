@@ -29,7 +29,7 @@
 
 		<div class="text-center" style="font-weight: bold;">
 			@if($transaction->status == 'to be confirmed')
-				<form action="\payment-confirmation\{{$transaction->id}}" method="POST">
+				<form id="confirmPaymentForm" action="\payment-confirmation\{{$transaction->id}}" method="POST">
 					{{csrf_field()}}
 					<button class="btn btn-lg btn-success btn-block" type="button" data-toggle="modal" data-target="#confirmModal">Confirm payment</button>
 
@@ -72,7 +72,7 @@
 					      </div>
 					      <div class="modal-footer">
 					        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					        <button type="submit" class="btn btn-primary">Confirm Payment <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></button>
+					        <button id="confirmPaymentButton" type="submit" class="btn btn-primary">Confirm Payment <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></button>
 					      </div>
 					    </div>
 					  </div>
@@ -89,4 +89,5 @@
 		</div>
 
 	</div>
+
 @endsection

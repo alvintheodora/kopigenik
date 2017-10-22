@@ -31,13 +31,11 @@ class UserController extends Controller
     //edit existing user data
     public function edit(Request $request){
     	$request->validate([
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed'
+            'email' => 'required|string|email|max:255|unique:users'
     	]);
 
     	$user = auth()->user();
     	$user->email = request('email');
-    	$user->password = bcrypt(request('password'));
     	$user->save();
 
     	return back();
