@@ -76,9 +76,9 @@ Route::get('/about-us', function () {
 Route::get('/faq', function () {
     return view('faq');
 });
-Route::get('/blog', function () {
-    return view('blog');
-});
+// Route::get('/blog', function () {
+//     return view('blog');
+// });
 
 Route::get('/contact-us', function () {
     return view('contact-us');
