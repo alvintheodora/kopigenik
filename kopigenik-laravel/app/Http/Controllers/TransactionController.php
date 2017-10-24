@@ -289,7 +289,7 @@ class TransactionController extends Controller
        /* if($subscribe_duration != ''){
             return json_encode(['shipping_cost' => $shipping_cost*$subscribe_duration*2, 'plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration, 'city_name' => $city, 'province_name' => $province, 'error_name' => ""]);
         }*/
-        if($subscribe_duration != '' && $city!="" & $province!="" && $shipping_cost!=""){
+        if($subscribe_duration != '' && $city!="" && $province!="" && $shipping_cost!=""){
             return json_encode(['shipping_cost' => $shipping_cost*$subscribe_duration*2, 'plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration, 'city_name' => $city, 'province_name' => $province, 'error_name' => ""]);
         }
         else if($subscribe_duration != '' && $city!="" && $province!=""){
@@ -364,8 +364,7 @@ class TransactionController extends Controller
         $err = curl_error($curl);
 
         curl_close($curl);
-
-        return json_encode(['namaCity' => $responseCity]);
+        return ($responseCity);   
     }
 
     //perform transaction

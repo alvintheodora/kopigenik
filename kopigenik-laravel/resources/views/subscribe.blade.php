@@ -6,7 +6,6 @@
 	<div class="container-fluid">
 		<h2 class="text-center">Subscribe</h2>
 
-
 		<form id="subscribeForm" action="\subscribe" method="POST">
 			{{csrf_field()}}
 			<div class="row">
@@ -92,9 +91,7 @@
 								        $err = curl_error($curl);
 
 								        curl_close($curl);
-								        $responseProv = json_decode($responseProv);
-
-								        //$province=$responseProv->rajaongkir->results->province_id;
+								        $responseProv = json_decode($responseProv);								      
 								        
 							        foreach ($responseProv->rajaongkir->results as $hasil) {
 							           echo '<option value="'.$hasil->province.'">';
@@ -105,11 +102,7 @@
 						</div>
 						<div class="form-group">
 							<label for="city" class="">City</label>
-							<input class="form-control awesomplete" list="mycitylist" type="text" name="city" id="city" value="{{$address->city}}">
-							<datalist id="mycitylist">
-								
-							
-							</datalist>
+							<input class="form-control" type="text" name="city" id="city" value="{{$address->city}}">				
 						</div>
 						<div class="form-group">
 							<label for="district" class="">District</label>
@@ -237,47 +230,26 @@
 	<script type="text/javascript">
 
 		$(document).ready(function(){
-			/*$('#select1').change(function(){
-				$plan = $(this).val();
-
-				$.get('/ajaxPlan', {plan: $plan}, function(data){
-					$("#plan_selected").html('Rp' + data);
-					//$("#plan_selected_month").html((parseInt(data) * 2).toString());
-					$("#total_price").html('Rp' + data);
-				})
-				.fail(function(){
-					$("#plan_selected").html('-');
-					//$("#plan_selected_month").html('-');
-					//$("#total_price").html('-');
-				});
-
-			});*/
-
-			$('#province').change(function(){
+		
+			//city auto-complete
+			var awesompleteCity = new Awesomplete(document.getElementById('city'));
+			$('#city').focus(function(){
 				$province = $('#province').val();
-
-				$.ajax({
-				  method: "GET",
-				  url: "/ajaxGetCity",
-				  data: {province: $province},
-				 
-				})
-				.done(function(data){
-					data = JSON.parse(data);
-					console.log(data.rajaongkir.status.code);
-					alert(data);
-
-					
-				})
-				.fail(function(data){
-
-					alert('Mohon Periksa Kembali Data Pengiriman 2');
-				});
+				var ajax = new XMLHttpRequest();
+				ajax.open("GET", "/ajaxGetCity?province="+$province, true);
+				ajax.onload = function() {
+					var list = JSON.parse(ajax.responseText);
+					var results = list.rajaongkir.results;//array
+					var cities = results.map(function(i) { return i.city_name; });			
+					awesompleteCity.list = cities;
+				};
+				ajax.send();
 
 			});
-			//fill both subscribe_duration and plan to retrieve ajax
 
-			$('#select1,#select5').change(function(){
+
+			//fill both subscribe_duration and plan to retrieve ajax
+			$('#select1,#select5,#city').change(function(){
 				$subscribe_duration = $("#select5").val();
 				$plan = $('#select1').val();
 				$city = $('#city').val();
@@ -316,7 +288,7 @@
 					$('#province_result').html('-');
 					$('#error_result').html('Error');
 
-					alert('Mohon Periksa Kembali Data Pengiriman');
+					//alert('Mohon Periksa Kembali Data Pengiriman');
 				});
 
 			});			
