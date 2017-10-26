@@ -99,17 +99,17 @@
 							        foreach ($responseProv->rajaongkir->results as $hasil) {
 							           echo '<option value="'.$hasil->province.'">';
 							        }
+							       /* foreach ($responseProv['rajaongkir']['results'] as $hasil) {
+							           echo '<option value="'.$hasil->province.'">';
+							        }*/
 							     ?>
 								
 							</datalist>
 						</div>
 						<div class="form-group">
 							<label for="city" class="">City</label>
-							<input class="form-control awesomplete" list="mycitylist" type="text" name="city" id="city" value="{{$address->city}}">
-							<datalist id="mycitylist">
-								
+							<input class="form-control awesomplete" type="text" name="city" id="city" value="{{$address->city}}">
 							
-							</datalist>
 						</div>
 						<div class="form-group">
 							<label for="district" class="">District</label>
@@ -154,7 +154,7 @@
 
 					<div class="form-group">
 						<label for="additional_note" class="">Additional Note</label>
-						<textarea class="form-control" name="additional_note"></textarea>
+						<textarea class="form-control" name="additional_note" id="addNotes"></textarea>
 					</div>
 
 				</div>
@@ -253,31 +253,233 @@
 
 			});*/
 
-			$('#province').change(function(){
+ 			/*if($("#select1").val() != "" && $("#select5").val() != "" && $('#province').val() != "" && $('#city') != ""){
+ 				$subscribe_duration = $("#select5").val();
+				$plan = $('#select1').val();
+				$city = $('#city').val();
 				$province = $('#province').val();
-
+				
 				$.ajax({
 				  method: "GET",
-				  url: "/ajaxGetCity",
-				  data: {province: $province},
-				 
+				  url: "/ajaxGetShipCost",
+				  data: {plan: $plan, subscribe_duration: $subscribe_duration, city: $city, province: $province},
+				  dataType: "json"
 				})
 				.done(function(data){
-					data = JSON.parse(data);
-					console.log(data.rajaongkir.status.code);
-					alert(data);
+					
 
+					$("#shipping_cost").html('Rp' + data.shipping_cost + '<span class="small"> untuk ' + $subscribe_duration*2 + ' kali pengiriman</span>');
+					$("#total_price").html('Rp' + (parseInt(data.plan_price) * $subscribe_duration + parseInt(data.shipping_cost)))
+					$('#city_result').html(data.city_name);
+					$('#province_result').html(data.province_name);
+					$('#error_result').html(data.error_name);
+					
 					
 				})
 				.fail(function(data){
+					$("#plan_selected").html('Rencana berlangganan: Fail');
+					$("#plan_price").html('error');
+					$("#subscribe_duration").html('error');
+					$("#sub_total").html('error');
+					$("#shipping_cost").html('error');
+					$("#total_price").html('error');
+					$('#city_result').html('error');
+					$('#province_result').html('error');
+					$('#error_result').html('Error');
 
-					alert('Mohon Periksa Kembali Data Pengiriman 2');
+					alert('Mohon Periksa Kembali Data Pengiriman Add Notes');
 				});
+ 			}*/
+
+			var awesompleteCity = new Awesomplete(document.getElementById('city'));
+			$('#city').focus(function(){
+				$province = $('#province').val();
+				var ajax = new XMLHttpRequest();
+				ajax.open("GET", "/ajaxGetCity?province="+$province, true);
+				ajax.onload = function() {
+					var list = JSON.parse(ajax.responseText);
+					var results = list.rajaongkir.results;
+					var cities = results.map(function(i) { return i.city_name; });			
+					awesompleteCity.list = cities;
+				};
+				ajax.send();
 
 			});
-			//fill both subscribe_duration and plan to retrieve ajax
 
-			$('#select1,#select5').change(function(){
+			/*$('#addNotes').focus(function(){
+				$subscribe_duration = $("#select5").val();
+				$plan = $('#select1').val();
+				$city = $('#city').val();
+				$province = $('#province').val();
+				
+				$.ajax({
+				  method: "GET",
+				  url: "/ajaxGetShipCost",
+				  data: {plan: $plan, subscribe_duration: $subscribe_duration, city: $city, province: $province},
+				  dataType: "json"
+				})
+				.done(function(data){
+					
+
+					$("#shipping_cost").html('Rp' + data.shipping_cost + '<span class="small"> untuk ' + $subscribe_duration*2 + ' kali pengiriman</span>');
+					$("#total_price").html('Rp' + (parseInt(data.plan_price) * $subscribe_duration + parseInt(data.shipping_cost)))
+					$('#city_result').html(data.city_name);
+					$('#province_result').html(data.province_name);
+					$('#error_result').html(data.error_name);
+					
+					
+				})
+				.fail(function(data){
+					$("#plan_selected").html('Rencana berlangganan: Fail');
+					$("#plan_price").html('error');
+					$("#subscribe_duration").html('error');
+					$("#sub_total").html('error');
+					$("#shipping_cost").html('error');
+					$("#total_price").html('error');
+					$('#city_result').html('error');
+					$('#province_result').html('error');
+					$('#error_result').html('Error');
+
+					alert('Mohon Periksa Kembali Data Pengiriman Add Notes');
+				});
+
+			});	*/
+			
+			//$('#province,#city').change(function(){
+			$('#province,#city,#select1,#select5').mouseleave(function(){
+				if($("#select1").val() != "" && $("#select5").val() != ""){
+
+					if($('#province').val() != "" && $('#city') != ""){
+						//alert('Menarik Ship Cost');
+						$subscribe_duration = $("#select5").val();
+						$plan = $('#select1').val();
+						$city = $('#city').val();
+						$province = $('#province').val();
+						
+						$.ajax({
+						  method: "GET",
+						  url: "/ajaxGetShipCost",
+						  data: {plan: $plan, subscribe_duration: $subscribe_duration, city: $city, province: $province},
+						  dataType: "json"
+						})
+						.done(function(data){
+							$("#plan_selected").html('Rencana berlangganan: ' + data.plan_weight + 'gr (' + data.plan_weight + ' gr per 2 minggu)');
+							$("#plan_price").html('Rp' + (data.plan_price) + '<span class="small"> untuk 1 bulan');
+							$("#subscribe_duration").html(data.subscribe_duration + ' bulan');
+							$("#sub_total").html('Rp' + (data.subscribe_duration * data.plan_price));
+							$("#delivery_price").html('Rp' + (data.subscribe_duration * data.plan_price));
+
+							$("#shipping_cost").html('Rp' + data.shipping_cost + '<span class="small"> untuk ' + $subscribe_duration*2 + ' kali pengiriman</span>');
+							$("#total_price").html('Rp' + (parseInt(data.plan_price) * $subscribe_duration + parseInt(data.shipping_cost)))
+							$('#city_result').html(data.city_name);
+							$('#province_result').html(data.destination_name);
+							$('#error_result').html(data.error_name);
+							
+							
+						})
+						.fail(function(data){
+							$("#plan_selected").html('Rencana berlangganan: Fail');
+								$("#plan_price").html('-');
+								$("#subscribe_duration").html('-');
+								$("#sub_total").html('-');
+							$("#shipping_cost").html('error');
+							$("#total_price").html('error');
+							$('#city_result').html('error');
+							$('#province_result').html('error');
+							$('#error_result').html('Error');
+
+							//alert('Mohon Periksa Kembali Data Pengiriman All Fields');
+						});
+					}
+					/*else{
+						//alert('Data Belum Lengkap');
+							//$('#select1,#select5').change(function(){
+							$subscribe_duration = $("#select5").val();
+							$plan = $('#select1').val();
+							$city = $('#city').val();
+							$province = $('#province').val();
+							//alert($province);
+							//alert('javascrip' + $subscribe_duration);
+							$.ajax({
+							  method: "GET",
+							  url: "/ajaxSubscribeDuration",
+							  //data: {plan: $plan, subscribe_duration: $subscribe_duration, city: $city, province: $province},
+							  data: {plan: $plan, subscribe_duration: $subscribe_duration},
+							  dataType: "json"
+							})
+							.done(function(data){
+								$("#plan_selected").html('Rencana berlangganan: ' + data.plan_weight + 'gr (' + data.plan_weight + ' gr per 2 minggu)');
+								$("#plan_price").html('Rp' + (data.plan_price) + '<span class="small"> untuk 1 bulan');
+								$("#subscribe_duration").html(data.subscribe_duration + ' bulan');
+								$("#sub_total").html('Rp' + (data.subscribe_duration * data.plan_price));
+								
+								$('#error_result').html("");
+								//alert(data.shipping_cost + data.plan_price + data.plan_weight + data.subscribe_duration + data.city_name + data.province_name);
+								
+							})
+							.fail(function(data){
+								$("#plan_selected").html('Rencana berlangganan: Fail');
+								$("#plan_price").html('-');
+								$("#subscribe_duration").html('-');
+								$("#sub_total").html('-');
+								
+								$('#error_result').html('Error');
+
+								//alert('Mohon Periksa Kembali Data Pengiriman');
+							});
+					}*/
+					//});
+					
+				}
+				
+
+			});
+			
+
+			/*$('#select1,#select5').change(function(){
+				$subscribe_duration = $("#select5").val();
+				$plan = $('#select1').val();
+				$city = $('#city').val();
+				$province = $('#province').val();
+				//alert($province);
+				//alert('javascrip' + $subscribe_duration);
+				$.ajax({
+				  method: "GET",
+				  url: "/ajaxSubscribeDuration",
+				  data: {plan: $plan, subscribe_duration: $subscribe_duration, city: $city, province: $province},
+				  dataType: "json"
+				})
+				.done(function(data){
+					$("#plan_selected").html('Rencana berlangganan: ' + data.plan_weight + 'gr (' + data.plan_weight + ' gr per 2 minggu)');
+					$("#plan_price").html('Rp' + (data.plan_price) + '<span class="small"> untuk 1 bulan');
+					$("#subscribe_duration").html(data.subscribe_duration + ' bulan');
+					$("#sub_total").html('Rp' + (data.subscribe_duration * data.plan_price));
+					$("#delivery_price").html('Rp' + (data.subscribe_duration * data.plan_price));
+
+					
+					$('#city_result').html(data.city_name);
+					$('#province_result').html(data.province_name);
+					$('#error_result').html(data.error_name);
+					//alert(data.shipping_cost + data.plan_price + data.plan_weight + data.subscribe_duration + data.city_name + data.province_name);
+					
+				})
+				.fail(function(data){
+					$("#plan_selected").html('Rencana berlangganan: Fail');
+					$("#plan_price").html('-');
+					$("#subscribe_duration").html('-');
+					$("#sub_total").html('-');
+					$("#shipping_cost").html('-');
+					$("#total_price").html('-');
+					$('#city_result').html('-');
+					$('#province_result').html('-');
+					$('#error_result').html('Error');
+
+					alert('Mohon Periksa Kembali Data Pengiriman');
+				});
+
+			});*/	
+
+			/*$('#select1,#select5').change(function(){
 				$subscribe_duration = $("#select5").val();
 				$plan = $('#select1').val();
 				$city = $('#city').val();
@@ -319,7 +521,9 @@
 					alert('Mohon Periksa Kembali Data Pengiriman');
 				});
 
-			});			
+			});	*/
+
+
 
 		});
 	</script>

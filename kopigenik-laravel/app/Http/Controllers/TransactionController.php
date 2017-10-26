@@ -18,6 +18,8 @@ class TransactionController extends Controller
 
     //show subsribe page
     public function index(){
+
+      
         /* $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -171,11 +173,11 @@ class TransactionController extends Controller
         }
         $subscribe_duration = request('subscribe_duration');
 
-        $provinceInput = request('province');
-        $cityInput = request('city');
+        /*$provinceInput = request('province');
+        $cityInput = request('city');*/
 
         //Tarik province_id dari province_name
-        $curl = curl_init();
+       /* $curl = curl_init();
 
         curl_setopt_array($curl, array(
           CURLOPT_URL => "https://api.rajaongkir.com/starter/province",
@@ -284,22 +286,22 @@ class TransactionController extends Controller
         $shipping_cost = "";
         if($responseCost->rajaongkir->results[0]->costs[1]->cost[0]->value){
           $shipping_cost = $responseCost->rajaongkir->results[0]->costs[1]->cost[0]->value;
-        }
+        }*/
         //Akhir Tarik Delivery Cost
        /* if($subscribe_duration != ''){
             return json_encode(['shipping_cost' => $shipping_cost*$subscribe_duration*2, 'plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration, 'city_name' => $city, 'province_name' => $province, 'error_name' => ""]);
         }*/
-        if($subscribe_duration != '' && $city!="" & $province!="" && $shipping_cost!=""){
-            return json_encode(['shipping_cost' => $shipping_cost*$subscribe_duration*2, 'plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration, 'city_name' => $city, 'province_name' => $province, 'error_name' => ""]);
+        if($subscribe_duration != ''){
+            return json_encode(['plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration]);
         }
         else if($subscribe_duration != '' && $city!="" && $province!=""){
-            return json_encode(['shipping_cost' => '', 'plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration, 'city_name' => $city, 'province_name' => $province, 'error_name' => "Shipping Cost Error"]);
+            return json_encode(['plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration]);
         } 
         else if($subscribe_duration != '' && $province!="" && $city=="" && $shipping_cost==""){
-            return json_encode(['shipping_cost' => '', 'plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration, 'city_name' => "", 'province_name' => $province, 'error_name' => "City Error"]);
+            return json_encode(['plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration]);
         }
         else if($subscribe_duration != ''){
-            return json_encode(['shipping_cost' => '', 'plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration, 'city_name' => "", 'province_name'=> "", 'error_name' => "Province Error"]);
+            return json_encode(['plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration]);
         } 
         
        
@@ -307,6 +309,7 @@ class TransactionController extends Controller
     }
     //calculate cost
     public function ajaxGetCity(){
+
       
       //Tarik Province ID
 
@@ -364,8 +367,111 @@ class TransactionController extends Controller
         $err = curl_error($curl);
 
         curl_close($curl);
+        return $responseCity;
+        //return json_encode(['namaCity' => $responseCity]);
+    }
 
-        return json_encode(['namaCity' => $responseCity]);
+    public function ajaxGetShipCost(){
+       if(Plan::find(request('plan'))){
+            $plan_price = (Plan::find(request('plan')))->price;
+            $plan_weight = (Plan::find(request('plan')))->weight;
+        }
+        $subscribe_duration = request('subscribe_duration');
+         //Tarik Province ID
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => "https://api.rajaongkir.com/starter/province",
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => "",
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 30,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => "GET",
+          CURLOPT_HTTPHEADER => array(
+            "key: a64321d648c698eb00c2e4306bf23f98"
+          ),
+        ));
+
+        $responseProv = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+        $responseProv = json_decode($responseProv);
+
+        //$province=$responseProv->rajaongkir->results->province_id;
+        $province="";
+        foreach($responseProv->rajaongkir->results as $hasil){
+           if($hasil->province == request('province')){
+               
+              $province = $hasil->province_id;
+                
+              break;
+
+           }
+        }
+
+
+      //Akhir Tarik Province ID
+      $curl = curl_init();
+        
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => "https://api.rajaongkir.com/starter/city?province=".$province,
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => "",
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 30,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => "GET",
+          CURLOPT_HTTPHEADER => array(
+            "key: a64321d648c698eb00c2e4306bf23f98"
+          ),
+        ));
+
+        $responseCity = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+        $responseCity = json_decode($responseCity);
+        $city = "";
+        foreach($responseCity->rajaongkir->results as $hasil){
+           if($hasil->city_name == request('city')){
+               
+              $city = $hasil->city_id;
+                
+              break;
+
+           }
+        }
+        //return json_encode(['namaCity' => $responseCity]);
+
+        //Tarik Shipping Cost
+        $curl = curl_init();
+        $cityOrigin=151;
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => "https://api.rajaongkir.com/starter/cost",
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => "",
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 30,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => "POST",
+          CURLOPT_POSTFIELDS => "origin=".$cityOrigin."&destination=".$city."&weight=1700&courier=jne",
+          CURLOPT_HTTPHEADER => array(
+            "content-type: application/x-www-form-urlencoded",
+            "key: a64321d648c698eb00c2e4306bf23f98"
+          ),
+        ));
+
+        $responseCost = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+        
+        //return $responseCost;
+        $responseCost=json_decode($responseCost);
+        return json_encode(['shipping_cost' => $responseCost->rajaongkir->results[0]->costs[1]->cost[0]->value, 'plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration, 'city_name' => $responseCost->rajaongkir->origin_details->city_name, 'destination_name' => $responseCost->rajaongkir->destination_details->city_name]);
     }
 
     //perform transaction

@@ -24,6 +24,8 @@ Route::get('/subscribe', 'TransactionController@index');
 //Route::get('/ajaxPlan', 'TransactionController@ajaxPlan');
 Route::get('/ajaxSubscribeDuration', 'TransactionController@ajaxSubscribeDuration');
 Route::get('/ajaxGetCity', 'TransactionController@ajaxGetCity');
+Route::get('/ajaxGetShipCost', 'TransactionController@ajaxGetShipCost');
+
 
 
 Route::post('/subscribe', 'TransactionController@store');
