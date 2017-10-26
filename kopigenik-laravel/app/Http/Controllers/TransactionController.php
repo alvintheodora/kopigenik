@@ -291,8 +291,10 @@ class TransactionController extends Controller
        /* if($subscribe_duration != ''){
             return json_encode(['shipping_cost' => $shipping_cost*$subscribe_duration*2, 'plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration, 'city_name' => $city, 'province_name' => $province, 'error_name' => ""]);
         }*/
+
         if($subscribe_duration != ''){
             return json_encode(['plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration]);
+
         }
         else if($subscribe_duration != '' && $city!="" && $province!=""){
             return json_encode(['plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration]);
@@ -367,6 +369,7 @@ class TransactionController extends Controller
         $err = curl_error($curl);
 
         curl_close($curl);
+
         return $responseCity;
         //return json_encode(['namaCity' => $responseCity]);
     }
@@ -472,6 +475,7 @@ class TransactionController extends Controller
         //return $responseCost;
         $responseCost=json_decode($responseCost);
         return json_encode(['shipping_cost' => $responseCost->rajaongkir->results[0]->costs[1]->cost[0]->value, 'plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration, 'city_name' => $responseCost->rajaongkir->origin_details->city_name, 'destination_name' => $responseCost->rajaongkir->destination_details->city_name]);
+
     }
 
     //perform transaction

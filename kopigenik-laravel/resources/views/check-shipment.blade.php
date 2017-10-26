@@ -40,7 +40,7 @@
 					        </tr>
 					    </thead>				 		    
 					</table>
->				
+				
 		@endif
 
 
@@ -100,7 +100,6 @@
 			  </div>
 			</div>
 		</form>
->>>>>>> ebb310aaa57651e866e0dbcf04a6fc4e4b714897
 
 
 	</div>
