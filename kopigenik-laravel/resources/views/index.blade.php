@@ -13,33 +13,33 @@
 					<p style="transform: translate(15%, 640%); font-size: 14px; color: #fff;">SINCE 2017</p>
 				</div>	
 				<div class="tagline">
-					<h2 style="margin-left: -27%; color: #fff; font-weight: 500; font-size: 36px;">- Indonesia's Best Coffee Subscription -</h2>
-					<h3 style="margin-left: -10%; color: #fff; left: 50%; font-size: 28px;">Delivering coffee to your door</h3>
+					<h2 style="margin-left: -27%; color: #fff; font-weight: 500; font-size: 36px;">Layanan Berlangganan Kopi Terbaik di Indonesia</h2>
+					<h3 style="margin-left: -10%; color: #fff; left: 50%; font-size: 28px;">Mengantarkan kopi ke depan pintu Anda</h3>
 				</div>
 				
 				<div class="col-xs-4 layer layer-1">				
 					<div class="banner-info">
-						<h3 class="black" style="color: #fff;">Watch videos about your coffee</h3>
-						<p class="black" style="color: #fff;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius</p>
-						<a href="\videos" class="btn btn-banner" style="margin-bottom: 20px; color: #fff;">See videos <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>
+						<h3 class="black" style="color: #fff;">Tonton video seputar kopi</h3>
+						<p class="black" style="color: #fff;">Lihat barista lain dengan teknik brewing andalan mereka untuk mendapatkan hasil brewing yang maksimal</p>
+						<a href="\videos" class="btn btn-banner" style="margin-bottom: 20px; color: #fff;">Lihat video <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>
 					</div>										
 					<img class="img-responsive" src="http://mobilemarketingmagazine.com/wp-content/uploads/2016/10/Branded-Moments-Transparent-background_b.png" alt="coffee videos" style="margin-left: -9%;">
 				</div>		
 
 				<div class="col-xs-4 layer layer-2">				
 					<div class="banner-info">
-						<h3 class="black" style="color: #fff;">Enjoy your coffee with subscription</h3>
-						<p class="black" style="color: #fff;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius</p>
-						<a href="\subscribe" class="btn btn-banner" style="margin-bottom: 20px; color: #fff;">Check Subscription Plan <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>
+						<h3 class="black" style="color: #fff;">Tingkatkan eksplorasi kopi Anda dengan berlangganan kopi</h3>
+						<p class="black" style="color: #fff;">Kami mengkurasi biji kopi dengan kualitas terbaik dari seluruh nusantara</p>
+						<a href="\subscribe" class="btn btn-banner" style="margin-bottom: 20px; color: #fff;">Lihat Layanan Berlangganan <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>
 					</div>	
 					<img class="img-responsive" src="asset/coffee_bag3.png" alt="subscribe board">				
 				</div>
 
 				<div class="col-xs-4 layer layer-3">				
 					<div class="banner-info">
-						<h3 class="black" style="color: #fff;">We deliver first-grade beans</h3>
-						<p class="black" style="color: #fff;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius</p>
-						<a href="\beans" class="btn btn-banner" style="margin-bottom: 20px; color: #fff;">See Our Beans <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>
+						<h3 class="black" style="color: #fff;">Blog untuk para pecinta kopi</h3>
+						<p class="black" style="color: #fff;">Mulai dari teknik brewing, pengetahuan umum seputar kopi, hingga informasi terkini dari industri kopi</p>
+						<a href="\beans" class="btn btn-banner" style="margin-bottom: 20px; color: #fff;">Lihat Blog <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>
 					</div>
 					<img class="img-responsive" src="asset/coffee_beans2.png" align="coffee beans">		
 				</div>
@@ -94,7 +94,7 @@
 	<!--how to kopigenik-->
 	<div class="container-fluid container-inner">
 		<div class="section-block">
-			<h2 class="text-center font-header">How To Kopigenik</h2>
+			<h2 class="text-center font-header">Cara Berlangganan</h2>
 			<div class="underline underline-200"></div>	
 		</div>
 		
@@ -112,9 +112,9 @@
 	<div class="container-fluid container-full bg-grey">
 		<div class="row container-fixed">
 			<div class="col-sm-5 col-sm-offset-7 video-info">
-				<h2 class="font-header">Watch Kopigenik's Top-Choice Video</h2>
-				<p class="font-info">Enhance your skills about coffee from high-end baristas around the world.</p>
-				<a href="/videos" class="btn btn-lg btn-banner" role="button">See videos</a>			
+				<h2 class="font-header">Tonton Video-video Menarik Seputar Kopi</h2>
+				<p class="font-info">Lihat barista lain dengan teknik brewing andalan mereka untuk mendapatkan hasil brewing yang maksimal.</p>
+				<a href="/videos" class="btn btn-lg btn-banner" role="button">Lihat video</a>			
 			</div>									
 		</div>
 		<div class="video-overflow">
@@ -131,7 +131,7 @@
 	<!--blog-->
 	<div class="container-fluid container-inner text-center">
 		<div class="section-block">
-			<h2 class="text-center font-header">Blog for Coffee Enthusiast</h2>		
+			<h2 class="text-center font-header">Blog Untuk Para Pecinta Kopi</h2>		
 			<div class="underline underline-200"></div>	
 		</div>
 		<div class="row">
@@ -141,7 +141,7 @@
 						<img class="img-responsive center-block slideanim" src="asset/original/rsz_blog_espresso.jpg" alt="espresso extraction">				
 						<div style="padding: 20px;">					
 							<p style="color: grey;">WEEKLY BLOG</p>
-							<p style="font-size: 24px; color: #000;">Learn how to make your coffee</p>
+							<p style="font-size: 24px; color: #000;">Belajar cara membuat minuman kopi</p>
 						</div>
 					</div>		
 				</div>
@@ -152,7 +152,7 @@
 						<img class="img-responsive center-block slideanim" src="asset/original/rsz_blog_drink_coffee.jpg" alt="time to drink coffee">				
 						<div style="padding: 20px;">					
 							<p style="color: grey;">WEEKLY BLOG</p>
-							<p style="font-size: 24px; color: #000;">Best time to drink your coffee</p>
+							<p style="font-size: 24px; color: #000;">Waktu terbaik untuk menikmati kopi</p>
 						</div>
 					</div>		
 				</div>

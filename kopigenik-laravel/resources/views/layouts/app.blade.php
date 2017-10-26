@@ -44,10 +44,10 @@
                 </div>
                 <div class="collapse navbar-collapse navbarKu" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="navBurger"><a class="navbarKu" href="\subscribe">SUBSCRIBE</a></li>
-                        <li class="navBurger"><a class="navbarKu" href="\beans">BEANS</a></li>
-                        <li class="navBurger"><a class="navbarKu" href="\videos">VIDEOS</a></li>
-                        <li class="navBurger"><a class="navbarKu" href="\about-us">OUR STORY</a></li>
+                        <li class="navBurger"><a class="navbarKu" href="\subscribe">BERLANGGANAN</a></li>
+                        <li class="navBurger"><a class="navbarKu" href="\beans">BELANJA</a></li>
+                        <li class="navBurger"><a class="navbarKu" href="\videos">VIDEO</a></li>
+                        <li class="navBurger"><a class="navbarKu" href="\about-us">TENTANG KAMI</a></li>
                         <li class="navBurger"><a class="navbarKu" href="\faq">FAQ</a></li>
                         <li class="navBurger"><a class="navbarKu" href="\blog">BLOG</a></li>
                         <li class="dropdown">
@@ -55,8 +55,8 @@
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">GUEST <span class="caret"></span></a>
                                 
                                 <ul class="dropdown-menu">
-                                    <li class="navBurger"><a class="navbarKu" href="{{ route('login') }}">LOGIN</a></li>
-                                    <li class="navBurger"><a class="navbarKu" href="{{ route('register') }}">REGISTER</a></li>
+                                    <li class="navBurger"><a class="navbarKu" href="{{ route('login') }}">MASUK</a></li>
+                                    <li class="navBurger"><a class="navbarKu" href="{{ route('register') }}">DAFTAR</a></li>
                                 </ul>
                             @else
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">{{auth()->user()->name}} <span class="caret"></span></a>
@@ -64,18 +64,18 @@
                                 <ul class="dropdown-menu">
 
                                     @role('admin')
-                                        <li class="navBurger"><a class="navbarKu" href="\transactions">TRANSACTIONS</a></li>
-                                        <li class="navBurger"><a class="navbarKu" href="\shipments">SHIPMENTS</a></li>
+                                        <li class="navBurger"><a class="navbarKu" href="\transactions">TRANSAKSI</a></li>
+                                        <li class="navBurger"><a class="navbarKu" href="\shipments">PENGIRIMAN</a></li>
                                     @else                                     
-                                        <li class="navBurger"><a class="navbarKu" href="\check-shipments">MY SUBSCRIPTIONS</a></li>
+                                        <li class="navBurger"><a class="navbarKu" href="\check-shipments">RIWAYAT BERLANGGANAN</a></li>
                                     @endrole
-                                    <li class="navBurger"><a class="navbarKu" href="\profile">EDIT PROFILE</a></li>
+                                    <li class="navBurger"><a class="navbarKu" href="\profile">UBAH PROFIL</a></li>
 
                                     <li class="navBurger">
                                         <a class="navbarKu" href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
-                                            LOGOUT
+                                            KELUAR
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -104,18 +104,18 @@
                 <div class="col-sm-4">
                     <h5 style="color: #f7db9c;">QUICK LINKS</h5>
                     <ul>
-                        <li><a href="\subscribe">Subscribe</a></li>
-                        <li><a href="\beans">Beans</a></li>
-                        <li><a href="\login">Login</a></li>
+                        <li><a href="\subscribe">Berlangganan</a></li>
+                        <li><a href="\beans">Belanja</a></li>
+                        <li><a href="\login">Masuk</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-4">
-                    <h5 style="color: #f7db9c;">ABOUT US</h5>
+                    <h5 style="color: #f7db9c;">TENTANG KAMI</h5>
                     <ul>
-                        <li><a href="\about-us">What is Kopigenik</a></li>
+                        <li><a href="\about-us">Apa itu Kopigenik</a></li>
                         <li><a href="\faq">FAQ</a></li>
                         <li><a href="\blog">Blog</a></li>
-                        <li><a href="\contact-us">Contact Us</a></li>
+                        <li><a href="\contact-us">Hubungi Kami</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-4">
@@ -124,18 +124,18 @@
                         <li>
                             <a href="https://facebook.com/kopigenik" target="__blank">
                                 <img class="icon-social-media" src="{{asset('asset/icon-facebook.svg')}}">
-                                <span>Kopigenik_id</span>
+                                <span>Kopigenik</span>
                             </a>
                         </li>
                         <li>
                             <a href="https://instagram.com/kopigenik" target="__blank">
                                 <img class="icon-social-media" src="{{asset('asset/icon-instagram.svg')}}">
-                                <span>Kopigenik</span>
+                                <span>@kopigenik</span>
                             </a>
                         </li>
                         <li>                        
                             <img class="icon-social-media" src="{{asset('asset/icon-line.jpg')}}">
-                            <span style="color: #fff;">@Kopigenik</span>                            
+                            <span style="color: #fff;">@kopigenik</span>                            
                         </li>
                         <li style="margin-left: 50px;">
                             <div class="line-it-button" data-lang="en" data-type="friend" data-lineid="@kopigenik" data-count="true" data-home="true" style="display: none; padding-top: 5px;"></div>                            
