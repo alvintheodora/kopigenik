@@ -13,7 +13,7 @@ use App\Mail\Approve;
 class TransactionController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth')->except(['index', 'ajaxPlan','ajaxSubscribeDuration']);
+        $this->middleware('auth')->except(['index', 'ajaxPlan','ajaxSubscribeDuration','ajaxGetCity','ajaxGetShipCost']);
     }
 
     //show subsribe page
