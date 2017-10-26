@@ -5,24 +5,23 @@
 @section('content')
 	<!--body-->
 	<div class="container-fluid text-center">
-		<h2>Blog</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<h1>Kopigenik Blog</h1>
+		<h3>All you need to know about coffee is here</h3>
+
+		<div class="row">
+			@foreach($posts as $post)
+					<a href="/blog/{{$post->id}}" class="link-text">
+						<div class="col-sm-4">
+							<div class="shadow">
+								<img class="img-responsive center-block slideanim" src="{{asset('asset/original/rsz_blog_espresso.jpg')}}" alt="espresso extraction">				
+								<div style="padding: 20px;">					
+									<p style="color: grey;">{{Carbon\Carbon::parse($post->created_at)->format('j F Y')}}</p>
+									<p style="font-size: 24px; color: #000;">{{$post->title}}</p>
+								</div>
+							</div>		
+						</div>
+					</a>									
+			@endforeach			
+		</div>
 	</div>
 @endsection
