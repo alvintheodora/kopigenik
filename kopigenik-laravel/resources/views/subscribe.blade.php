@@ -390,7 +390,7 @@
 							//alert('Mohon Periksa Kembali Data Pengiriman All Fields');
 						});
 					}
-					/*else{
+					else{
 						//alert('Data Belum Lengkap');
 							//$('#select1,#select5').change(function(){
 							$subscribe_duration = $("#select5").val();
@@ -407,11 +407,14 @@
 							  dataType: "json"
 							})
 							.done(function(data){
-								$("#plan_selected").html('Rencana berlangganan: ' + data.plan_weight + 'gr (' + data.plan_weight + ' gr per 2 minggu)');
+								$("#plan_selected").html('Rencana berlangganan:-' + data.plan_weight + 'gr (' + data.plan_weight + ' gr per 2 minggu)');
 								$("#plan_price").html('Rp' + (data.plan_price) + '<span class="small"> untuk 1 bulan');
 								$("#subscribe_duration").html(data.subscribe_duration + ' bulan');
 								$("#sub_total").html('Rp' + (data.subscribe_duration * data.plan_price));
-								
+								$("#shipping_cost").html('-');
+								$("#total_price").html('-');
+								$('#city_result').html('-');
+								$('#province_result').html('-');
 								$('#error_result').html("");
 								//alert(data.shipping_cost + data.plan_price + data.plan_weight + data.subscribe_duration + data.city_name + data.province_name);
 								
@@ -426,7 +429,7 @@
 
 								//alert('Mohon Periksa Kembali Data Pengiriman');
 							});
-					}*/
+					}
 					//});
 					
 				}
