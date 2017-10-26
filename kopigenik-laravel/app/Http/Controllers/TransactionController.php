@@ -460,7 +460,7 @@ class TransactionController extends Controller
           CURLOPT_TIMEOUT => 30,
           CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
           CURLOPT_CUSTOMREQUEST => "POST",
-          CURLOPT_POSTFIELDS => "origin=".$cityOrigin."&destination=".$city."&weight=1700&courier=jne",
+          CURLOPT_POSTFIELDS => "origin=".$cityOrigin."&destination=".$city."&weight=1000&courier=jne",
           CURLOPT_HTTPHEADER => array(
             "content-type: application/x-www-form-urlencoded",
             "key: a64321d648c698eb00c2e4306bf23f98"
@@ -474,7 +474,17 @@ class TransactionController extends Controller
         
         //return $responseCost;
         $responseCost=json_decode($responseCost);
-        return json_encode(['shipping_cost' => $responseCost->rajaongkir->results[0]->costs[1]->cost[0]->value, 'plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration, 'city_name' => $responseCost->rajaongkir->origin_details->city_name, 'destination_name' => $responseCost->rajaongkir->destination_details->city_name]);
+        $shipping_cost=0;
+        foreach($responseCost->rajaongkir->results[0]->costs as $hasil){
+           if($hasil->service == "REG"||$hasil->service =="CTC"){
+               
+              $shipping_cost = $hasil->cost[0]->value;
+                
+              break;
+
+           }
+        }
+        return json_encode(['shipping_cost' => $shipping_cost, 'plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration, 'city_name' => $responseCost->rajaongkir->origin_details->city_name, 'destination_name' => $responseCost->rajaongkir->destination_details->city_name]);
 
     }
 

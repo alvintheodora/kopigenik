@@ -130,11 +130,46 @@
 						</div>
 						<div class="form-group">
 							<label for="province" class="">Province</label>
-							<input class="form-control" id="province" type="text" name="province">
+
+							<input class="form-control awesomplete" list="mylist" id="province" type="text" name="province">
+							<datalist id="mylist">
+								
+								<?php 
+									 $curl = curl_init();
+
+								        curl_setopt_array($curl, array(
+								          CURLOPT_URL => "https://api.rajaongkir.com/starter/province",
+								          CURLOPT_RETURNTRANSFER => true,
+								          CURLOPT_ENCODING => "",
+								          CURLOPT_MAXREDIRS => 10,
+								          CURLOPT_TIMEOUT => 30,
+								          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+								          CURLOPT_CUSTOMREQUEST => "GET",
+								          CURLOPT_HTTPHEADER => array(
+								            "key: a64321d648c698eb00c2e4306bf23f98"
+								          ),
+								        ));
+
+								        $responseProv = curl_exec($curl);
+								        $err = curl_error($curl);
+
+								        curl_close($curl);
+								        $responseProv = json_decode($responseProv);								      
+								        
+							        foreach ($responseProv->rajaongkir->results as $hasil) {
+							           echo '<option value="'.$hasil->province.'">';
+							        }
+							       /* foreach ($responseProv['rajaongkir']['results'] as $hasil) {
+							           echo '<option value="'.$hasil->province.'">';
+							        }*/
+							     ?>
+								
+							</datalist>
 						</div>
 						<div class="form-group">
 							<label for="city" class="">City</label>
-							<input class="form-control" id="city" type="text" name="city">
+							<input class="form-control awesomplete" type="text" name="city" id="city">
+							<!-- <input class="form-control awesomplete" id="city" type="text" name="city"> -->
 						</div>
 						<div class="form-group">
 							<label for="district" class="">District</label>
@@ -368,8 +403,8 @@
 							$("#sub_total").html('Rp' + (data.subscribe_duration * data.plan_price));
 							$("#delivery_price").html('Rp' + (data.subscribe_duration * data.plan_price));
 
-							$("#shipping_cost").html('Rp' + data.shipping_cost + '<span class="small"> untuk ' + $subscribe_duration*2 + ' kali pengiriman</span>');
-							$("#total_price").html('Rp' + (parseInt(data.plan_price) * $subscribe_duration + parseInt(data.shipping_cost)))
+							$("#shipping_cost").html('Rp' + data.shipping_cost*data.subscribe_duration*2 + '<span class="small"> untuk ' + $subscribe_duration*2 + ' kali pengiriman</span>');
+							$("#total_price").html('Rp' + (parseInt(data.plan_price) * $subscribe_duration + parseInt(data.shipping_cost*data.subscribe_duration*2)))
 							$('#city_result').html(data.city_name);
 							$('#province_result').html(data.destination_name);
 							$('#error_result').html(data.error_name);
