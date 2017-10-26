@@ -62,12 +62,21 @@ Route::group(['middleware' => 'role:admin'], function(){
 	Route::get('/shipments', 'ShipmentController@indexByAdmin');
 	Route::get('/shipments/{shipment}', 'ShipmentController@showByAdmin');
 	Route::post('/shipments/{shipment}', 'ShipmentController@approve');
+
+	Route::get('/blog-admin', 'PostController@indexByAdmin');
+	Route::get('/ajaxPostDataTable', 'PostController@ajaxPostDataTable');
+	Route::get('/blog-admin/create-post', 'PostController@createPost');
+	Route::post('/blog-admin/create-post', 'PostController@storePost');
+	Route::post('/blog-admin/remove-post/{post}', 'PostController@removePost');
 });
 
 Route::get('/profile', 'UserController@index');
 Route::post('/profile', 'UserController@edit');
 Route::post('/profile/address', 'AddressController@store');
 Route::post('/profile/payment', 'PaymentController@store');
+
+Route::get('/blog', 'PostController@index');
+Route::get('/blog/{post}', 'PostController@showPost');
 
 Route::get('/beans', function () {
     return view('beans');
@@ -80,9 +89,6 @@ Route::get('/about-us', function () {
 });
 Route::get('/faq', function () {
     return view('faq');
-});
-Route::get('/blog', function () {
-    return view('blog');
 });
 Route::get('/contact-us', function () {
     return view('contact-us');
