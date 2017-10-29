@@ -13,7 +13,7 @@ use App\Mail\Approve;
 class TransactionController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth')->except(['index', 'ajaxPlan','ajaxSubscribeDuration']);
+        $this->middleware('auth')->except(['index', 'ajaxPlan','ajaxSubscribeDuration','ajaxGetCity','ajaxGetShipCost']);
     }
 
     //show subsribe page
@@ -474,7 +474,17 @@ class TransactionController extends Controller
         
         //return $responseCost;
         $responseCost=json_decode($responseCost);
-        return json_encode(['shipping_cost' => $responseCost->rajaongkir->results[0]->costs[1]->description, 'plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration, 'city_name' => $responseCost->rajaongkir->origin_details->city_name, 'destination_name' => $responseCost->rajaongkir->destination_details->city_name]);
+        $shipping_cost=0;
+        foreach($responseCost->rajaongkir->results[0]->costs as $hasil){
+           if($hasil->service == "REG"||$hasil->service =="CTC"){
+               
+              $shipping_cost = $hasil->cost[0]->value;
+                
+              break;
+
+           }
+        }
+        return json_encode(['shipping_cost' => $shipping_cost, 'plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration, 'city_name' => $responseCost->rajaongkir->origin_details->city_name, 'destination_name' => $responseCost->rajaongkir->destination_details->city_name]);
 
     }
 
