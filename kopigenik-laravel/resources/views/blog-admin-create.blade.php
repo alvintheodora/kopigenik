@@ -14,8 +14,10 @@
 					<input class="form-control" type="text" name="title" placeholder="Title">
 
 					<h2>Content</h2>
-					<textarea class="form-control" name="content" placeholder="Content" rows="12"></textarea>
+					<textarea class="form-control" name="contentText" placeholder="Content" rows="12"></textarea>
+					<textarea class="form-control" name="content" id="content"></textarea>
 
+					<button type="button" class="btn btn-lg btn-warning" onclick="parseTextArea()">Parse</button>
 					<button type="submit" class="btn btn-lg btn-success btn-block">Publish</button>
 
 				</form>
@@ -28,6 +30,14 @@
 		
 	</div>
 
-	<script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
-  	<script>tinymce.init({ selector:'textarea' });</script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+<script>
+	var simplemde = new SimpleMDE();
+
+	function parseTextArea(){
+		var parsed = simplemde.markdown(simplemde.value());
+		$('#content').text(parsed);
+	}
+</script>
 @endsection

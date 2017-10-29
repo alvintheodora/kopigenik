@@ -41,4 +41,13 @@ class UserController extends Controller
     	return back();
     }
 
+    public function ajaxGetUser(){
+        $current_user = auth()->user();
+        return json_encode([
+            'user_name' => $current_user->name,
+            'user_email' => $current_user->email,
+            'csrf_token' => csrf_field()
+        ]);
+    }
+
 }

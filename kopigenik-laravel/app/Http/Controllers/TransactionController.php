@@ -98,7 +98,7 @@ class TransactionController extends Controller
         //Tarik Delivery Cost
         
 
-       /* $curl = curl_init();
+        /*$curl = curl_init();
 
         curl_setopt_array($curl, array(
           CURLOPT_URL => "https://api.rajaongkir.com/starter/cost",
@@ -108,7 +108,7 @@ class TransactionController extends Controller
           CURLOPT_TIMEOUT => 30,
           CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
           CURLOPT_CUSTOMREQUEST => "POST",
-          CURLOPT_POSTFIELDS => "origin=".$response->rajaongkir->results->city_id."&destination=".$response->rajaongkir->results->city_id."&weight=1700&courier=jne",
+          CURLOPT_POSTFIELDS => "origin=151&destination=151&weight=1000&courier=jne",
           CURLOPT_HTTPHEADER => array(
             "content-type: application/x-www-form-urlencoded",
             "key: a64321d648c698eb00c2e4306bf23f98"
@@ -119,7 +119,7 @@ class TransactionController extends Controller
         $err = curl_error($curl);
 
         curl_close($curl);
-        $responseCost = json_decode($responseCost);*/
+        $responseCost = json_decode($responseCost); dd($responseCost);*/
         //dd($responseCost->rajaongkir->results[0]->costs[1]->cost[0]->value);
          /*$curl = curl_init();
         
@@ -460,7 +460,7 @@ class TransactionController extends Controller
           CURLOPT_TIMEOUT => 30,
           CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
           CURLOPT_CUSTOMREQUEST => "POST",
-          CURLOPT_POSTFIELDS => "origin=".$cityOrigin."&destination=".$city."&weight=1700&courier=jne",
+          CURLOPT_POSTFIELDS => "origin=".$cityOrigin."&destination=".$city."&weight=1000&courier=jne",
           CURLOPT_HTTPHEADER => array(
             "content-type: application/x-www-form-urlencoded",
             "key: a64321d648c698eb00c2e4306bf23f98"
@@ -474,7 +474,7 @@ class TransactionController extends Controller
         
         //return $responseCost;
         $responseCost=json_decode($responseCost);
-        return json_encode(['shipping_cost' => $responseCost->rajaongkir->results[0]->costs[1]->cost[0]->value, 'plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration, 'city_name' => $responseCost->rajaongkir->origin_details->city_name, 'destination_name' => $responseCost->rajaongkir->destination_details->city_name]);
+        return json_encode(['shipping_cost' => $responseCost->rajaongkir->results[0]->costs[1]->description, 'plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration, 'city_name' => $responseCost->rajaongkir->origin_details->city_name, 'destination_name' => $responseCost->rajaongkir->destination_details->city_name]);
 
     }
 

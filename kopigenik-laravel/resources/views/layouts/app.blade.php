@@ -66,6 +66,7 @@
                                     @role('admin')
                                         <li class="navBurger"><a class="navbarKu" href="\transactions">TRANSAKSI</a></li>
                                         <li class="navBurger"><a class="navbarKu" href="\shipments">PENGIRIMAN</a></li>
+                                        <li class="navBurger"><a class="navbarKu" href="\blog-admin">BLOG</a></li>
                                     @else                                     
                                         <li class="navBurger"><a class="navbarKu" href="\check-shipments">RIWAYAT BERLANGGANAN</a></li>
                                     @endrole

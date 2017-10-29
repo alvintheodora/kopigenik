@@ -29,12 +29,48 @@
                 </div>
                 <div class="collapse navbar-collapse navbarKu" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="navBurger"><a class="navbarKu" href="\subscribe">SUBSCRIBE</a></li>
-                        <li class="navBurger"><a class="navbarKu" href="\beans">BEANS</a></li>
-                        <li class="navBurger"><a class="navbarKu" href="\videos">VIDEOS</a></li>
-                        <li class="navBurger"><a class="navbarKu" href="\about-us">OUR STORY</a></li>
+                        <li class="navBurger"><a class="navbarKu" href="\subscribe">BERLANGGANAN</a></li>
+                        <li class="navBurger"><a class="navbarKu" href="\beans">BELANJA</a></li>
+                        <li class="navBurger"><a class="navbarKu" href="\videos">VIDEO</a></li>
+                        <li class="navBurger"><a class="navbarKu" href="\about-us">TENTANG KAMI</a></li>
                         <li class="navBurger"><a class="navbarKu" href="\faq">FAQ</a></li>
-                        <li class="navBurger"><a class="navbarKu" href="\blog">BLOG</a></li>                        
+                        <li class="navBurger"><a class="navbarKu" href="\blog">BLOG</a></li>
+                        <li class="dropdown">
+                          
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" id="navbarName"><span class="caret"></span></a>
+                                
+                                <ul class="dropdown-menu" id="dropdownGuest">
+                                    <li class="navBurger"><a class="navbarKu" href="/login">MASUK</a></li>
+                                    <li class="navBurger"><a class="navbarKu" href="/register">DAFTAR</a></li>
+                                </ul>
+                                                       
+                                
+                                <ul id="dropdownAuth" style="display: none;">
+
+                                    @role('admin')
+                                        <li class="navBurger"><a class="navbarKu" href="\transactions">TRANSAKSI</a></li>
+                                        <li class="navBurger"><a class="navbarKu" href="\shipments">PENGIRIMAN</a></li>
+                                        <li class="navBurger"><a class="navbarKu" href="\blog-admin">BLOG</a></li>
+                                    @else                                     
+                                        <li class="navBurger"><a class="navbarKu" href="\check-shipments">RIWAYAT BERLANGGANAN</a></li>
+                                    @endrole
+                                    <li class="navBurger"><a class="navbarKu" href="\profile">UBAH PROFIL</a></li>
+
+                                    <li class="navBurger">
+                                        <a class="navbarKu" href="/logout"
+                                            onclick="event.preventDefault();
+                                                    document.getElementById('logout-form').submit();">
+                                            KELUAR
+                                        </a>
+
+                                        <form id="logout-form" action="/logout" method="POST" style="display: none;">
+                                            <input id="csrf_field" type="hidden" name="_token" value="">
+                                        </form>
+                                    </li>
+                                </ul>
+                           
+                        </li>
+
                         
                     </ul>
                 </div>

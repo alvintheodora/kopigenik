@@ -78,6 +78,7 @@ Route::post('/profile/payment', 'PaymentController@store');
 Route::get('/blog', 'PostController@index');
 Route::get('/blog/{post}', 'PostController@showPost');
 
+
 Route::get('/beans', function () {
     return view('beans');
 });
@@ -94,3 +95,6 @@ Route::get('/contact-us', function () {
     return view('contact-us');
 });
 Route::post('/contact-us', 'MessageController@store');
+
+
+Route::get('/ajaxGetUser', 'UserController@ajaxGetUser');
