@@ -35,9 +35,9 @@ Pesanan Anda akan dikirimkan setiap tanggal 14 dan 28. <br><br>
 		<tr>
 			<td colspan="3" style="text-align: center;">============================================================</td>
 		</tr>
+		<br><br>
 	</table>
 
-	<br><br>
 
 <h3>Detail Pelanggan</h3>
 Email : {{$user->email}}<br><br>
