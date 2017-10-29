@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Videos')
+@section('title','Video')
 
 @section('content')
 	<!--top-->
