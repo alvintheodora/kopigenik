@@ -676,7 +676,7 @@ class TransactionController extends Controller
             $transaction->save();
 
             //send subscribed email
-            \Mail::to(auth()->user())->queue(new Approve($transaction->user, $transaction));
+            \Mail::to($transaction->user)->queue(new Approve($transaction->user, $transaction));
 
             return redirect('/transactions');
         }

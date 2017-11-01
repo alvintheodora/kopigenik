@@ -1,34 +1,21 @@
 @extends('layouts.app')
 
-@section('title','About Us')
+@section('title','Tentang Kami')
 
 @section('content')
 	<!--top-->
 	<div class="jumbotron text-center">
-		<h1>About Us</h1>
+		<h1>Tentang Kami</h1>
 		<p>Established in 2017</p>
 	</div>
 
 	<!--body-->
 	<div class="container-fluid text-center container-after-jumbotron">
-		<h2>What is Kopigenik</h2>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+		<h2>Apa itu Kopigenik</h2>
+		<p>Kami mengembangkan bisnis Kopigenik dengan tujuan untuk mempertemukan para pecinta kopi dengan kafe dan kopi spesialti yang tentunya masih segar (freshly-roasted), untuk pengalaman menyeduh dan menikmati kopi yang lebih maksimal.<br><br>
+
+		Kami berawal dari para pecinta kopi yang menyadari betapa besarnya kebutuhan kopi di Indonesia, dan semakin bertambahnya kesadaran masyarakat akan kualitas kopi yang dinikmati. Dikarenakan hal ini, kami sangat antusias untuk terus meningkatkan dan berbagi pengetahuan serta kedekatan dengan kopi spesialti di Indonesia. <br><br>
+
+		Dalam hal ini kami memiliki ambisi untuk terus bereksplorasi di dalam cita rasa kopi spesialti, dan juga saling berbagi kepada sesama pecinta kopi, bukan hanya kopi spesialti pilihan, namun juga pengalaman di setiap prosesnya.</p>
 	</div>
 @endsection

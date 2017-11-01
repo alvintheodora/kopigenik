@@ -5,7 +5,7 @@
 @section('content')
 	<!--body-->
 	<div class="container-fluid">
-		<h1 class="text-center">Payment Confirmation</h1>
+		<h1 class="text-center">Konfirmasi Pembayaran</h1>
 		<ul>
 			@if(! is_null($transactions))
 				@foreach($transactions as $transaction)

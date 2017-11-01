@@ -1,19 +1,19 @@
 @extends('layouts.app')
 
-@section('title','Videos')
+@section('title','Video')
 
 @section('content')
 	<!--top-->
 	<div class="jumbotron text-center">
-		<h1>Videos</h1>
-		<p>This is video</p>
+		<h1>Video</h1>
+		<p>Lihat barista lain dengan teknik brewing andalan mereka untuk mendapatkan hasil brewing yang maksimal.</p>
 		
 	</div>
 	
 	<!--body-->
 	<div class="container-fluid container-after-jumbotron">
 		<div class="row">
-			<h3 style="padding: 0 15px;">Featured Videos</h3>
+			<h3 style="padding: 0 15px;">Video Unggulan</h3>
 			<div class="col-sm-12">
 				<div class="embed-responsive embed-responsive-16by9">
 					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/OTVE5iPMKLg" frameborder="0" allowfullscreen></iframe>
@@ -24,7 +24,7 @@
 		</div>
 		<hr>		
 		<div class="row">
-			<h3 style="padding: 0 15px;">Popular Videos</h3>			
+			<h3 style="padding: 0 15px;">Video Populer</h3>			
 			<div class="col-sm-4">
 				<div class="embed-responsive embed-responsive-16by9">
 					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/aBLYSO0DSVI" frameborder="0" allowfullscreen></iframe>
@@ -49,7 +49,7 @@
 		</div>
 		<hr>
 		<div class="row">		
-			<h3 style="padding: 0 15px;">More Videos</h3>	
+			<h3 style="padding: 0 15px;">Video Lainnya</h3>	
 			<div class="col-sm-4">
 				<div class="embed-responsive embed-responsive-16by9">
 					<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/MMMcfnQR5Js" frameborder="0" allowfullscreen></iframe>

@@ -52,12 +52,8 @@
                         <li class="navBurger"><a class="navbarKu" href="\blog">BLOG</a></li>
                         <li class="dropdown">
                             @guest
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">GUEST <span class="caret"></span></a>
-                                
-                                <ul class="dropdown-menu">
                                     <li class="navBurger"><a class="navbarKu" href="{{ route('login') }}">MASUK</a></li>
-                                    <li class="navBurger"><a class="navbarKu" href="{{ route('register') }}">DAFTAR</a></li>
-                                </ul>
+                                    <li class="navBurger"><a class="navbarKu" href="{{ route('register') }}">DAFTAR</a></li>     
                             @else
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">{{auth()->user()->name}} <span class="caret"></span></a>
                                 

@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
-@section('title','Subscribe')
+@section('title','Berlangganan')
 
 @section('content')
 	<div class="container-fluid">
-		<h2 class="text-center">Subscribe</h2>
+		<h2 class="text-center">Berlangganan</h2>
 
 		<form id="subscribeForm" action="\subscribe" method="POST">
 			{{csrf_field()}}
@@ -51,7 +51,7 @@
 					
 
 					<div class="form-group">
-						<label for="name" class="">Name</label>
+						<label for="name" class="">Nama</label>
 						@empty(auth()->user()->name)
 							<input class="form-control" type="text" name="name">
 						@else
@@ -61,12 +61,12 @@
 
 					@isset($address)
 						<div class="form-group">
-							<label for="address" class="">Address</label>
+							<label for="address" class="">Alamat</label>
 							<input class="form-control" type="text" name="address" value="{{$address->address}}">
 						</div>
 						<div class="form-group">
 							
-							<label for="province" class="">Province</label>
+							<label for="province" class="">Provinsi</label>
 							<input class="form-control awesomplete" list="mylist" type="text" name="province" id="province" value="{{$address->province}}">
 							<!-- <input class="awesomplete" list="mylist" /> -->
 							<datalist id="mylist">
@@ -104,32 +104,32 @@
 							</datalist>
 						</div>
 						<div class="form-group">
-							<label for="city" class="">City</label>
+							<label for="city" class="">Kota</label>
 
 							<input class="form-control awesomplete" type="text" name="city" id="city" value="{{$address->city}}">
 										
 						</div>
 						<div class="form-group">
-							<label for="district" class="">District</label>
+							<label for="district" class="">Kecamatan</label>
 							<input class="form-control" type="text" name="district" value="{{$address->district}}">
 						</div>
 						<div class="form-group">
-							<label for="zipcode" class="">Zipcode</label>
+							<label for="zipcode" class="">Kode Pos</label>
 							<input class="form-control" type="text" name="zipcode" value="{{$address->zipcode}}">
 						</div>
 						<div class="form-group">
-							<label for="phone" class="">Phone Number</label>
+							<label for="phone" class="">Nomor Telepon</label>
 							<input class="form-control" type="text" name="phone" value="{{$address->phone}}">
 						</div>						
 
 					@else
 
 						<div class="form-group">
-							<label for="address" class="">Address</label>
+							<label for="address" class="">Alamat</label>
 							<input class="form-control" type="text" name="address">
 						</div>
 						<div class="form-group">
-							<label for="province" class="">Province</label>
+							<label for="province" class="">Provinsi</label>
 
 							<input class="form-control awesomplete" list="mylist" id="province" type="text" name="province">
 							<datalist id="mylist">
@@ -168,26 +168,26 @@
 						</div>
 						
 						<div class="form-group">
-							<label for="city" class="">City</label>
+							<label for="city" class="">Kota</label>
 							<input class="form-control awesomplete" type="text" name="city" id="city">
 							<!-- <input class="form-control awesomplete" id="city" type="text" name="city"> -->
 						</div>
 						<div class="form-group">
-							<label for="district" class="">District</label>
+							<label for="district" class="">Kecamatan</label>
 							<input class="form-control" type="text" name="district">
 						</div>
 						<div class="form-group">
-							<label for="zipcode" class="">Zipcode</label>
+							<label for="zipcode" class="">Kode Pos</label>
 							<input class="form-control" type="text" name="zipcode">
 						</div>
 						<div class="form-group">
-							<label for="phone" class="">Phone Number</label>
+							<label for="phone" class="">Nomor Telepon</label>
 							<input class="form-control" type="text" name="phone">
 						</div>				
 					@endisset
 
 					<div class="form-group">
-						<label for="additional_note" class="">Additional Note</label>
+						<label for="additional_note" class="">Catatan Tambahan</label>
 						<textarea class="form-control" name="additional_note" id="addNotes"></textarea>
 					</div>
 
