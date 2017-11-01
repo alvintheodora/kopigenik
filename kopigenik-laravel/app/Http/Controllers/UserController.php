@@ -46,7 +46,7 @@ class UserController extends Controller
         return json_encode([
             'user_name' => $current_user->name,
             'user_email' => $current_user->email,
-            'csrf_token' => csrf_field()
+            'csrf_token' => csrf_token()
         ]);
     }
 

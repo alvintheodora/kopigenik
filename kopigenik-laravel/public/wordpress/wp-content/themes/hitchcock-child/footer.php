@@ -50,30 +50,21 @@
 <script type="text/javascript">
     jQuery(document).ready(function(){
         jQuery.ajax({
-                  method: "GET",
-                  url: "/ajaxGetUser",                                 
-                  dataType: "json"
-                })
-                .done(function(data){                   
-
-
-
-                    jQuery("#navbarName").html(data.user_name + '<span class="caret"></span>');
-                    jQuery("#dropdownGuest").removeClass('dropdown-menu');
-                    jQuery("#dropdownGuest").css('display','none');
-                    jQuery("#dropdownAuth").addClass('dropdown-menu');
-                    jQuery("#dropdownAuth").attr('style','');
-                    jQuery("#csrf_field").val(data.csrf_token);
-                    console.log(data.csrf_token);
-              
-
-                    
-                    
-                })
-                .fail(function(data){                   
-                     jQuery("#navbarName").html('GUEST <span class="caret"></span>');
-                    
-                });
+              method: "GET",
+              url: "/ajaxGetUser",                                 
+              dataType: "json"
+            })
+            .done(function(data){                   
+                jQuery("#navbarName").html(data.user_name + '<span class="caret"></span>');
+                jQuery("#dropdownGuest").removeClass('dropdown-menu');
+                jQuery("#dropdownGuest").css('display','none');
+                jQuery("#dropdownAuth").addClass('dropdown-menu');
+                jQuery("#dropdownAuth").attr('style','');
+                jQuery("#csrf_field").val(data.csrf_token);                                          
+            })
+            .fail(function(data){                   
+                 jQuery("#navbarName").html('GUEST <span class="caret"></span>');                    
+            });
     });
 </script>	
 
