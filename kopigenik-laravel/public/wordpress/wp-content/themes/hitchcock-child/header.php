@@ -8,6 +8,32 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
 		 
 		<?php wp_head(); ?>
+
+		<!-- ajax get user -->
+		<script type="text/javascript">
+		    current_user_name = null;
+		    jQuery(document).ready(function(){
+		        jQuery.ajax({
+		              method: "GET",
+		              url: "/ajaxGetUser",                                 
+		              dataType: "json"
+		            })
+		            .done(function(data){                   
+		                jQuery("#navbarName").html(data.user_name + '<span class="caret"></span>');
+		                jQuery("#dropdownGuest").removeClass('dropdown-menu');
+		                jQuery("#dropdownGuest").css('display','none');
+		                jQuery("#dropdownAuth").addClass('dropdown-menu');
+		                jQuery("#dropdownAuth").attr('style','');
+		                jQuery("#csrf_field").val(data.csrf_token); 
+		                current_user_name = data.user_name;
+		                current_user_email = data.user_email;  
+		                current_csrf_token = data.csrf_token;                              
+		            })
+		            .fail(function(data){                   
+		                 jQuery("#navbarName").html('GUEST <span class="caret"></span>');                    
+		            });
+		    });
+		</script>
 	
 	</head>
 	

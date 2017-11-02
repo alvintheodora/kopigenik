@@ -99,3 +99,4 @@ Route::post('/contact-us', 'MessageController@store');
 
 Route::get('/ajaxGetUser', 'UserController@ajaxGetUser');
 Route::get('/ajaxGetComment', 'CommentController@ajaxGetComment');
+Route::post('/storeComment', 'CommentController@store');

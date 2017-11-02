@@ -10,10 +10,9 @@
 				
 				<h3 class="comments-title">
 					
-					<div class="inner">
+					<div id="comments-amount" class="inner">
 				
-						<?php echo count($wp_query->comments_by_type[comment]) . ' ';
-						echo _n( 'Comment' , 'Comments' , count($wp_query->comments_by_type[comment]), 'hitchcock' ); ?>
+						
 					
 					</div>
 					
@@ -27,68 +26,59 @@
 				</div> <!-- /comments -->
 				
 			</div> <!-- /comments-inner -->
-			
-	
 
-		<?php $comments_args = array(
+
 			
-			'title_reply' =>
-				'<div class="inner">' . __('Leave a Reply','hitchcock') . '</div>',
-			
-			'comment_notes_before' => 
-				'',
-				
-			'comment_notes_after' =>
-				'',
+			<div id="respond" class="comment-respond" style="display: none;">
+				<h3 id="reply-title" class="comment-reply-title">
+					<div class="inner">Leave a Reply</div> 
+				</h3>			
+				<form action="/storeComment" method="post" id="commentform" class="comment-form">
+					<input id="csrf_field" type="hidden" name="_token" value="">
+					<p class="comment-form-comment">
+						<label for="comment">Comment</label>
+						<textarea id="comment" name="comment" cols="45" rows="6" required="" placeholder="Maximum 255 characters"></textarea>
+					</p>
+					<p class="form-submit">
+						<input name="submit" type="submit" id="submit" class="submit" value="Post Comment"> <input type="hidden" name="comment_post_ID" value="<?php echo $post->ID; ?>" id="comment_post_ID">
+						<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+					</p>			
+				</form>
+			</div>
+
 		
-			'comment_field' => 
-				'<p class="comment-form-comment">
-					<label for="comment">' . __('Comment','hitchcock') . '</label>
-					<textarea id="comment" name="comment" cols="45" rows="6" required></textarea>
-				</p>',
-			
-			'fields' => apply_filters( 'comment_form_default_fields', array(
-			
-				'author' =>
-					'<p class="comment-form-author">
-						<label for="author">' . __('Name','hitchcock') . ( $req ? '<span class="required">*</span>' : '' ) . '</label> 
-						<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30" />
-					</p>',
-				
-				'email' =>
-					'<p class="comment-form-email">
-						<label for="email">' . __('Email','hitchcock') . ( $req ? '<span class="required">*</span>' : '' ) . '</label> 
-						<input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" />
-					</p>',
-				
-				'url' =>
-					'<p class="comment-form-url">
-						<label for="url">' . __('Website','hitchcock') . '</label>
-						<input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" />
-					</p>')
-			),
-		);
 		
-		comment_form($comments_args);
-		
-		?>
 		
 	</div> <!-- /comments-container -->
 	
 <?php endif; ?>
 
-<input type="hidden" name="post_id" id="post_id" value="<?php echo $post->ID; ?>">
+
 
 <script type="text/javascript">
-	jQuery(document).ready(function(){
+
+	jQuery(document).ajaxComplete(function(){
+        	//alert(current_user_name);
+        	if(current_user_name!=null){
+        		jQuery('#respond').css('display','block');
+        		jQuery('form #csrf_field').each(function(){
+					jQuery(this).val(current_csrf_token);
+				});
+        	}
+			
+	
+		});
+
+
+		//get laravel comment
         jQuery.ajax({
               method: "GET",
               url: "/ajaxGetComment", 
-              data: {post_id: jQuery('#post_id').val()},
+              data: {post_id: <?php echo $post->ID; ?>},
               dataType: "json"
             })
             .done(function(data){     
-            	console.log(data.length);
+            	jQuery('#comments-amount').text(data.length + ' COMMENTS');           	
             	for (i = 0; i < data.length; i++) { 
 				    jQuery('.commentlist').append(
 				    	'<li>'+
@@ -104,11 +94,12 @@
 				    	);
 				} 
 				
-                
-               // jQuery("#csrf_field").val(data.csrf_token);                                          
+                                                       
             })
             .fail(function(data){                   
-                //jQuery("#navbarName").html('GUEST <span class="caret"></span>');                    
+                                
             });
-    });
+
+
+  
 </script>
