@@ -60,7 +60,7 @@
                         <li class="navBurger"><a class="navbarKu" href="\videos">VIDEO</a></li>
                         <li class="navBurger"><a class="navbarKu" href="\about-us">TENTANG KAMI</a></li>
                         <li class="navBurger"><a class="navbarKu" href="\faq">FAQ</a></li>
-                        <li class="navBurger"><a class="navbarKu" href="\blog">BLOG</a></li>
+                        <li class="navBurger"><a class="navbarKu" href="\wordpress">BLOG</a></li>
                         <li class="dropdown">
                           
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" id="navbarName"><span class="caret"></span></a>

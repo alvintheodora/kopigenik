@@ -23,7 +23,7 @@ li{
 .header-image,
 .header-image:after {
 	height: 900px;
-	height: calc(100vh - 60px);
+	height: calc(100vh - 160px);
 	position: absolute;
 	z-index: 1;
 	right: 0;
