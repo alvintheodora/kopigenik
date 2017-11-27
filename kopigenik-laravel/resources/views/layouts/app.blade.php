@@ -49,7 +49,7 @@
                         <li class="navBurger"><a class="navbarKu" href="\videos">VIDEO</a></li>
                         <li class="navBurger"><a class="navbarKu" href="\about-us">TENTANG KAMI</a></li>
                         <li class="navBurger"><a class="navbarKu" href="\faq">FAQ</a></li>
-                        <li class="navBurger"><a class="navbarKu" href="\blog">BLOG</a></li>
+                        <li class="navBurger"><a class="navbarKu" href="\wordpress">BLOG</a></li>
                         <li class="dropdown">
                             @guest
                                     <li class="navBurger"><a class="navbarKu" href="{{ route('login') }}">MASUK</a></li>
@@ -87,8 +87,7 @@
                 </div>
             </div>
         </nav>
-        <!-- navbar-fixed clear -->
-        <div class="after-navbar" style="margin-bottom: 60px;"></div>
+        
 
         <!-- Content -->
         @yield('content')
@@ -111,7 +110,7 @@
                     <ul>
                         <li><a href="\about-us">Apa itu Kopigenik</a></li>
                         <li><a href="\faq">FAQ</a></li>
-                        <li><a href="\blog">Blog</a></li>
+                        <li><a href="\wordpress">Blog</a></li>
                         <li><a href="\contact-us">Hubungi Kami</a></li>
                     </ul>
                 </div>
