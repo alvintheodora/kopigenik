@@ -226,7 +226,7 @@
 								<p>Ongkos kirim</p>
 							</div>
 							<div class="col-xs-6">
-								<p id="shipping_cost">-</p>
+								<p id="shipping_cost" name="shipping_cost">-</p>
 							</div>
 						</div>
 						<hr>
@@ -506,7 +506,7 @@
 								$("#subscribe_duration").html('-');
 								$("#sub_total").html('-');*/
 							$("#shipping_cost").html('-');
-							$("#total_price").html('-');
+							$("#total_price").html('Error province and city');
 							$('#city_result').html('error');
 							$('#province_result').html('error');
 							$('#error_result').html('Error');
@@ -544,7 +544,7 @@
 								
 							})
 							.fail(function(data){
-								$("#plan_selected").html('Rencana berlangganan: Fail');
+								$("#plan_selected").html('Rencana berlangganan: Fail (province and city)');
 								$("#plan_price").html('-');
 								$("#subscribe_duration").html('-');
 								$("#sub_total").html('-');

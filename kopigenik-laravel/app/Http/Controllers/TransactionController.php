@@ -19,8 +19,7 @@ class TransactionController extends Controller
     //show subsribe page
     public function index(){
 
-      
-        /* $curl = curl_init();
+        /*$curl = curl_init();
 
         curl_setopt_array($curl, array(
           CURLOPT_URL => "https://api.rajaongkir.com/starter/province",
@@ -39,26 +38,26 @@ class TransactionController extends Controller
         $err = curl_error($curl);
 
         curl_close($curl);
-        $responseProv = json_decode($responseProv);*/
-        //dd($responseProv);
+        $responseProv = json_decode($responseProv);
 
-        /*$province="";
-        $provinceInput = "DI Yogyakarta";
-        $cityStatic = 501;
+        //$province=$responseProv->rajaongkir->results->province_id;
+        $province="";
         foreach($responseProv->rajaongkir->results as $hasil){
-           if($hasil->province == $provinceInput){
+           if($hasil->province == "Jambi"){
                
               $province = $hasil->province_id;
                 
               break;
 
            }
-        }*/
-        //dd($province);
-        /*$curl = curl_init();
-        $province=6;
+        }
+
+
+      //Akhir Tarik Province ID
+      $curl = curl_init();
+        
         curl_setopt_array($curl, array(
-          CURLOPT_URL => "https://api.rajaongkir.com/starter/city?province=".$province."",
+          CURLOPT_URL => "https://api.rajaongkir.com/starter/city?province=".$province,
           CURLOPT_RETURNTRANSFER => true,
           CURLOPT_ENCODING => "",
           CURLOPT_MAXREDIRS => 10,
@@ -70,36 +69,26 @@ class TransactionController extends Controller
           ),
         ));
 
-        $response = curl_exec($curl);
+        $responseCity = curl_exec($curl);
         $err = curl_error($curl);
 
         curl_close($curl);
-        $response = json_decode($response);
-        dd($response);
-        $city=$response->rajaongkir->results->city_name;
-        
-        $city= request('city');
-        
-        foreach($response->rajaongkir->results as $hasil){
-           if($hasil->city_name == request('city')){
+        $responseCity = json_decode($responseCity);
+        $city = "";
+        foreach($responseCity->rajaongkir->results as $hasil){
+           if($hasil->city_name == "Merangin"){
                
-            $city = $hasil->city_id;
+              $city = $hasil->city_id;
                 
               break;
 
            }
-        }*/
-        //Akhir dari tarik city_id
-        //if($subscribe_duration != '0'&&city!=""){
-            //return json_encode(['shipping_cost' => 9000*1*2, 'plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration, 'city_name' => $city]);
-        //}
+        }
+        //return json_encode(['namaCity' => $responseCity]);
 
-
-        //Tarik Delivery Cost
-        
-
-        /*$curl = curl_init();
-
+        //Tarik Shipping Cost
+        $curl = curl_init();
+        $cityOrigin=151;
         curl_setopt_array($curl, array(
           CURLOPT_URL => "https://api.rajaongkir.com/starter/cost",
           CURLOPT_RETURNTRANSFER => true,
@@ -108,7 +97,7 @@ class TransactionController extends Controller
           CURLOPT_TIMEOUT => 30,
           CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
           CURLOPT_CUSTOMREQUEST => "POST",
-          CURLOPT_POSTFIELDS => "origin=151&destination=151&weight=1000&courier=jne",
+          CURLOPT_POSTFIELDS => "origin=".$cityOrigin."&destination=".$city."&weight=1000&courier=jne",
           CURLOPT_HTTPHEADER => array(
             "content-type: application/x-www-form-urlencoded",
             "key: a64321d648c698eb00c2e4306bf23f98"
@@ -119,30 +108,11 @@ class TransactionController extends Controller
         $err = curl_error($curl);
 
         curl_close($curl);
-        $responseCost = json_decode($responseCost); dd($responseCost);*/
-        //dd($responseCost->rajaongkir->results[0]->costs[1]->cost[0]->value);
-         /*$curl = curl_init();
         
-        curl_setopt_array($curl, array(
-          CURLOPT_URL => "https://api.rajaongkir.com/starter/province",
-          CURLOPT_RETURNTRANSFER => true,
-          CURLOPT_ENCODING => "",
-          CURLOPT_MAXREDIRS => 10,
-          CURLOPT_TIMEOUT => 30,
-          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-          CURLOPT_CUSTOMREQUEST => "GET",
-          CURLOPT_HTTPHEADER => array(
-            "key: a64321d648c698eb00c2e4306bf23f98"
-          ),
-        ));
-
-        $response = curl_exec($curl);
-        $err = curl_error($curl);
-
-        curl_close($curl);
-        $response = json_decode($response);
-        dd($response);*/
-        //pass plans id for option tag
+        //return $responseCost;
+        $responseCost=json_decode($responseCost);
+        dd($responseCost);*/
+        
         $plans = Plan::pluck('id');
 
         //pass address if logged in
@@ -484,7 +454,14 @@ class TransactionController extends Controller
 
            }
         }
-        return json_encode(['shipping_cost' => $shipping_cost, 'plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration, 'city_name' => $responseCost->rajaongkir->origin_details->city_name, 'destination_name' => $responseCost->rajaongkir->destination_details->city_name]);
+        if($shipping_cost==0||$shipping_cost==''||!$shipping_cost){
+          $shipping_cost=0;
+          return json_encode(['shipping_cost' => $shipping_cost, 'plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration]);
+        }
+        else{
+          //return json_encode(['shipping_cost' => $shipping_cost, 'plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration, 'city_name' => $responseCost->rajaongkir->origin_details->city_name, 'destination_name' => $responseCost->rajaongkir->destination_details->city_name]);
+          return json_encode(['shipping_cost' => $shipping_cost, 'plan_price' => $plan_price,'plan_weight' => $plan_weight, 'subscribe_duration' => $subscribe_duration]);
+        } 
 
     }
 
@@ -497,7 +474,7 @@ class TransactionController extends Controller
             'coffee_consumption' => 'required',
             'subscribe_duration' => 'required|integer|between:1,3',
             'coffee_grind_size' => 'required|integer|between:1,4',
-
+            
             'name' => 'required',
             'address' => 'required',
             'province' => 'required',
@@ -536,6 +513,7 @@ class TransactionController extends Controller
             */
 
             //Shipment
+            
             if(request('subscribe_duration') == 1){
                 Shipment::create([
                     'transaction_id' => $current_transaction->id,
@@ -546,7 +524,8 @@ class TransactionController extends Controller
                     'zipcode' => request('zipcode'),
                     'phone' => request('phone'),
                     'total_shipment_left' => 2,                    
-                    'additional_note' => request('additional_note')
+                    'additional_note' => request('additional_note'),
+                    'shipment_cost' => request('shipping_cost')
                 ]);
             }else if(request('subscribe_duration') == 2){
                 Shipment::create([
@@ -558,7 +537,8 @@ class TransactionController extends Controller
                     'zipcode' => request('zipcode'),
                     'phone' => request('phone'),
                     'total_shipment_left' => 4,                    
-                    'additional_note' => request('additional_note')
+                    'additional_note' => request('additional_note'),
+                    'shipment_cost' => request('shipping_cost')
                 ]);
             }else if(request('subscribe_duration') == 3){
                 Shipment::create([
@@ -570,7 +550,9 @@ class TransactionController extends Controller
                     'zipcode' => request('zipcode'),
                     'phone' => request('phone'),
                     'total_shipment_left' => 6,                    
-                    'additional_note' => request('additional_note')
+                    'additional_note' => request('additional_note'),
+                    //'shipment_cost' => request('shipping_cost')
+                    'shipment_cost' => 27000
                 ]);
             }
 
