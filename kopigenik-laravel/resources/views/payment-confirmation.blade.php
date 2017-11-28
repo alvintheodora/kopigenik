@@ -10,7 +10,7 @@
 			<h2>Konfirmasi Pembayaran</h2>
 			<h3>ID Pesanan: {{$transaction->id}}</h3>
 			<h4>Jumlah uang yang harus anda bayar:</h4>
-			<h4>Rp{{$transaction->plan->price * $transaction->subscribe_duration + 9000 * $transaction->subscribe_duration * 2}}</h4>
+			<h4>Rp{{$transaction->total_price}}</h4>
 			<p>Mohon segera selesaikan pembayaran sebelum tanggal <span class="strong">{{$time_confirmed_max}}</span></p>
 			<p>Silahkan transfer ke rekening kami yang tersedia</p>
 		</div>		

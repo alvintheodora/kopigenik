@@ -497,15 +497,7 @@ class TransactionController extends Controller
         if($plans_id->contains(request('coffee_consumption'))){
              $plan_selected = Plan::find(request('coffee_consumption'));
 
-            //insert transaction
-            $current_transaction = Transaction::create([
-                'user_id' => auth()->id(),
-                'plan_id' => $plan_selected->id,
-                'subscribe_duration' => request('subscribe_duration'),
-                'coffee_grind_size' => $coffee_grind_size,
-                'status' => 'to be confirmed',
-                'time_bought' => Carbon::now()                
-            ]);
+
 
             /*
             //fill pivot table
@@ -513,6 +505,130 @@ class TransactionController extends Controller
             */
 
             //Shipment
+             $curl = curl_init();
+
+              curl_setopt_array($curl, array(
+                CURLOPT_URL => "https://api.rajaongkir.com/starter/province",
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => "",
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 30,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => "GET",
+                CURLOPT_HTTPHEADER => array(
+                  "key: a64321d648c698eb00c2e4306bf23f98"
+                ),
+              ));
+
+              $responseProv = curl_exec($curl);
+              $err = curl_error($curl);
+
+              curl_close($curl);
+              $responseProv = json_decode($responseProv);
+
+              //$province=$responseProv->rajaongkir->results->province_id;
+              $province="";
+              foreach($responseProv->rajaongkir->results as $hasil){
+                 if($hasil->province == request('province')){
+                     
+                    $province = $hasil->province_id;
+                      
+                    break;
+
+                 }
+              }
+
+
+            //Akhir Tarik Province ID
+            $curl = curl_init();
+              
+              curl_setopt_array($curl, array(
+                CURLOPT_URL => "https://api.rajaongkir.com/starter/city?province=".$province,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => "",
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 30,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => "GET",
+                CURLOPT_HTTPHEADER => array(
+                  "key: a64321d648c698eb00c2e4306bf23f98"
+                ),
+              ));
+
+              $responseCity = curl_exec($curl);
+              $err = curl_error($curl);
+
+              curl_close($curl);
+              $responseCity = json_decode($responseCity);
+              $city = "";
+              foreach($responseCity->rajaongkir->results as $hasil){
+                 if($hasil->city_name == request('city')){
+                     
+                    $city = $hasil->city_id;
+                      
+                    break;
+
+                 }
+              }
+              //return json_encode(['namaCity' => $responseCity]);
+
+              //Tarik Shipping Cost
+              $curl = curl_init();
+              $cityOrigin=151;
+              curl_setopt_array($curl, array(
+                CURLOPT_URL => "https://api.rajaongkir.com/starter/cost",
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_ENCODING => "",
+                CURLOPT_MAXREDIRS => 10,
+                CURLOPT_TIMEOUT => 30,
+                CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                CURLOPT_CUSTOMREQUEST => "POST",
+                CURLOPT_POSTFIELDS => "origin=".$cityOrigin."&destination=".$city."&weight=1000&courier=jne",
+                CURLOPT_HTTPHEADER => array(
+                  "content-type: application/x-www-form-urlencoded",
+                  "key: a64321d648c698eb00c2e4306bf23f98"
+                ),
+              ));
+
+              $responseCost = curl_exec($curl);
+              $err = curl_error($curl);
+
+              curl_close($curl);
+              
+              //return $responseCost;
+              $responseCost=json_decode($responseCost);
+              $shipping_cost=0;
+              foreach($responseCost->rajaongkir->results[0]->costs as $hasil){
+                 if($hasil->service == "REG"||$hasil->service =="CTC"){
+                     
+                    $shipping_cost = $hasil->cost[0]->value;
+                      
+                    break;
+
+                 }
+              }
+             // dd($shipping_cost);
+              $plan_price = 0;
+              $plan_weight = 0;
+            if(Plan::find(request('coffee_consumption'))){
+            $plan_price = (Plan::find(request('coffee_consumption')))->price;
+            $plan_weight = (Plan::find(request('coffee_consumption')))->weight;
+            }
+            $subscribe_duration = request('subscribe_duration');
+
+            $total_price = $plan_price * $subscribe_duration + ($shipping_cost*$subscribe_duration*2);
+
+
+            //insert transaction
+            $current_transaction = Transaction::create([
+                'user_id' => auth()->id(),
+                'plan_id' => $plan_selected->id,
+                'subscribe_duration' => request('subscribe_duration'),
+                'coffee_grind_size' => $coffee_grind_size,
+                'status' => 'to be confirmed',
+                'total_price' => $total_price,
+                'time_bought' => Carbon::now()                
+            ]);
             
             if(request('subscribe_duration') == 1){
                 Shipment::create([
@@ -525,7 +641,7 @@ class TransactionController extends Controller
                     'phone' => request('phone'),
                     'total_shipment_left' => 2,                    
                     'additional_note' => request('additional_note'),
-                    'shipment_cost' => request('shipping_cost')
+                    'shipment_cost' => $shipping_cost
                 ]);
             }else if(request('subscribe_duration') == 2){
                 Shipment::create([
@@ -538,7 +654,7 @@ class TransactionController extends Controller
                     'phone' => request('phone'),
                     'total_shipment_left' => 4,                    
                     'additional_note' => request('additional_note'),
-                    'shipment_cost' => request('shipping_cost')
+                    'shipment_cost' => $shipping_cost
                 ]);
             }else if(request('subscribe_duration') == 3){
                 Shipment::create([
@@ -552,13 +668,13 @@ class TransactionController extends Controller
                     'total_shipment_left' => 6,                    
                     'additional_note' => request('additional_note'),
                     //'shipment_cost' => request('shipping_cost')
-                    'shipment_cost' => 27000
+                    'shipment_cost' => $shipping_cost
                 ]);
             }
+             //count total_price
 
             //send subscribed email
             \Mail::to(auth()->user())->queue(new Subscribe(auth()->user(), $current_transaction));
-
             //redirect to its confirmation
             return redirect('/payment-confirmation/' . $current_transaction->id);
         }

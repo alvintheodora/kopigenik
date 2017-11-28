@@ -9,7 +9,7 @@
 		<p><span>Name: {{$transaction->user->name}}</span></p>
 		<p><span>Plan: {{$transaction->plan->name}}</span></p>
 		<p><span>Subscribe Duration: {{$transaction->subscribe_duration}} months</span></p>
-		<p><span>Price: {{$transaction->plan->price * $transaction->subscribe_duration + 9000 * $transaction->subscribe_duration * 2}}</span></p>
+		<p><span>Price: {{$transaction->total_price}}</span></p>
 		<p><span>Bank: {{$transaction->bank_account}}</span></p>
 		<p><span>Account Holder: {{$transaction->account_holder}}</span></p>
 		<p><span>Account Number: {{$transaction->account_number}}</span></p>
