@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- Chrome, Firefox OS and Opera -->
-<meta name="theme-color" content="#ff80d5">
+<meta name="theme-color" content="#3E2723">
 <!-- Windows Phone -->
-<meta name="msapplication-navbutton-color" content="#ff80d5">
+<meta name="msapplication-navbutton-color" content="#3E2723">
 <!-- iOS Safari -->
-<meta name="apple-mobile-web-app-status-bar-style" content="#ff80d5">
+<meta name="apple-mobile-web-app-status-bar-style" content="#3E2723">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -19,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/kopigenik.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/awesomplete.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{mix('css/custom.css')}}">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.16/fh-3.1.3/r-2.2.0/datatables.min.css">
@@ -153,10 +154,39 @@
 	<script src="{{asset('js/bootstrap.js')}}"></script>
 	<script src="{{asset('js/kopigenik.js')}}"></script>
 	<script src="{{asset('js/velocity.js')}}"></script>
+    <script src="{{mix('js/app.js')}}"></script>
     <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
 
+        NProgress.configure({ minimum: 0.3, easing: 'linear', showSpinner:false, trickleSpeed: 100 }); 
+
+        //loading page
+        document.onreadystatechange = function(e)
+        {
+            if (document.readyState != 'complete')
+            {
+                NProgress.start();
+            }else if(document.readyState == 'complete'){
+                NProgress.done();
+            }
+        };
+        // window.onload = function(e)
+        // {
+        //     //document.readyState will be complete, it's one of the requirements for the window.onload event to be fired
+        //     //do stuff for when everything is loaded
+        // };
+
+        $(document).ajaxStart(function(){
+            NProgress.start();
+        });
+
+        $(document).ajaxStop(function(){
+            NProgress.done();
+        });
+
+
+        $(document).ready(function(){
+            
             //set active class to clicked li
             $pathnameLocal = (location.pathname).substr(18);//18 karena potong tulisan /kopigenik-master/
             $pathnameHosting = (location.pathname).substr(1);//1 karena potong /
