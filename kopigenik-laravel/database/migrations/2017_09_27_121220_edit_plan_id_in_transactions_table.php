@@ -34,8 +34,9 @@ class EditPlanIdInTransactionsTable extends Migration
          Schema::table('transactions', function (Blueprint $table) {
             $table->dropForeign('transactions_plan_id_foreign');
             $table->dropForeign('transactions_user_id_foreign');
+            $table->dropColumn('plan_id');
         });
-         $table->dropColumn('plan_id');
+         
         
     }
 }

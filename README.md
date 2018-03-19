@@ -1,12 +1,38 @@
-# kopigenik
-kopigenik website
-bootstrap changelog:
-- .navbar-header, .navbar-collapse, navbar-toggle, .navbar-nav, .navbar-right, navbar-nav li: media query from 768px to 992px
-- .jumbotron margin-bottom removed
-- .hr margin-top,margin-bottom removed
-- .btn border-radius removed
+# Kopigenik #
+Kopigenik is a coffee subscription website built with Laravel 5.5 (back-end) and Bootstrap 3(front-end).
 
+### System Requirements ###
 
+* PHP >= 7.0.0
+* MariaDB / MySQL Database
+* Composer (https://getcomposer.org/)
+* Javascript Turned On in your browser
 
-Laravel changelog:
--  in .env, CACHE_DRIVER=array (default: file)
+### Prerequisite ###
+
+Install Composer (https://getcomposer.org/)
+Install Zizaco/entrust (https://github.com/Zizaco/entrust)
+-------------------------------------------
+
+### How do I get set up? ###
+###### Please Follow Steps Below in order to install the application
+1. Open Terminal
+2. Git clone :
+	```$ git clone https://github.com/alvintheodora/kopigenik.git```
+3. Change Working Path to ```../htdocs/kopigenik/kopigenik-laravel```
+4. Dependencies Installation :
+	```$ composer install```
+5. Create a Database with name ```kopigenik_laravel```
+6. Install Zizaco/entrust
+7. Configuration:
+	1. Open ```.env``` and ```config/database.php```
+	2. Change with your database information
+8. Database Migration: ```$ php artisan migrate --seed```
+
+* Now All Set Up!
+
+### How to run it ? ###
+1. Open Terminal
+2. Type Command : ```$ php artisan serve```
+3. Open the site through following url: ```{localhost}:8000```
+	* **Note: {localhost} is your localhost url. Normally *localhost* or *127.0.0.1* **

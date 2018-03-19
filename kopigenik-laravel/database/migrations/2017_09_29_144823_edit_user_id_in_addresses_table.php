@@ -26,6 +26,7 @@ class EditUserIdInAddressesTable extends Migration
     public function down()
     {
         Schema::table('addresses', function (Blueprint $table) {
+            $table->dropForeign('addresses_user_id_foreign');
             $table->dropUnique('addresses_user_id_unique');
         });
     }
