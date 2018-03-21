@@ -26,7 +26,7 @@
 
 
     <!--jquery script-->
-    <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{mix('js/app.js')}}"></script>    
     <script src="{{asset('js/awesomplete.min.js')}}"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.16/fh-3.1.3/r-2.2.0/datatables.min.js"></script>
 
@@ -154,7 +154,7 @@
 	<script src="{{asset('js/bootstrap.js')}}"></script>
 	<script src="{{asset('js/kopigenik.js')}}"></script>
 	<script src="{{asset('js/velocity.js')}}"></script>
-    <script src="{{mix('js/app.js')}}"></script>
+    
     <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
     <script type="text/javascript">
 
