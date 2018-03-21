@@ -19,14 +19,14 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/kopigenik.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/awesomplete.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{mix('css/custom.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/custom.css')}}">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.16/fh-3.1.3/r-2.2.0/datatables.min.css">
 
 
     <!--jquery script-->
-    <script src="{{mix('js/app.js')}}"></script>    
+    <script src="{{asset('js/app.js')}}"></script>    
     <script src="{{asset('js/awesomplete.min.js')}}"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.16/fh-3.1.3/r-2.2.0/datatables.min.js"></script>
 
