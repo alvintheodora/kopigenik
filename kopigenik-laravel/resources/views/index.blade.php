@@ -135,7 +135,7 @@
 			<div class="underline underline-200"></div>	
 		</div>
 		<div class="row">
-			<a href="\blog" class="link-text">
+			<a href="\wordpress" class="link-text">
 				<div class="col-sm-6">
 					<div class="shadow">
 						<img class="img-responsive center-block slideanim" src="asset/original/rsz_blog_espresso.jpg" alt="espresso extraction">				
@@ -146,7 +146,7 @@
 					</div>		
 				</div>
 			</a>
-			<a href="\blog" class="link-text">
+			<a href="\wordpress" class="link-text">
 				<div class="col-sm-6">	
 					<div class="shadow">
 						<img class="img-responsive center-block slideanim" src="asset/original/rsz_blog_drink_coffee.jpg" alt="time to drink coffee">				
