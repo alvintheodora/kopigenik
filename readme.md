@@ -28,7 +28,7 @@ Install Composer (https://getcomposer.org/)
 3. Change Working Path to ```kopigenik```
 4. Dependencies Installation :
 	```$ composer install```
-5. Create a Database with name ```kopigenik_laravel```
+5. Create a Database with name ```kopigenik```
 6. ```cp .env.example .env```
 7. ```php artisan key:generate```
 8. In .env, change ```CACHE_DRIVER=array``` and setup your database data
