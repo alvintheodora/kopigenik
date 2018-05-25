@@ -1,2 +1,0 @@
-# kopigenik
-kopigenik website
