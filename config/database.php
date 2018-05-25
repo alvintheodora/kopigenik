@@ -42,10 +42,10 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             //'host' => env('DB_HOST', '127.0.0.1'),
-            'host' => env('DB_HOST', 'db4free.net'),
+            'host' => env('DB_HOST', 'mysql.hostinger.co.id'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'kopigenik'),
-            'username' => env('DB_USERNAME', 'kopigenik'),
+            'database' => env('DB_DATABASE', 'u765641675_kopi'),
+            'username' => env('DB_USERNAME', 'u765641675_kopi'),
             //'password' => env('DB_PASSWORD', ''),
             'password' => env('DB_PASSWORD', 'kopigenik'),
             'unix_socket' => env('DB_SOCKET', ''),
