@@ -45,7 +45,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}"><img class="img-responsive" src="{{secure_asset('asset/kopigenikbanner.png')}}"></a>
+                    <a class="navbar-brand" href="{{ secure_url('/') }}"><img class="img-responsive" src="{{secure_asset('asset/kopigenikbanner.png')}}"></a>
 
                 </div>
                 <div class="collapse navbar-collapse navbarKu" id="myNavbar">
