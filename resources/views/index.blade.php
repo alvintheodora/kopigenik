@@ -23,7 +23,7 @@
 						<p class="black" style="color: #fff;">Lihat barista lain dengan teknik brewing andalan mereka untuk mendapatkan hasil brewing yang maksimal</p>
 						<a href="\videos" class="btn btn-banner" style="margin-bottom: 20px; color: #fff;">Lihat video <span class="glyphicon glyphicon-menu-right" style="margin-left: 5px;"></span></a>
 					</div>										
-					<img class="img-responsive" src="http://mobilemarketingmagazine.com/wp-content/uploads/2016/10/Branded-Moments-Transparent-background_b.png" alt="coffee videos" style="margin-left: -9%;">
+					<img class="img-responsive" src="https://mobilemarketingmagazine.com/wp-content/uploads/2016/10/Branded-Moments-Transparent-background_b.png" alt="coffee videos" style="margin-left: -9%;">
 				</div>		
 
 				<div class="col-xs-4 layer layer-2">				
@@ -53,8 +53,8 @@
 		<!--<h1>K O P I G E N I K</h1>-->
 		<div class="row">
 			<div class="col-xs-6">
-				<h3 class="black font-header-mobile">Watch videos about your coffee</h3>
-				<p class="black font-p-mobile">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius</p>
+				<h3 class="black font-header-mobile">Tonton video seputar kopi</h3>
+				<p class="black font-p-mobile">Lihat barista lain dengan teknik brewing andalan mereka untuk mendapatkan hasil brewing yang maksimal</p>
 				
 			</div>
 			<div class="col-xs-6">
@@ -69,8 +69,8 @@
 				<img class="img-responsive" src="asset/coffee_bag3.png" alt="subscribe board" style="margin-top: 20px;">
 			</div>
 			<div class="col-xs-6">
-				<h3 class="black font-header-mobile">Enjoy your coffee with subscription</h3>
-				<p class="black font-p-mobile">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius</p>
+				<h3 class="black font-header-mobile">Tingkatkan eksplorasi kopi Anda dengan berlangganan kopi</h3>
+				<p class="black font-p-mobile">Kami mengkurasi biji kopi dengan kualitas terbaik dari seluruh nusantara</p>
 				
 			</div>
 		</div>
@@ -78,8 +78,8 @@
 		<hr>											
 		<div class="row">
 			<div class="col-xs-6">
-				<h3 class="black font-header-mobile">We deliver first-grade beans</h3>
-				<p class="black font-p-mobile">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eius</p>
+				<h3 class="black font-header-mobile">Blog untuk para pecinta kopi</h3>
+				<p class="black font-p-mobile">Mulai dari teknik brewing, pengetahuan umum seputar kopi, hingga informasi terkini dari industri kopi</p>
 				
 			</div>
 			<div class="col-xs-6">
