@@ -151,7 +151,7 @@
     </div>
 
     <!-- Scripts -->
-	<script src="{{asset('js/bootstrap.js')}}"></script>
+	<!-- <script src="{{asset('js/bootstrap.js')}}"></script> -->
 	<script src="{{asset('js/kopigenik.js')}}"></script>
 	<script src="{{asset('js/velocity.js')}}"></script>
     
@@ -186,7 +186,8 @@
 
 
         $(document).ready(function(){
-            
+            $('.dropdown-toggle').dropdown();
+
             //set active class to clicked li
             $pathnameLocal = (location.pathname).substr(18);//18 karena potong tulisan /kopigenik-master/
             $pathnameHosting = (location.pathname).substr(1);//1 karena potong /

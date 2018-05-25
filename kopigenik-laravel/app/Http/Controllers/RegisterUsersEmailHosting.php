@@ -59,6 +59,6 @@ trait RegistersUsers
      */
     protected function registered(Request $request, $user)
     {
-        \Mail::to($user)->send(new Welcome($user));
+        //\Mail::to($user)->send(new Welcome($user));
     }
 }

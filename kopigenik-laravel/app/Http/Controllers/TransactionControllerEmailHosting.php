@@ -146,7 +146,7 @@ class TransactionController extends Controller
             }
 
             //send subscribed email
-            \Mail::to(auth()->user())->send(new Subscribe(auth()->user(), $current_transaction));
+            //\Mail::to(auth()->user())->send(new Subscribe(auth()->user(), $current_transaction));
 
             //redirect to its confirmation
             return redirect('/payment-confirmation/' . $current_transaction->id);
@@ -247,7 +247,7 @@ class TransactionController extends Controller
             $transaction->save();
 
             //send subscribed email
-            \Mail::to(auth()->user())->send(new Approve($transaction->user, $transaction));
+            //\Mail::to(auth()->user())->send(new Approve($transaction->user, $transaction));
 
             return redirect('/transactions');
         }

@@ -674,7 +674,7 @@ class TransactionController extends Controller
              //count total_price
 
             //send subscribed email
-            \Mail::to(auth()->user())->queue(new Subscribe(auth()->user(), $current_transaction));
+            //\Mail::to(auth()->user())->queue(new Subscribe(auth()->user(), $current_transaction));
             //redirect to its confirmation
             return redirect('/payment-confirmation/' . $current_transaction->id);
         }
@@ -774,7 +774,7 @@ class TransactionController extends Controller
             $transaction->save();
 
             //send subscribed email
-            \Mail::to($transaction->user)->queue(new Approve($transaction->user, $transaction));
+            //\Mail::to($transaction->user)->queue(new Approve($transaction->user, $transaction));
 
             return redirect('/transactions');
         }
