@@ -25,7 +25,7 @@ Install Composer (https://getcomposer.org/)
 1. Open Terminal
 2. Git clone :
 	```$ git clone https://github.com/alvintheodora/kopigenik.git```
-3. Change Working Path to ```../htdocs/kopigenik```
+3. Change Working Path to ```kopigenik```
 4. Dependencies Installation :
 	```$ composer install```
 5. Create a Database with name ```kopigenik_laravel```
